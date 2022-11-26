@@ -132,8 +132,8 @@ public class SouMenu extends javax.swing.JFrame {
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
         // TODO add your handling code here:
-        MANAGE_PRODUCTS_FORM manageProducts = new MANAGE_PRODUCTS_FORM();
-        splitPane.setRightComponent(manageProducts.getAddProduct());
+        EditSouOrder editOrder = new EditSouOrder();
+        splitPane.setRightComponent(editOrder);
     }//GEN-LAST:event_btnOrderActionPerformed
 
     /**
