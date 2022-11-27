@@ -1,5 +1,8 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
 package ui.source;
-
 
 import java.awt.Color;
 import java.awt.Font;
@@ -20,24 +23,17 @@ import javax.swing.table.JTableHeader;
 import model.DB_INFO;
 import model.SourceOrder;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
- * @author 1BestCsharp
+ * @author ruishang
  */
-public class AllSouOrd extends javax.swing.JFrame {
+public class AllOrders extends javax.swing.JPanel {
 
     /**
-     * Creates new form All_Orders_Form
+     * Creates new form AllOrders
      */
-    public AllSouOrd() {
+    public AllOrders() {
         initComponents();
-        
         populateOrderJtable();
         
         jTable_ORDERS.setShowGrid(true);
@@ -49,10 +45,7 @@ public class AllSouOrd extends javax.swing.JFrame {
         JTableHeader th = jTable_ORDERS.getTableHeader();
 
         th.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        
     }
-
-    
     
     public void populateOrderJtable(){
         
@@ -75,7 +68,7 @@ public class AllSouOrd extends javax.swing.JFrame {
         jTable_ORDERS.setRowHeight(45);
     }
     
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -89,8 +82,6 @@ public class AllSouOrd extends javax.swing.JFrame {
         jTable_ORDERS = new javax.swing.JTable();
         btnView = new javax.swing.JButton();
         btnDel = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTable_ORDERS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,8 +102,8 @@ public class AllSouOrd extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -122,7 +113,7 @@ public class AllSouOrd extends javax.swing.JFrame {
                 .addComponent(btnView)
                 .addGap(27, 27, 27)
                 .addComponent(btnDel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,10 +126,8 @@ public class AllSouOrd extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
@@ -146,63 +135,27 @@ public class AllSouOrd extends javax.swing.JFrame {
         Connection con = DB_INFO.getConnection();
         Integer index = jTable_ORDERS.getSelectedRow();
         String selID = jTable_ORDERS.getValueAt(index, 0).toString();
-        String delOrd = "DELETE FROM order_tbl WHERE id =" + selID;
-        String delDetail = "DELETE FROM order_detail WHERE order_id =" + selID;
-        
+        System.out.println(selID);
+        String delOrd = "DELETE FROM `order_tbl` WHERE `id` =" + selID;
+        String delDetail = "DELETE FROM `order_detail` WHERE `order_id` =" + selID;
+
         Statement st;
-       try{
-           st = con.createStatement();
-           if((st.executeUpdate(delOrd)) == 1 && st.executeUpdate(delDetail) == 1)
-           {
-          
-               JOptionPane.showMessageDialog(null, "Order " + selID+ " Deleted");
-           }else{
-               JOptionPane.showMessageDialog(null, "Something Wrong, try again");
-           }
-       }catch(Exception ex){
-           ex.printStackTrace();
-       }
-        
-        
+        try{
+            st = con.createStatement();
+            if((st.executeUpdate(delDetail)) == 1 && (st.executeUpdate(delOrd)) == 1 )
+            {
+
+                JOptionPane.showMessageDialog(null, "Order " + selID+ " Deleted");
+            }else{
+                JOptionPane.showMessageDialog(null, "Something Wrong, try again");
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        populateOrderJtable();
+
     }//GEN-LAST:event_btnDelActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AllSouOrd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AllSouOrd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AllSouOrd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AllSouOrd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AllSouOrd().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDel;
