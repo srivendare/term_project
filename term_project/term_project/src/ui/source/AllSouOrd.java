@@ -26,10 +26,6 @@ import model.SourceOrder;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author 1BestCsharp
- */
 public class AllSouOrd extends javax.swing.JFrame {
 
     /**

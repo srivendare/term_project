@@ -6,10 +6,6 @@ package ui.source;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author 1BestCsharp
- */
 public class CateProducts extends javax.swing.JFrame {
 
     /**
