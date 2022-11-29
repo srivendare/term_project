@@ -129,10 +129,10 @@ public class SourceOrder {
     public static String getOrderTotalAmount(Integer orderId)
     {
            String query = "select SUM(cast(total AS DECIMAL(10,2))) AS Total_Amount from order_detail where order_id = ?";
-            Connection connection = DB_INFO.getConnection();
-            ResultSet rs;
-            PreparedStatement ps;
-            String total = "";
+           Connection connection = DB_INFO.getConnection();
+           ResultSet rs;
+           PreparedStatement ps;
+           String total = "";
         
         try {
             

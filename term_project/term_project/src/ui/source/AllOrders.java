@@ -94,6 +94,11 @@ public class AllOrders extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable_ORDERS);
 
         btnView.setText("View Detials");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
 
         btnDel.setText("Delete");
         btnDel.addActionListener(new java.awt.event.ActionListener() {
@@ -109,23 +114,24 @@ public class AllOrders extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(btnView)
                 .addGap(27, 27, 27)
                 .addComponent(btnDel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnView)
-                    .addComponent(btnDel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnView)
+                            .addComponent(btnDel))))
                 .addContainerGap(98, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -155,6 +161,59 @@ public class AllOrders extends javax.swing.JPanel {
         populateOrderJtable();
 
     }//GEN-LAST:event_btnDelActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+        
+        Connection connection = DB_INFO.getConnection();
+        Integer index = jTable_ORDERS.getSelectedRow();
+        String selID = jTable_ORDERS.getValueAt(index, 0).toString();
+        String query = "SELECT A.`id`, A.`order_date` AS order_date, C.`name` AS product_name , D.`name` AS category, E.first_name AS losgitic, E.last_name AS location, B.`quantity` AS quantity, B.`price` AS price, B.`total`\n" +
+                        "FROM \n" +
+                        "`order_tbl` A\n" +
+                        "LEFT JOIN `order_detail` B\n" +
+                        "ON  A.id = B.order_id\n" +
+                        "LEFT JOIN product C\n" +
+                        "ON B.product_id = C.id\n" +
+                        "LEFT JOIN category D\n" +
+                        "ON C.category_id = D.id\n" +
+                        "LEFT JOIN customer E\n" +
+                        "ON A.customer_id = E.id\n" +
+                        "WHERE A.`id` = " + selID;
+        ResultSet rs;
+        PreparedStatement ps;
+        String total = "";
+        
+        try {
+            
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            
+            if(rs.next())
+            {   
+                System.out.println(String.valueOf(rs.getString("id")));
+                System.out.println(String.valueOf(rs.getString("order_date")));
+                System.out.println(String.valueOf(rs.getString("product_name")));
+                System.out.println(String.valueOf(rs.getString("category")));
+                System.out.println(String.valueOf(rs.getString("losgitic")));
+                System.out.println(String.valueOf(rs.getString("location")));
+                System.out.println(String.valueOf(rs.getString("quantity")));
+                System.out.println(String.valueOf(rs.getString("price")));
+                System.out.println(String.valueOf(rs.getString("total")));
+                 
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SourceOrder.class.getName()).log(Level.SEVERE, null, ex);
+         
+        }
+        
+        
+        
+
+        
+        
+    }//GEN-LAST:event_btnViewActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
