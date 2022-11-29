@@ -237,7 +237,7 @@ public class SourceOrder {
     
     
     // insert a new order
-     public static void insertOrder(Integer orderId, String orderDate, Integer customerId)
+    public static void insertOrder(Integer orderId, String orderDate, Integer customerId)
     {
         Connection con = DB_INFO.getConnection();
         PreparedStatement ps;

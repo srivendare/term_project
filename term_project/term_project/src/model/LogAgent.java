@@ -10,25 +10,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class Sourcer {
+public class LogAgent {
     
     Connection connection;
     
     private Integer id;
-    private String first_name;
-    private String last_name;
+    private String company_name;
+    private String location;
     private String tel;
     private String email;
 
     
-    public Sourcer(){}
+    public LogAgent(){}
     
     
-    public Sourcer(Integer ID, String FNAME, String LNAME, String TEL, String EMAIL)
+    public LogAgent(Integer ID, String FNAME, String LNAME, String TEL, String EMAIL)
     {
         this.id = ID;
-        this.first_name = FNAME;
-        this.last_name = LNAME;
+        this.company_name = FNAME;
+        this.location = LNAME;
         this.tel = TEL;
         this.email = EMAIL;
     }
@@ -42,20 +42,20 @@ public class Sourcer {
         this.id = id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getcompany_name() {
+        return company_name;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setcompany_name(String company_name) {
+        this.company_name = company_name;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getlocation() {
+        return location;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setlocation(String location) {
+        this.location = location;
     }
 
     public String getTel() {
@@ -75,26 +75,26 @@ public class Sourcer {
     }
     
     // get the customers list
-    public ArrayList<Sourcer> customersList(){
+    public ArrayList<LogAgent> customersList(){
         
-        ArrayList<Sourcer> customer_list = new ArrayList<>();
+        ArrayList<LogAgent> customer_list = new ArrayList<>();
         connection = DB_INFO.getConnection();
         Statement st;
         ResultSet rs;
         PreparedStatement ps;
 
-               String query = "SELECT `id`, `first_name`, `last_name`, `tel`, `email` FROM `customer`";
+               String query = "SELECT `id`, `company_name`, `location`, `tel`, `email` FROM `customer`";
         
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
            
-            Sourcer customer;
+            LogAgent customer;
             // Integer ID, String NAME, Integer CATEGORY_ID, String PRICE, byte[] PICTURE, Integer QUANTITY, String DESCRIPTION
             while(rs.next()){
-                customer = new Sourcer(rs.getInt("id"), 
-                                 rs.getString("first_name"),
-                                 rs.getString("last_name"),
+                customer = new LogAgent(rs.getInt("id"), 
+                                 rs.getString("company_name"),
+                                 rs.getString("location"),
                                  rs.getString("tel"),
                                  rs.getString("email")
                                  );
@@ -103,7 +103,7 @@ public class Sourcer {
             }
         
         } catch (SQLException ex) {
-            Logger.getLogger(Sourcer.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LogAgent.class.getName()).log(Level.SEVERE, null, ex);
         }
         return customer_list;
         
@@ -112,16 +112,16 @@ public class Sourcer {
     
     
     // insert a new customer
-     public static void insertCustomer(Sourcer customer)
+     public static void insertCustomer(LogAgent customer)
     {
         Connection con = DB_INFO.getConnection();
         PreparedStatement ps;
         
         try {
-            ps = con.prepareStatement("INSERT INTO `customer`(`first_name`, `last_name`, `tel`, `email`) VALUES (?,?,?,?)");
+            ps = con.prepareStatement("INSERT INTO `customer`(`company_name`, `location`, `tel`, `email`) VALUES (?,?,?,?)");
 
-            ps.setString(1, customer.getFirst_name());
-            ps.setString(2, customer.getLast_name());
+            ps.setString(1, customer.getcompany_name());
+            ps.setString(2, customer.getlocation());
             ps.setString(3, customer.getTel());
             ps.setString(4, customer.getEmail());
             
@@ -136,22 +136,22 @@ public class Sourcer {
                 }
             
         } catch (SQLException ex) {
-            Logger.getLogger(Sourcer.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LogAgent.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     
      // update customer data
-    public static void updateCustomer(Sourcer customer)
+    public static void updateCustomer(LogAgent customer)
     {
         Connection con = DB_INFO.getConnection();
         PreparedStatement ps;
         
         try {
-            ps = con.prepareStatement("UPDATE `customer` SET `first_name`=?,`last_name`=?,`tel`=?,`email`=? WHERE `id`=?");
+            ps = con.prepareStatement("UPDATE `customer` SET `company_name`=?,`location`=?,`tel`=?,`email`=? WHERE `id`=?");
 
-            ps.setString(1, customer.getFirst_name());
-            ps.setString(2, customer.getLast_name());
+            ps.setString(1, customer.getcompany_name());
+            ps.setString(2, customer.getlocation());
             ps.setString(3, customer.getTel());
             ps.setString(4, customer.getEmail());
             ps.setInt(5, customer.getId());
@@ -166,7 +166,7 @@ public class Sourcer {
                 }
             
         } catch (SQLException ex) {
-            Logger.getLogger(Sourcer.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LogAgent.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -183,7 +183,7 @@ public class Sourcer {
 
             ps.setInt(1, customerId);
 
-            // show a confirmation message before deleting the Sourcer
+            // show a confirmation message before deleting the LogAgent
             int YesOrNo = JOptionPane.showConfirmDialog(null,"Do You Really Want To Delete This Customer","Delete Customer", JOptionPane.YES_NO_OPTION);
             if(YesOrNo == 0){
                 
@@ -196,7 +196,7 @@ public class Sourcer {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(Sourcer.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LogAgent.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         

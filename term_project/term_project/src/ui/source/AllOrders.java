@@ -168,7 +168,7 @@ public class AllOrders extends javax.swing.JPanel {
         Connection connection = DB_INFO.getConnection();
         Integer index = jTable_ORDERS.getSelectedRow();
         String selID = jTable_ORDERS.getValueAt(index, 0).toString();
-        String query = "SELECT A.`id`, A.`order_date` AS order_date, C.`name` AS product_name , D.`name` AS category, E.first_name AS losgitic, E.last_name AS location, B.`quantity` AS quantity, B.`price` AS price, B.`total`\n" +
+        String query = "SELECT A.`id`, A.`order_date` AS order_date, C.`name` AS product_name , D.`name` AS category, E.company_name AS losgitic, E.location AS location, B.`quantity` AS quantity, B.`price` AS price, B.`total`\n" +
                         "FROM \n" +
                         "`order_tbl` A\n" +
                         "LEFT JOIN `order_detail` B\n" +
