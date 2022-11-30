@@ -16,6 +16,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import model.DB_INFO;
+import ui.analyse.AnalyseMenu;
+import ui.finance.FinanceMenu;
 import ui.source.SouMenu;
 
 
@@ -233,12 +235,25 @@ public class Login_Form extends javax.swing.JFrame {
                          souAdmin.setLocationRelativeTo(null);
                          souAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
                          
+                     }else if(rs.getString("enterprise").equals("analyst")){
+                         AnalyseMenu souAdmin = new AnalyseMenu();
+                         souAdmin.pack();
+                         souAdmin.setExtendedState(souAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                         Dimension r = souAdmin.getBounds().getSize();
+                         souAdmin.setVisible(true);
+                         souAdmin.setLocationRelativeTo(null);
+                         souAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+                     }else if(rs.getString("enterprise").equals("finance")){
+                         FinanceMenu souAdmin = new FinanceMenu();
+                         souAdmin.pack();
+                         souAdmin.setExtendedState(souAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                         Dimension r = souAdmin.getBounds().getSize();
+                         souAdmin.setVisible(true);
+                         souAdmin.setLocationRelativeTo(null);
+                         souAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
                      }
-                
                 }
                 
-                
-
         }else {
                 JOptionPane.showMessageDialog(null, "invalid username or password","Login Error",2);
         }
