@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,11 +24,14 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.DateAxis;
 import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.time.Month;
 import org.jfree.data.time.RegularTimePeriod;
 import org.jfree.data.time.TimeSeries;
@@ -150,4 +155,55 @@ public ChartPanel getSalesVolumeChart(){
         jfreechart.getTitle().setFont(new Font("宋体",Font.BOLD,20));
         return frame1;
    }
+  
+  public DefaultPieDataset getDataset(){
+         DefaultPieDataset dataset = new DefaultPieDataset();
+        String query = "SELECT IFNULL(sum(d.total),0),c.`name` FROM\n" +
+"category c \n" +
+"LEFT JOIN product p ON c.id = p.category_id\n" +
+"LEFT JOIN order_detail d ON p.id = d.product_id\n" +
+"LEFT JOIN order_tbl t ON t.id = d.order_id\n" +
+"WHERE  DATE_FORMAT(t.`order_date`,'%Y-%m') <= '2022-12' \n" +
+"AND  DATE_FORMAT(t.`order_date`,'%Y-%m') >= '2022-01' \n" +
+"GROUP BY c.`name`;";
+        try {
+            ResultSet rs = queryDataResult(query);
+            while(rs.next()){
+           dataset.setValue(rs.getString(2), rs.getInt(1));     
+            }
+        } catch (Exception e) {
+            Logger.getLogger(Chart.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return dataset;
+       
+  
+  }
+  
+  public ChartPanel getPercentage(){
+  
+              DefaultPieDataset data = getDataset();
+	      JFreeChart chart = ChartFactory.createPieChart3D("Percentage of sales",data,true,false,false);
+	    //设置百分比
+	      PiePlot pieplot = (PiePlot) chart.getPlot();
+	      DecimalFormat df = new DecimalFormat("0.00%");//获得一个DecimalFormat对象，主要是设置小数问题
+	      NumberFormat nf = NumberFormat.getNumberInstance();//获得一个NumberFormat对象
+	      StandardPieSectionLabelGenerator sp1 = new StandardPieSectionLabelGenerator("{0}  {2}", nf, df);//获得StandardPieSectionLabelGenerator对象
+	      pieplot.setLabelGenerator(sp1);//设置饼图显示百分比
+	  
+	  //没有数据的时候显示的内容
+	      pieplot.setNoDataMessage("无数据显示");
+	      pieplot.setCircular(false);
+	      pieplot.setLabelGap(0.02D);
+	  
+	      pieplot.setIgnoreNullValues(true);//设置不显示空值
+	      pieplot.setIgnoreZeroValues(true);//设置不显示负值
+	     ChartPanel frame1=new ChartPanel (chart,true);
+	      chart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体
+	      PiePlot piePlot= (PiePlot) chart.getPlot();//获取图表区域对象
+	      piePlot.setLabelFont(new Font("宋体",Font.BOLD,10));//解决乱码
+	      chart.getLegend().setItemFont(new Font("黑体",Font.BOLD,10));
+              return frame1;
+
+  
+  }
 }
