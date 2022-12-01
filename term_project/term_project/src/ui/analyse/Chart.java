@@ -88,7 +88,7 @@ public ChartPanel getSalesVolumeChart(){
         JFreeChart chart = ChartFactory.createBarChart3D(
        		                 "Product Comparison Sales Chart", 
                             "Product Categories", 
-                            "Amount", 
+                            "Sales quantity", 
                             dataset, 
                             PlotOrientation.VERTICAL, 
                             true,           
@@ -137,7 +137,7 @@ public ChartPanel getSalesVolumeChart(){
   public ChartPanel getAnaylysis(){
       
       XYDataset xydataset = createDataset();
-		JFreeChart jfreechart = ChartFactory.createTimeSeriesChart("Sales over time graph", "date", "Sales amount",xydataset, true, true, true);
+		JFreeChart jfreechart = ChartFactory.createTimeSeriesChart("Sales over time graph", "date", "Total sales price",xydataset, true, true, true);
 		XYPlot xyplot = (XYPlot) jfreechart.getPlot();
 		DateAxis dateaxis = (DateAxis) xyplot.getDomainAxis();
         dateaxis.setDateFormatOverride(new SimpleDateFormat("MMM-yyyy"));
