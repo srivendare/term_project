@@ -248,6 +248,7 @@ public class Login_Form extends javax.swing.JFrame {
                          souAdmin.setVisible(true);
                          souAdmin.setLocationRelativeTo(null);
                          souAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+                         this.dispose();
                      }else if(rs.getString("enterprise").equals("finance")){
                          FinanceMenu souAdmin = new FinanceMenu();
                          souAdmin.pack();
@@ -256,6 +257,7 @@ public class Login_Form extends javax.swing.JFrame {
                          souAdmin.setVisible(true);
                          souAdmin.setLocationRelativeTo(null);
                          souAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+                         this.dispose();
                      }
                 }
                 
