@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import model.DB_INFO;
+import ui.finance.FinanceMenu;
 import ui.source.SouMenu;
 
 
@@ -76,10 +77,20 @@ public class Login_Form extends javax.swing.JFrame {
         lblTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtName.setText("admin");
+        txtName.setText("pacino");
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
 
         txtPw.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtPw.setText("adminpass");
+        txtPw.setText("pacinopass");
+        txtPw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPwActionPerformed(evt);
+            }
+        });
 
         jButton_LOGIN.setBackground(new java.awt.Color(153, 153, 153));
         jButton_LOGIN.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -233,6 +244,15 @@ public class Login_Form extends javax.swing.JFrame {
                          souAdmin.setLocationRelativeTo(null);
                          souAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
                          
+                     } else if(rs.getString("enterprise").equals("finance")){
+                         FinanceMenu souAdmin = new FinanceMenu();
+                         souAdmin.pack();
+                         souAdmin.setExtendedState(souAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                         Dimension r = souAdmin.getBounds().getSize();
+                         souAdmin.setVisible(true);
+                         souAdmin.setLocationRelativeTo(null);
+                         souAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
+                         
                      }
                 
                 }
@@ -254,6 +274,14 @@ public class Login_Form extends javax.swing.JFrame {
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Comming Soon!", "Warning", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtPwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPwActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPwActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
 
     /**
      * @param args the command line arguments
