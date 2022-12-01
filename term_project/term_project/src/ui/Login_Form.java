@@ -78,16 +78,21 @@ public class Login_Form extends javax.swing.JFrame {
         lblTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtName.setText("admin");
+        txtName.setText("tom");
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
 
         txtPw.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtPw.setText("adminpass");
+        txtPw.setText("tompass");
 
         jButton_LOGIN.setBackground(new java.awt.Color(153, 153, 153));
         jButton_LOGIN.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_LOGIN.setForeground(new java.awt.Color(255, 255, 255));
         jButton_LOGIN.setText("Login");
-        jButton_LOGIN.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton_LOGIN.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton_LOGIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_LOGINActionPerformed(evt);
@@ -111,7 +116,7 @@ public class Login_Form extends javax.swing.JFrame {
         LoginPaneLayout.setHorizontalGroup(
             LoginPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginPaneLayout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
+                .addContainerGap(70, Short.MAX_VALUE)
                 .addGroup(LoginPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(LoginPaneLayout.createSequentialGroup()
                         .addGap(48, 48, 48)
@@ -269,6 +274,10 @@ public class Login_Form extends javax.swing.JFrame {
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Comming Soon!", "Warning", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
 
     /**
      * @param args the command line arguments
