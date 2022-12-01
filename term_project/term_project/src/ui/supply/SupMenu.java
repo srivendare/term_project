@@ -4,6 +4,9 @@
  */
 package ui.supply;
 
+import javax.swing.JPanel;
+import model.Supplier;
+import model.SupplierDirectory;
 import ui.MANAGE_PRODUCTS_FORM;
 import ui.sysadmin.ManageUser;
 
@@ -12,26 +15,25 @@ import ui.sysadmin.ManageUser;
  * @author ruishang
  */
 public class SupMenu extends javax.swing.JFrame {
-
-    /**
-     * @return the splitPane
-     */
-    public javax.swing.JSplitPane getSplitPane() {
-        return splitPane;
-    }
-
-    /**
-     * @param splitPane the splitPane to set
-     */
-    public void setSplitPane(javax.swing.JSplitPane splitPane) {
-        this.splitPane = splitPane;
+    
+    private JPanel userProcessContainer;
+    private SupplierDirectory supplierDirectory;
+    public SupMenu(JPanel upc, SupplierDirectory sd) {
+        initComponents();
+        userProcessContainer = upc;
+        supplierDirectory = sd;
+        
+        chooseSuppliers.removeAllItems();;
+        for (Supplier supplier : supplierDirectory.getSupplierlist()) {
+            chooseSuppliers.addItem(supplier);
+        }
     }
 
     /**
      * Creates new form Home
      */
     
-    public SupMenu() {
+    public SupMenu(){
         initComponents();
     }
 
@@ -44,98 +46,63 @@ public class SupMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        splitPane = new javax.swing.JSplitPane();
-        jPanel1 = new javax.swing.JPanel();
-        btnUser = new javax.swing.JButton();
-        btnSupplier = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
+        lblSupplier = new javax.swing.JLabel();
+        btnLogin = new javax.swing.JButton();
+        chooseSuppliers = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        lblSupplier.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblSupplier.setText("Choose Supplier:");
 
-        btnUser.setBackground(new java.awt.Color(255, 255, 255));
-        btnUser.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        btnUser.setText("Users");
-        btnUser.setBorder(null);
-        btnUser.setBorderPainted(false);
-        btnUser.setContentAreaFilled(false);
-        btnUser.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUserActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
 
-        btnSupplier.setBackground(new java.awt.Color(255, 255, 255));
-        btnSupplier.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        btnSupplier.setText("Add Products");
-        btnSupplier.setBorderPainted(false);
-        btnSupplier.setContentAreaFilled(false);
-        btnSupplier.addActionListener(new java.awt.event.ActionListener() {
+        chooseSuppliers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSupplierActionPerformed(evt);
+                chooseSuppliersActionPerformed(evt);
             }
         });
-
-        btnBack.setBackground(new java.awt.Color(255, 255, 255));
-        btnBack.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        btnBack.setText("back");
-        btnBack.setBorderPainted(false);
-        btnBack.setContentAreaFilled(false);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(btnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBack))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(btnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 339, Short.MAX_VALUE)
-                .addComponent(btnBack)
-                .addGap(14, 14, 14))
-        );
-
-        splitPane.setLeftComponent(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(lblSupplier)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chooseSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLogin))
+                .addContainerGap(586, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(220, 220, 220)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chooseSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSupplier))
+                .addGap(23, 23, 23)
+                .addComponent(btnLogin)
+                .addContainerGap(356, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
+    private void chooseSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseSuppliersActionPerformed
         // TODO add your handling code here:
-        ManageUser manageUser = new ManageUser();
-        splitPane.setRightComponent(manageUser.getEditPane());
-    }//GEN-LAST:event_btnUserActionPerformed
+    }//GEN-LAST:event_chooseSuppliersActionPerformed
 
-    private void btnSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplierActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        MANAGE_PRODUCTS_FORM manageProducts = new MANAGE_PRODUCTS_FORM();
-        splitPane.setRightComponent(manageProducts.getAddProduct());
-    }//GEN-LAST:event_btnSupplierActionPerformed
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,10 +171,12 @@ public class SupMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnSupplier;
-    private javax.swing.JButton btnUser;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JSplitPane splitPane;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JComboBox<Supplier> chooseSuppliers;
+    private javax.swing.JLabel lblSupplier;
     // End of variables declaration//GEN-END:variables
+
+    private void updateSupplierVisibility() {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
