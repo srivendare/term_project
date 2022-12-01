@@ -5,7 +5,11 @@
 package ui.analyse;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.JFrame;
+import ui.Login_Form;
 import ui.MANAGE_PRODUCTS_FORM;
+import ui.finance.FinanceMenu;
 import ui.sysadmin.ManageUser;
 
 /**
@@ -13,7 +17,6 @@ import ui.sysadmin.ManageUser;
  * @author gulinigeer
  */
 public class AnalyseMenu extends javax.swing.JFrame {
-
     /**
      * @return the splitPane
      */
@@ -49,7 +52,7 @@ public class AnalyseMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        BackButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
@@ -77,7 +80,12 @@ public class AnalyseMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Back");
+        BackButton.setText("Back");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(153, 153, 153));
         jButton4.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -95,7 +103,7 @@ public class AnalyseMenu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3)
+                .addComponent(BackButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -116,7 +124,7 @@ public class AnalyseMenu extends javax.swing.JFrame {
                 .addGap(55, 55, 55)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(BackButton)
                 .addGap(23, 23, 23))
         );
 
@@ -167,6 +175,18 @@ public class AnalyseMenu extends javax.swing.JFrame {
         splitPane.setRightComponent(chart.getPercentage());
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        Login_Form loginForm = new Login_Form();
+        loginForm.pack();
+        loginForm.setExtendedState(loginForm.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+        Dimension r = loginForm.getBounds().getSize();
+        loginForm.setVisible(true);
+        loginForm.setLocationRelativeTo(null);
+        loginForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        this.dispose();
+    }//GEN-LAST:event_BackButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -203,9 +223,9 @@ public class AnalyseMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
