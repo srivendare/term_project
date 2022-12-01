@@ -36,7 +36,7 @@ import org.jfree.data.xy.XYDataset;
 
 /**
  *
- * @author lina
+ * @author gulinigeer
  */
 public class Chart {
     Connection connection;
@@ -68,7 +68,6 @@ public class Chart {
         ResultSet rs = null;
         PreparedStatement ps;
 
-//        String query = "SELECT `id`, `name` FROM `category`";
         
         try {
 
@@ -87,28 +86,28 @@ public ChartPanel getSalesVolumeChart(){
     Category c = new Category();
     c.populateCombo();
         JFreeChart chart = ChartFactory.createBarChart3D(
-       		                 "Product Comparison Sales Chart", // 图表标题
-                            "Product Categories", // 目录轴的显示标签
-                            "Amount", // 数值轴的显示标签
-                            dataset, // 数据集
-                            PlotOrientation.VERTICAL, // 图表方向：水平、垂直
-                            true,           // 是否显示图例(对于简单的柱状图必须是false)
-                            false,          // 是否生成工具
-                            false           // 是否生成URL链接
+       		                 "Product Comparison Sales Chart", 
+                            "Product Categories", 
+                            "Amount", 
+                            dataset, 
+                            PlotOrientation.VERTICAL, 
+                            true,           
+                            false,         
+                            false          
                             );
         
-        //从这里开始
-        CategoryPlot plot=chart.getCategoryPlot();//获取图表区域对象
-        CategoryAxis domainAxis=plot.getDomainAxis();         //水平底部列表
-         domainAxis.setLabelFont(new Font("黑体",Font.BOLD,14));         //水平底部标题
-         domainAxis.setTickLabelFont(new Font("宋体",Font.BOLD,12));  //垂直标题
-         ValueAxis rangeAxis=plot.getRangeAxis();//获取柱状
+        
+        CategoryPlot plot=chart.getCategoryPlot();
+        CategoryAxis domainAxis=plot.getDomainAxis();         
+         domainAxis.setLabelFont(new Font("黑体",Font.BOLD,14));       
+         domainAxis.setTickLabelFont(new Font("宋体",Font.BOLD,12));  
+         ValueAxis rangeAxis=plot.getRangeAxis();
          rangeAxis.setLabelFont(new Font("黑体",Font.BOLD,15));
           chart.getLegend().setItemFont(new Font("黑体", Font.BOLD, 15));
-          chart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体
+          chart.getTitle().setFont(new Font("宋体",Font.BOLD,20));
           
-          //到这里结束，虽然代码有点多，但只为一个目的，解决汉字乱码问题
-         return new ChartPanel(chart,true);        //这里也可以用chartFrame,可以直接生成一个独立的Frame
+          
+         return new ChartPanel(chart,true);        
 }
 
     public XYDataset createDataset(){
@@ -143,12 +142,12 @@ public ChartPanel getSalesVolumeChart(){
 		DateAxis dateaxis = (DateAxis) xyplot.getDomainAxis();
         dateaxis.setDateFormatOverride(new SimpleDateFormat("MMM-yyyy"));
         ChartPanel frame1=new ChartPanel(jfreechart,true);
-        dateaxis.setLabelFont(new Font("黑体",Font.BOLD,14));         //水平底部标题
-        dateaxis.setTickLabelFont(new Font("宋体",Font.BOLD,12));  //垂直标题
-        ValueAxis rangeAxis=xyplot.getRangeAxis();//获取柱状
+        dateaxis.setLabelFont(new Font("黑体",Font.BOLD,14));       
+        dateaxis.setTickLabelFont(new Font("宋体",Font.BOLD,12));  
+        ValueAxis rangeAxis=xyplot.getRangeAxis();
         rangeAxis.setLabelFont(new Font("黑体",Font.BOLD,15));
         jfreechart.getLegend().setItemFont(new Font("黑体", Font.BOLD, 15));
-        jfreechart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体
+        jfreechart.getTitle().setFont(new Font("宋体",Font.BOLD,20));
         return frame1;
    }
 }
