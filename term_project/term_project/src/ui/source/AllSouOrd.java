@@ -83,8 +83,18 @@ public class AllSouOrd extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_ORDERS = new javax.swing.JTable();
+        panel1 = new java.awt.Panel();
+        txtID = new javax.swing.JLabel();
+        txtName = new javax.swing.JLabel();
+        txtCate = new javax.swing.JLabel();
+        txtLog = new javax.swing.JLabel();
+        txtDate = new javax.swing.JLabel();
+        txtLoc = new javax.swing.JLabel();
+        txtPrice = new javax.swing.JLabel();
+        txtQuan = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JLabel();
+        lblDetail = new javax.swing.JLabel();
         btnView = new javax.swing.JButton();
-        btnDel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,12 +108,91 @@ public class AllSouOrd extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable_ORDERS);
 
-        btnView.setText("View Detials");
+        panel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        btnDel.setText("Delete");
-        btnDel.addActionListener(new java.awt.event.ActionListener() {
+        txtID.setForeground(new java.awt.Color(204, 204, 204));
+        txtID.setText("XXXXXX");
+
+        txtName.setForeground(new java.awt.Color(204, 204, 204));
+        txtName.setText("jLabel1");
+
+        txtCate.setForeground(new java.awt.Color(204, 204, 204));
+        txtCate.setText("jLabel1");
+
+        txtLog.setForeground(new java.awt.Color(204, 204, 204));
+        txtLog.setText("jLabel1");
+
+        txtDate.setForeground(new java.awt.Color(204, 204, 204));
+        txtDate.setText("jLabel1");
+
+        txtLoc.setForeground(new java.awt.Color(204, 204, 204));
+        txtLoc.setText("jLabel1");
+
+        txtPrice.setForeground(new java.awt.Color(204, 204, 204));
+        txtPrice.setText("jLabel1");
+
+        txtQuan.setForeground(new java.awt.Color(204, 204, 204));
+        txtQuan.setText("jLabel1");
+
+        txtTotal.setForeground(new java.awt.Color(204, 204, 204));
+        txtTotal.setText("jLabel1");
+
+        lblDetail.setText("Order Details");
+
+        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
+        panel1.setLayout(panel1Layout);
+        panel1Layout.setHorizontalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                .addContainerGap(54, Short.MAX_VALUE)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtID)
+                    .addComponent(txtLoc)
+                    .addComponent(txtName)
+                    .addComponent(txtPrice)
+                    .addComponent(txtTotal))
+                .addGap(68, 68, 68)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtLog)
+                    .addComponent(txtCate)
+                    .addComponent(txtQuan)
+                    .addComponent(txtDate))
+                .addGap(76, 76, 76))
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(lblDetail)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panel1Layout.setVerticalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(lblDetail)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtID)
+                    .addComponent(txtDate))
+                .addGap(18, 18, 18)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtName)
+                    .addComponent(txtCate))
+                .addGap(18, 18, 18)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtLoc)
+                    .addComponent(txtLog))
+                .addGap(18, 18, 18)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPrice)
+                    .addComponent(txtQuan))
+                .addGap(26, 26, 26)
+                .addComponent(txtTotal)
+                .addGap(52, 52, 52))
+        );
+
+        btnView.setText("View Detials");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDelActionPerformed(evt);
+                btnViewActionPerformed(evt);
             }
         });
 
@@ -114,53 +203,88 @@ public class AllSouOrd extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73)
-                .addComponent(btnView)
-                .addGap(27, 27, 27)
-                .addComponent(btnDel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(181, 181, 181)
+                .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnView)
-                    .addComponent(btnDel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33)
+                .addComponent(btnView)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
-        Connection con = DB_INFO.getConnection();
+
+        Connection connection = DB_INFO.getConnection();
         Integer index = jTable_ORDERS.getSelectedRow();
         String selID = jTable_ORDERS.getValueAt(index, 0).toString();
-        String delOrd = "DELETE FROM order_tbl WHERE id =" + selID;
-        String delDetail = "DELETE FROM order_detail WHERE order_id =" + selID;
-        
-        Statement st;
-       try{
-           st = con.createStatement();
-           if((st.executeUpdate(delOrd)) == 1 && st.executeUpdate(delDetail) == 1)
-           {
-          
-               JOptionPane.showMessageDialog(null, "Order " + selID+ " Deleted");
-           }else{
-               JOptionPane.showMessageDialog(null, "Something Wrong, try again");
-           }
-       }catch(Exception ex){
-           ex.printStackTrace();
-       }
-        
-        
-    }//GEN-LAST:event_btnDelActionPerformed
+        String query = "SELECT A.`id`, A.`order_date` AS order_date, C.`name` AS product_name , D.`name` AS category, E.company_name AS losgitic, E.location AS location, B.`quantity` AS quantity, B.`price` AS price, B.`total`\n" +
+        "FROM \n" +
+        "`order_tbl` A\n" +
+        "LEFT JOIN `order_detail` B\n" +
+        "ON  A.id = B.order_id\n" +
+        "LEFT JOIN product C\n" +
+        "ON B.product_id = C.id\n" +
+        "LEFT JOIN category D\n" +
+        "ON C.category_id = D.id\n" +
+        "LEFT JOIN customer E\n" +
+        "ON A.customer_id = E.id\n" +
+        "WHERE A.`id` = " + selID;
+        ResultSet rs;
+        PreparedStatement ps;
+        String total = "";
+
+        try {
+
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            if(rs.next())
+            {
+                txtID.setText(String.valueOf("ID: " + rs.getString("id")));
+                txtID.setForeground(Color.DARK_GRAY);
+                txtName.setText(String.valueOf("Product " + rs.getString("product_name")));
+                txtName.setForeground(Color.DARK_GRAY);
+                txtCate.setText(String.valueOf("Category: " + rs.getString("category")));
+                txtCate.setForeground(Color.DARK_GRAY);
+                txtLog.setText(String.valueOf("Logsitic: " + rs.getString("losgitic")));
+                txtLog.setForeground(Color.DARK_GRAY);
+                txtDate.setText(String.valueOf("Date: " + rs.getString("order_date")));
+                txtDate.setForeground(Color.DARK_GRAY);
+                txtLoc.setText(String.valueOf("Location: " + rs.getString("location")));
+                txtLoc.setForeground(Color.DARK_GRAY);
+                txtPrice.setText(String.valueOf("Unit Price: " + rs.getString("price")));
+                txtPrice.setForeground(Color.DARK_GRAY);
+                txtQuan.setText(String.valueOf("Quantity: " +rs.getString("quantity")));
+                txtQuan.setForeground(Color.DARK_GRAY);
+                txtTotal.setText(String.valueOf("Total" +rs.getString("total")));
+                txtTotal.setForeground(Color.DARK_GRAY);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SourceOrder.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+    }//GEN-LAST:event_btnViewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,9 +325,19 @@ public class AllSouOrd extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDel;
     private javax.swing.JButton btnView;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_ORDERS;
+    private javax.swing.JLabel lblDetail;
+    private java.awt.Panel panel1;
+    private javax.swing.JLabel txtCate;
+    private javax.swing.JLabel txtDate;
+    private javax.swing.JLabel txtID;
+    private javax.swing.JLabel txtLoc;
+    private javax.swing.JLabel txtLog;
+    private javax.swing.JLabel txtName;
+    private javax.swing.JLabel txtPrice;
+    private javax.swing.JLabel txtQuan;
+    private javax.swing.JLabel txtTotal;
     // End of variables declaration//GEN-END:variables
 }
