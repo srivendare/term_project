@@ -2,12 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ui.source;
+package ui.source.orgpenal;
 
+import ui.Login_Form;
 import ui.MANAGE_PRODUCTS_FORM;
+import ui.source.EditCate;
+import ui.source.EditOrders;
+import ui.source.EditSouOrder;
+import ui.source.EditSpPane;
 import ui.sysadmin.ManageUser;
 
-public class SouMenu extends javax.swing.JFrame {
+public class PurMenu extends javax.swing.JFrame {
 
     /**
      * @return the splitPane
@@ -27,7 +32,7 @@ public class SouMenu extends javax.swing.JFrame {
      * Creates new form Home
      */
     
-    public SouMenu() {
+    public PurMenu() {
         initComponents();
     }
 
@@ -42,30 +47,18 @@ public class SouMenu extends javax.swing.JFrame {
 
         splitPane = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        btnPurchaser = new javax.swing.JButton();
         btnOrder = new javax.swing.JButton();
         btnEditOrder = new javax.swing.JButton();
-        btnCate1 = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnPurchaser.setBackground(new java.awt.Color(255, 255, 255));
-        btnPurchaser.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        btnPurchaser.setText("Specialist");
-        btnPurchaser.setBorderPainted(false);
-        btnPurchaser.setContentAreaFilled(false);
-        btnPurchaser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPurchaserActionPerformed(evt);
-            }
-        });
-
         btnOrder.setBackground(new java.awt.Color(255, 255, 255));
-        btnOrder.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        btnOrder.setText("Order");
+        btnOrder.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        btnOrder.setText("Place Order");
         btnOrder.setBorderPainted(false);
         btnOrder.setContentAreaFilled(false);
         btnOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -79,20 +72,17 @@ public class SouMenu extends javax.swing.JFrame {
         btnEditOrder.setText("View");
         btnEditOrder.setBorderPainted(false);
         btnEditOrder.setContentAreaFilled(false);
-        btnEditOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditOrderActionPerformed(evt);
-            }
-        });
 
-        btnCate1.setBackground(new java.awt.Color(255, 255, 255));
-        btnCate1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        btnCate1.setText("Category");
-        btnCate1.setBorderPainted(false);
-        btnCate1.setContentAreaFilled(false);
-        btnCate1.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setBackground(new java.awt.Color(255, 255, 255));
+        btnLogin.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(102, 102, 102));
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/static/icons/backIcon.png"))); // NOI18N
+        btnLogin.setText("Back");
+        btnLogin.setBorderPainted(false);
+        btnLogin.setContentAreaFilled(false);
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCate1ActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -101,35 +91,26 @@ public class SouMenu extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(btnPurchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(btnEditOrder))
+                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCate1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(btnPurchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(171, 171, 171)
                 .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90)
-                .addComponent(btnEditOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(241, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(286, 286, 286)
-                    .addComponent(btnCate1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(309, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(btnEditOrder)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 301, Short.MAX_VALUE)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
 
         splitPane.setLeftComponent(jPanel1);
@@ -161,30 +142,18 @@ public class SouMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPurchaserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPurchaserActionPerformed
-        // TODO add your handling code here:
-        EditSpPane spcialistPane = new EditSpPane();
-        System.out.println("lalalal");
-        splitPane.setRightComponent(spcialistPane);
-    }//GEN-LAST:event_btnPurchaserActionPerformed
-
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
         // TODO add your handling code here:
         EditSouOrder editOrder = new EditSouOrder();
         splitPane.setRightComponent(editOrder);
     }//GEN-LAST:event_btnOrderActionPerformed
 
-    private void btnEditOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditOrderActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        EditOrders editOrd = new EditOrders();
-        splitPane.setRightComponent(editOrd);
-    }//GEN-LAST:event_btnEditOrderActionPerformed
+        setVisible(false);
+        new Login_Form().setVisible(true);
 
-    private void btnCate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCate1ActionPerformed
-        // TODO add your handling code here:
-        EditCate editCate = new EditCate();
-        splitPane.setRightComponent(editCate);
-    }//GEN-LAST:event_btnCate1ActionPerformed
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,14 +172,17 @@ public class SouMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SouMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PurMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SouMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PurMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SouMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PurMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SouMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PurMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -218,16 +190,15 @@ public class SouMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SouMenu().setVisible(true);
+                new PurMenu().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCate1;
     private javax.swing.JButton btnEditOrder;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnOrder;
-    private javax.swing.JButton btnPurchaser;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane splitPane;
