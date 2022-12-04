@@ -44,7 +44,7 @@ public class CateProducts extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable_PRODUCTS_IN_CATEGORY);
 
         jLabel_CATEGORY_NAME.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_CATEGORY_NAME.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel_CATEGORY_NAME.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel_CATEGORY_NAME.setText(" Products In The Category :  Ctg Name");
         jLabel_CATEGORY_NAME.setOpaque(true);
 
