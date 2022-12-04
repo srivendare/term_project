@@ -7,7 +7,7 @@ package ui.source;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Sourcer;
+import model.LogAgent;
 import model.SourceOrder;
 
 /**
@@ -28,8 +28,8 @@ public class EditSpPane extends javax.swing.JPanel {
         // function to populate the jtable with customers data
     public void populateJtable(){
         
-        Sourcer customer = new Sourcer();
-        ArrayList<Sourcer> CustomerList = customer.customersList();
+        LogAgent customer = new LogAgent();
+        ArrayList<LogAgent> CustomerList = customer.customersList();
         
         String[] colNames = {"Id","First Name","Last Name","Tel","Email"};
         Object[][] rows = new Object[CustomerList.size()][5];
@@ -37,8 +37,8 @@ public class EditSpPane extends javax.swing.JPanel {
         
         for(int i = 0; i < CustomerList.size(); i++){
             rows[i][0] = CustomerList.get(i).getId();
-            rows[i][1] = CustomerList.get(i).getFirst_name();
-            rows[i][2] = CustomerList.get(i).getLast_name();
+            rows[i][1] = CustomerList.get(i).getcompany_name();
+            rows[i][2] = CustomerList.get(i).getlocation();
             rows[i][3] = CustomerList.get(i).getTel();
             rows[i][4] = CustomerList.get(i).getEmail();
         }
@@ -268,8 +268,8 @@ public class EditSpPane extends javax.swing.JPanel {
             String tel = jTextField_TEL.getText();
             String email = jTextField_EMAIL.getText();
 
-            Sourcer customer = new Sourcer(null, fname, lname, tel, email);
-            Sourcer.insertCustomer(customer);
+            LogAgent customer = new LogAgent(null, fname, lname, tel, email);
+            LogAgent.insertCustomer(customer);
             populateJtable();
         }
     }//GEN-LAST:event_jButton_INSERT_ActionPerformed
@@ -285,8 +285,8 @@ public class EditSpPane extends javax.swing.JPanel {
                 String email = jTextField_EMAIL.getText();
                 Integer id = Integer.valueOf(jTextField_ID.getText());
 
-                Sourcer customer = new Sourcer(id, fname, lname, tel, email);
-                Sourcer.updateCustomer(customer);
+                LogAgent customer = new LogAgent(id, fname, lname, tel, email);
+                LogAgent.updateCustomer(customer);
                 populateJtable();
             }
         }catch(Exception ex){
@@ -299,7 +299,7 @@ public class EditSpPane extends javax.swing.JPanel {
 
         try{
             Integer id = Integer.valueOf(jTextField_ID.getText());
-            Sourcer.deleteCustomer(id);
+            LogAgent.deleteCustomer(id);
             populateJtable();
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Select a Customer Before Removing", "No Customer Selected", 1);

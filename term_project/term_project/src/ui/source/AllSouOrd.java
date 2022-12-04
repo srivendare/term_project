@@ -26,10 +26,6 @@ import model.SourceOrder;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author 1BestCsharp
- */
 public class AllSouOrd extends javax.swing.JFrame {
 
     /**
@@ -42,7 +38,7 @@ public class AllSouOrd extends javax.swing.JFrame {
         
         jTable_ORDERS.setShowGrid(true);
         
-        jTable_ORDERS.setGridColor(Color.YELLOW);
+        jTable_ORDERS.setGridColor(Color.gray);
         
         jTable_ORDERS.setSelectionBackground(Color.gray);
         
@@ -85,14 +81,12 @@ public class AllSouOrd extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_ORDERS = new javax.swing.JTable();
-        jButton_PRINT_ORDER = new javax.swing.JButton();
+        btnView = new javax.swing.JButton();
+        btnDel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(245, 215, 110));
 
         jTable_ORDERS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,132 +98,69 @@ public class AllSouOrd extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable_ORDERS);
 
-        jButton_PRINT_ORDER.setBackground(new java.awt.Color(142, 68, 173));
-        jButton_PRINT_ORDER.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_PRINT_ORDER.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_PRINT_ORDER.setText("Print Selected Order");
-        jButton_PRINT_ORDER.addActionListener(new java.awt.event.ActionListener() {
+        btnView.setText("View Detials");
+
+        btnDel.setText("Delete");
+        btnDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_PRINT_ORDERActionPerformed(evt);
+                btnDelActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_PRINT_ORDER, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(jButton_PRINT_ORDER, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
+                .addComponent(btnView)
+                .addGap(27, 27, 27)
+                .addComponent(btnDel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnView)
+                    .addComponent(btnDel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_PRINT_ORDERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_PRINT_ORDERActionPerformed
+    private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
+        // TODO add your handling code here:
+        Connection con = DB_INFO.getConnection();
+        Integer index = jTable_ORDERS.getSelectedRow();
+        String selID = jTable_ORDERS.getValueAt(index, 0).toString();
+        String delOrd = "DELETE FROM order_tbl WHERE id =" + selID;
+        String delDetail = "DELETE FROM order_detail WHERE order_id =" + selID;
         
-        Connection connection = DB_INFO.getConnection();
-        String query = "SELECT o.id, c.first_name, c.last_name, o.order_date from order_tbl o, customer c where o.customer_id = c.id and o.id = ? order by o.id desc";
-        String query2 = "select odt.product_id, prd.name, odt.quantity, odt.price, odt.total from order_detail odt, product prd where odt.product_id = prd.id and odt.order_id = ?";
-
-        ResultSet rs;
-        PreparedStatement ps;
-        ResultSet rs2;
-        PreparedStatement ps2;
+        Statement st;
+       try{
+           st = con.createStatement();
+           if((st.executeUpdate(delOrd)) == 1 && st.executeUpdate(delDetail) == 1)
+           {
+          
+               JOptionPane.showMessageDialog(null, "Order " + selID+ " Deleted");
+           }else{
+               JOptionPane.showMessageDialog(null, "Something Wrong, try again");
+           }
+       }catch(Exception ex){
+           ex.printStackTrace();
+       }
         
-        try {
-            Integer index = jTable_ORDERS.getSelectedRow();
-            ps = connection.prepareStatement(query);
-            ps.setInt(1, Integer.valueOf(jTable_ORDERS.getValueAt(index, 0).toString()));
-            
-            rs = ps.executeQuery();
-           
-             //the file path
-               File file = new File(System.getProperty("user.home") + "\\OrderFile.txt");
-               //if the file not exist create one
-               if(!file.exists()){
-                   file.createNewFile();
-               }
-               
-               FileWriter fw = new FileWriter(file.getAbsoluteFile());
-               BufferedWriter bw = new BufferedWriter(fw);
-               
-            // Integer ID, String NAME, Integer CATEGORY_ID, String PRICE, byte[] PICTURE, Integer QUANTITY, String DESCRIPTION
-         
-
-               //loop for jtable rows
-               if(rs.next()){
-                  
-                   bw.write("ORDER ID : " + rs.getInt("o.id")+"\t" + "DATE : " + rs.getDate("o.order_date"));
-                   bw.write(System.lineSeparator());
-                   bw.write(System.lineSeparator());
-                   bw.write("CUSTOMER : "+rs.getString("c.first_name")+" "+rs.getString("c.last_name"));
-                   bw.write(System.lineSeparator());
-                   bw.write(System.lineSeparator());
-                   bw.write("_____________________________________________________________________________________________________________________");
-                   bw.write(System.lineSeparator());
-                   //bw.write("\n_________\n");
-                   
-                   ps2 = connection.prepareStatement(query2);
-                   ps2.setInt(1, Integer.valueOf(jTable_ORDERS.getValueAt(index, 0).toString()));
-            
-                  rs2 = ps2.executeQuery();
-                  
-                  Integer quantity;
-                  double price;
-                  double quantity_X_price;
-                  
-                  
-                  while(rs2.next()){
-                  
-                   quantity = rs2.getInt("odt.quantity");
-                   price = Double.valueOf(rs2.getString("odt.price"));
-                   quantity_X_price = quantity * Double.valueOf(rs2.getString("odt.price"));
-                   
-                   bw.write("PRODUCT : " + rs2.getString("prd.name")+"     " + "QUANTITY : " + quantity +"     " + "PRICE : " + price+"     " + "Quantity X Price : " + quantity_X_price);
-                   bw.write(System.lineSeparator());
-                   bw.write("_____________________________________________________________________________________________________________________");
-                   bw.write(System.lineSeparator());
-
-                  }
-                  
-                   bw.write(System.lineSeparator());
-                   bw.write("ORDER TOTAL AMOUNT : " + SourceOrder.getOrderTotalAmount(Integer.valueOf(jTable_ORDERS.getValueAt(index, 0).toString())));
-               }
-               //close BufferedWriter
-               bw.close();
-               //close FileWriter 
-               fw.close();
-               JOptionPane.showMessageDialog(null, "Data Exported");
         
-        } catch (Exception ex) {
-            Logger.getLogger(AllSouOrd.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }//GEN-LAST:event_jButton_PRINT_ORDERActionPerformed
+    }//GEN-LAST:event_btnDelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,8 +201,8 @@ public class AllSouOrd extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_PRINT_ORDER;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton btnDel;
+    private javax.swing.JButton btnView;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_ORDERS;
     // End of variables declaration//GEN-END:variables
