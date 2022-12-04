@@ -1,5 +1,8 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
 package ui.source;
-
 
 import java.awt.Color;
 import java.awt.Font;
@@ -20,20 +23,17 @@ import javax.swing.table.JTableHeader;
 import model.DB_INFO;
 import model.SourceOrder;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author ruishang
  */
-
-public class AllSouOrd extends javax.swing.JFrame {
+public class ViewOrders extends javax.swing.JPanel {
 
     /**
-     * Creates new form All_Orders_Form
+     * Creates new form AllOrders
      */
-    public AllSouOrd() {
+    public ViewOrders() {
         initComponents();
-        
         populateOrderJtable();
         
         jTable_ORDERS.setShowGrid(true);
@@ -45,10 +45,7 @@ public class AllSouOrd extends javax.swing.JFrame {
         JTableHeader th = jTable_ORDERS.getTableHeader();
 
         th.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        
     }
-
-    
     
     public void populateOrderJtable(){
         
@@ -71,7 +68,7 @@ public class AllSouOrd extends javax.swing.JFrame {
         jTable_ORDERS.setRowHeight(45);
     }
     
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,6 +80,7 @@ public class AllSouOrd extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_ORDERS = new javax.swing.JTable();
+        btnView = new javax.swing.JButton();
         panel1 = new java.awt.Panel();
         txtID = new javax.swing.JLabel();
         txtName = new javax.swing.JLabel();
@@ -94,9 +92,8 @@ public class AllSouOrd extends javax.swing.JFrame {
         txtQuan = new javax.swing.JLabel();
         txtTotal = new javax.swing.JLabel();
         lblDetail = new javax.swing.JLabel();
-        btnView = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jTable_ORDERS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -107,6 +104,13 @@ public class AllSouOrd extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTable_ORDERS);
+
+        btnView.setText("View Detials");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
 
         panel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -143,35 +147,36 @@ public class AllSouOrd extends javax.swing.JFrame {
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtID)
                     .addComponent(txtLoc)
                     .addComponent(txtName)
                     .addComponent(txtPrice)
                     .addComponent(txtTotal))
-                .addGap(68, 68, 68)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtLog)
-                    .addComponent(txtCate)
-                    .addComponent(txtQuan)
-                    .addComponent(txtDate))
-                .addGap(76, 76, 76))
-            .addGroup(panel1Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(lblDetail)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtLog)
+                            .addComponent(txtCate)
+                            .addComponent(txtQuan)))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblDetail)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDate)))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(lblDetail)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtID)
-                    .addComponent(txtDate))
+                    .addComponent(txtDate)
+                    .addComponent(lblDetail))
                 .addGap(18, 18, 18)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtName)
@@ -186,79 +191,67 @@ public class AllSouOrd extends javax.swing.JFrame {
                     .addComponent(txtQuan))
                 .addGap(26, 26, 26)
                 .addComponent(txtTotal)
-                .addGap(52, 52, 52))
+                .addGap(131, 131, 131))
         );
 
-        btnView.setText("View Detials");
-        btnView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addGap(42, 42, 42))
             .addGroup(layout.createSequentialGroup()
-                .addGap(181, 181, 181)
+                .addGap(101, 101, 101)
                 .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(33, 33, 33)
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(btnView)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
-
+        
         Connection connection = DB_INFO.getConnection();
         Integer index = jTable_ORDERS.getSelectedRow();
         String selID = jTable_ORDERS.getValueAt(index, 0).toString();
         String query = "SELECT A.`id`, A.`order_date` AS order_date, C.`name` AS product_name , D.`name` AS category, E.company_name AS losgitic, E.location AS location, B.`quantity` AS quantity, B.`price` AS price, B.`total`\n" +
-        "FROM \n" +
-        "`order_tbl` A\n" +
-        "LEFT JOIN `order_detail` B\n" +
-        "ON  A.id = B.order_id\n" +
-        "LEFT JOIN product C\n" +
-        "ON B.product_id = C.id\n" +
-        "LEFT JOIN category D\n" +
-        "ON C.category_id = D.id\n" +
-        "LEFT JOIN customer E\n" +
-        "ON A.customer_id = E.id\n" +
-        "WHERE A.`id` = " + selID;
+                        "FROM \n" +
+                        "`order_tbl` A\n" +
+                        "LEFT JOIN `order_detail` B\n" +
+                        "ON  A.id = B.order_id\n" +
+                        "LEFT JOIN product C\n" +
+                        "ON B.product_id = C.id\n" +
+                        "LEFT JOIN category D\n" +
+                        "ON C.category_id = D.id\n" +
+                        "LEFT JOIN customer E\n" +
+                        "ON A.customer_id = E.id\n" +
+                        "WHERE A.`id` = " + selID;
         ResultSet rs;
         PreparedStatement ps;
         String total = "";
-
+        
         try {
-
+            
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
-
+            
             if(rs.next())
-            {
-                txtID.setText(String.valueOf("ID: " + rs.getString("id")));
+            {   
+                 txtID.setText(String.valueOf("ID: " + rs.getString("id")));  
                 txtID.setForeground(Color.DARK_GRAY);
                 txtName.setText(String.valueOf("Product " + rs.getString("product_name")));
                 txtName.setForeground(Color.DARK_GRAY);
@@ -276,53 +269,21 @@ public class AllSouOrd extends javax.swing.JFrame {
                 txtQuan.setForeground(Color.DARK_GRAY);
                 txtTotal.setText(String.valueOf("Total" +rs.getString("total")));
                 txtTotal.setForeground(Color.DARK_GRAY);
-
+                 
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(SourceOrder.class.getName()).log(Level.SEVERE, null, ex);
-
+         
         }
+        
+        
+        
 
+        
+        
     }//GEN-LAST:event_btnViewActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AllSouOrd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AllSouOrd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AllSouOrd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AllSouOrd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AllSouOrd().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnView;
