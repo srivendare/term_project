@@ -189,6 +189,8 @@ public class AllSouOrd extends javax.swing.JFrame {
                 .addGap(52, 52, 52))
         );
 
+        btnView.setBackground(new java.awt.Color(62, 109, 156));
+        btnView.setForeground(new java.awt.Color(255, 255, 255));
         btnView.setText("View Detials");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

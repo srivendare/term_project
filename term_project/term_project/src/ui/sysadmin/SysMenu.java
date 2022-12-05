@@ -4,6 +4,8 @@
  */
 package ui.sysadmin;
 
+import ui.Login_Form;
+
 /**
  *
  * @author ruishang
@@ -44,8 +46,8 @@ public class SysMenu extends javax.swing.JFrame {
         splitPane = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         btnUser = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
         btnSupplier1 = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,17 +65,6 @@ public class SysMenu extends javax.swing.JFrame {
             }
         });
 
-        btnBack.setBackground(new java.awt.Color(255, 255, 255));
-        btnBack.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        btnBack.setText("back");
-        btnBack.setBorderPainted(false);
-        btnBack.setContentAreaFilled(false);
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-
         btnSupplier1.setBackground(new java.awt.Color(255, 255, 255));
         btnSupplier1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         btnSupplier1.setText("Supplier");
@@ -82,6 +73,19 @@ public class SysMenu extends javax.swing.JFrame {
         btnSupplier1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSupplier1ActionPerformed(evt);
+            }
+        });
+
+        btnLogin.setBackground(new java.awt.Color(255, 255, 255));
+        btnLogin.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(102, 102, 102));
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/static/icons/backIcon.png"))); // NOI18N
+        btnLogin.setText("Back");
+        btnLogin.setBorderPainted(false);
+        btnLogin.setContentAreaFilled(false);
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -94,7 +98,7 @@ public class SysMenu extends javax.swing.JFrame {
                 .addGap(0, 12, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -107,9 +111,9 @@ public class SysMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(148, 148, 148)
                 .addComponent(btnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 389, Short.MAX_VALUE)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 399, Short.MAX_VALUE)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(222, 222, 222)
@@ -139,14 +143,16 @@ public class SysMenu extends javax.swing.JFrame {
         splitPane.setRightComponent(manageUser.getEditPane());
     }//GEN-LAST:event_btnUserActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-      
-    }//GEN-LAST:event_btnBackActionPerformed
-
     private void btnSupplier1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplier1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSupplier1ActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new Login_Form().setVisible(true);
+
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,7 +205,7 @@ public class SysMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnSupplier1;
     private javax.swing.JButton btnUser;
     private javax.swing.JPanel jPanel1;
