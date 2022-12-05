@@ -85,7 +85,7 @@ public class Login_Form extends javax.swing.JFrame {
         txtPw.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtPw.setText("adminpass");
 
-        jButton_LOGIN.setBackground(new java.awt.Color(153, 153, 153));
+        jButton_LOGIN.setBackground(new java.awt.Color(95, 111, 148));
         jButton_LOGIN.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_LOGIN.setForeground(new java.awt.Color(255, 255, 255));
         jButton_LOGIN.setText("Login");
