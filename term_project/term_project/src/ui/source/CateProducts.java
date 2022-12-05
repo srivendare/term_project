@@ -31,7 +31,7 @@ public class CateProducts extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jTable_PRODUCTS_IN_CATEGORY.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -45,6 +45,7 @@ public class CateProducts extends javax.swing.JFrame {
 
         jLabel_CATEGORY_NAME.setBackground(new java.awt.Color(255, 255, 255));
         jLabel_CATEGORY_NAME.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel_CATEGORY_NAME.setForeground(new java.awt.Color(51, 51, 51));
         jLabel_CATEGORY_NAME.setText(" Products In The Category :  Ctg Name");
         jLabel_CATEGORY_NAME.setOpaque(true);
 
