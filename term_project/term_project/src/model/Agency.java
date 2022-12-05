@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class LogAgent {
+public class Agency {
     
     Connection connection;
     
@@ -21,10 +21,10 @@ public class LogAgent {
     private String email;
 
     
-    public LogAgent(){}
+    public Agency(){}
     
     
-    public LogAgent(Integer ID, String FNAME, String LNAME, String TEL, String EMAIL)
+    public Agency(Integer ID, String FNAME, String LNAME, String TEL, String EMAIL)
     {
         this.id = ID;
         this.company_name = FNAME;
@@ -75,9 +75,9 @@ public class LogAgent {
     }
     
     // get the customers list
-    public ArrayList<LogAgent> customersList(){
+    public ArrayList<Agency> customersList(){
         
-        ArrayList<LogAgent> customer_list = new ArrayList<>();
+        ArrayList<Agency> customer_list = new ArrayList<>();
         connection = DB_INFO.getConnection();
         Statement st;
         ResultSet rs;
@@ -89,10 +89,10 @@ public class LogAgent {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
            
-            LogAgent customer;
+            Agency customer;
             // Integer ID, String NAME, Integer CATEGORY_ID, String PRICE, byte[] PICTURE, Integer QUANTITY, String DESCRIPTION
             while(rs.next()){
-                customer = new LogAgent(rs.getInt("id"), 
+                customer = new Agency(rs.getInt("id"), 
                                  rs.getString("company_name"),
                                  rs.getString("location"),
                                  rs.getString("tel"),
@@ -103,7 +103,7 @@ public class LogAgent {
             }
         
         } catch (SQLException ex) {
-            Logger.getLogger(LogAgent.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Agency.class.getName()).log(Level.SEVERE, null, ex);
         }
         return customer_list;
         
@@ -112,7 +112,7 @@ public class LogAgent {
     
     
     // insert a new customer
-     public static void insertCustomer(LogAgent customer)
+     public static void insertCustomer(Agency customer)
     {
         Connection con = DB_INFO.getConnection();
         PreparedStatement ps;
@@ -136,13 +136,13 @@ public class LogAgent {
                 }
             
         } catch (SQLException ex) {
-            Logger.getLogger(LogAgent.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Agency.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     
      // update customer data
-    public static void updateCustomer(LogAgent customer)
+    public static void updateCustomer(Agency customer)
     {
         Connection con = DB_INFO.getConnection();
         PreparedStatement ps;
@@ -166,7 +166,7 @@ public class LogAgent {
                 }
             
         } catch (SQLException ex) {
-            Logger.getLogger(LogAgent.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Agency.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -183,7 +183,7 @@ public class LogAgent {
 
             ps.setInt(1, customerId);
 
-            // show a confirmation message before deleting the LogAgent
+            // show a confirmation message before deleting the Agency
             int YesOrNo = JOptionPane.showConfirmDialog(null,"Do You Really Want To Delete This Customer","Delete Customer", JOptionPane.YES_NO_OPTION);
             if(YesOrNo == 0){
                 
@@ -196,7 +196,7 @@ public class LogAgent {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(LogAgent.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Agency.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         
