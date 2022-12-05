@@ -57,8 +57,8 @@ public class PurMenu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         btnOrder.setBackground(new java.awt.Color(255, 255, 255));
-        btnOrder.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
-        btnOrder.setText("Place Order");
+        btnOrder.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        btnOrder.setText("Order");
         btnOrder.setBorderPainted(false);
         btnOrder.setContentAreaFilled(false);
         btnOrder.addActionListener(new java.awt.event.ActionListener() {
