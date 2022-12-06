@@ -218,21 +218,25 @@ public class Login_Form extends javax.swing.JFrame {
                 
                 if(rs.getString("user_type").equals("admin"))
                 {   
-                    SysMenu sysAdmin = new SysMenu();
-                    //homeForm.jMenu5_USER_.setVisible(false);
-                    System.out.println("user is admin");
-                    //splitPane.setRightComponent(updateJPanel);
-                    sysAdmin.pack();
-                    sysAdmin.setExtendedState(sysAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
-                    Dimension r = sysAdmin.getBounds().getSize();
-                    //homeForm.jLabel_BackgroundImage.setPreferredSize(r);
-                    sysAdmin.setVisible(true);
+                    
+                    if (comboEntr.getSelectedItem().toString().equals("system")){
+                        SysMenu sysAdmin = new SysMenu();
+                        //homeForm.jMenu5_USER_.setVisible(false);
+                        System.out.println("user is admin");
+                        //splitPane.setRightComponent(updateJPanel);
+                        sysAdmin.pack();
+                        sysAdmin.setExtendedState(sysAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                        Dimension r = sysAdmin.getBounds().getSize();
+                        //homeForm.jLabel_BackgroundImage.setPreferredSize(r);
+                        sysAdmin.setVisible(true);
 
-                    sysAdmin.setLocationRelativeTo(null);
-                    sysAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    //homeForm.getSplitPane().setLeftComponent(adminNav); // set nav bar
+                        sysAdmin.setLocationRelativeTo(null);
+                        sysAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        //homeForm.getSplitPane().setLeftComponent(adminNav); // set nav bar
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Please enter correct user info","Login Error",2);
+                    };
 
-                    this.dispose();
                 } else {
                      String selectEntr = comboEntr.getSelectedItem().toString();
                      if(rs.getString("enterprise").equals("supply")&& rs.getString("enterprise").equals(selectEntr)){
@@ -275,7 +279,8 @@ public class Login_Form extends javax.swing.JFrame {
                              cateAdmin.setLocationRelativeTo(null);
                              cateAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                              System.out.println("SOURCE BUT categoy");
-                         } else {
+                         }       
+                         else {
                              JOptionPane.showMessageDialog(null, "Please enter correct user info","Login Error",2);
                          };
                          
