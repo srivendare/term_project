@@ -67,6 +67,7 @@ public class RegisterUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        comboEntr = new javax.swing.JComboBox<>();
         editPane = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jTextField_USERNAME = new javax.swing.JTextField();
@@ -83,10 +84,17 @@ public class RegisterUser extends javax.swing.JFrame {
         lblEntr = new javax.swing.JLabel();
         lblOrg = new javax.swing.JLabel();
         lblRole = new javax.swing.JLabel();
-        txtEntr = new javax.swing.JTextField();
         txtOrg = new javax.swing.JTextField();
         txtRole = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        comboEntr1 = new javax.swing.JComboBox<>();
+
+        comboEntr.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "supply", "source", "finance", "data", "system" }));
+        comboEntr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboEntrActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,8 +156,6 @@ public class RegisterUser extends javax.swing.JFrame {
 
         lblRole.setText("Role");
 
-        txtEntr.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
         txtOrg.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         txtRole.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -157,6 +163,13 @@ public class RegisterUser extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Create a New User");
+
+        comboEntr1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "supply", "source", "finance", "data", "system" }));
+        comboEntr1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboEntr1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout editPaneLayout = new javax.swing.GroupLayout(editPane);
         editPane.setLayout(editPaneLayout);
@@ -187,13 +200,13 @@ public class RegisterUser extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jTextField_EMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(editPaneLayout.createSequentialGroup()
-                                    .addComponent(lblEntr)
+                                    .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblOrg)
+                                        .addComponent(lblEntr))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtEntr, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(editPaneLayout.createSequentialGroup()
-                                    .addComponent(lblOrg)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtOrg, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                                        .addComponent(comboEntr1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel8)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING))
@@ -205,12 +218,12 @@ public class RegisterUser extends javax.swing.JFrame {
                     .addGroup(editPaneLayout.createSequentialGroup()
                         .addGap(312, 312, 312)
                         .addComponent(jLabel2)))
-                .addContainerGap(338, Short.MAX_VALUE))
+                .addContainerGap(301, Short.MAX_VALUE))
         );
         editPaneLayout.setVerticalGroup(
             editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPaneLayout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(38, 38, 38)
                 .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -235,8 +248,8 @@ public class RegisterUser extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEntr)
-                    .addComponent(txtEntr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+                    .addComponent(comboEntr1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblOrg))
@@ -276,7 +289,8 @@ public class RegisterUser extends javax.swing.JFrame {
             String fname = jTextField_FULLNAME.getText();
             String tel = jTextField_TEL.getText();
             String email = jTextField_EMAIL.getText();
-            String enterprise = txtEntr.getText();
+            String selectEntr = comboEntr.getSelectedItem().toString();
+            String enterprise = selectEntr;
             String organization = txtOrg.getText();
             String role = txtRole.getText();
 
@@ -297,11 +311,19 @@ public class RegisterUser extends javax.swing.JFrame {
            jTextField_FULLNAME.setText("");
            jTextField_TEL.setText("");
            jTextField_EMAIL.setText("");
-           txtEntr.setText("");
+           // txtEntr.setText("");
            txtOrg.setText("");
            txtRole.setText("");
         
     }//GEN-LAST:event_jButton_CLEAR_ActionPerformed
+
+    private void comboEntrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEntrActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboEntrActionPerformed
+
+    private void comboEntr1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEntr1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboEntr1ActionPerformed
 
 
     
@@ -362,6 +384,8 @@ public class RegisterUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboEntr;
+    private javax.swing.JComboBox<String> comboEntr1;
     private javax.swing.JPanel editPane;
     private javax.swing.JButton jButton_CLEAR_;
     private javax.swing.JButton jButton_INSERT_;
@@ -379,7 +403,6 @@ public class RegisterUser extends javax.swing.JFrame {
     private javax.swing.JLabel lblEntr;
     private javax.swing.JLabel lblOrg;
     private javax.swing.JLabel lblRole;
-    private javax.swing.JTextField txtEntr;
     private javax.swing.JTextField txtOrg;
     private javax.swing.JTextField txtRole;
     // End of variables declaration//GEN-END:variables

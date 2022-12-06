@@ -237,7 +237,7 @@ public class SourceOrder {
     
     
     // insert a new order
-     public static void insertOrder(Integer orderId, String orderDate, Integer customerId)
+     public synchronized static void insertOrder(Integer orderId, String orderDate, Integer customerId)
     {
         Connection con = DB_INFO.getConnection();
         PreparedStatement ps;
@@ -267,7 +267,7 @@ public class SourceOrder {
      
      
      // insert order details
-     public static void insertOrderDetails(Integer productId, Integer orderId, Integer qt, String price, String totalAmount)
+     public synchronized static void insertOrderDetails(Integer productId, Integer orderId, Integer qt, String price, String totalAmount)
     {
         Connection con = DB_INFO.getConnection();
         PreparedStatement InsertPs;
