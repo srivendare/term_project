@@ -305,7 +305,10 @@ public class RegisterUser extends javax.swing.JFrame {
                 System.out.println("finance");
             } else if (selectEntr.equals("data")){
                 System.out.println("data");
-            } else {
+            } else if (selectEntr.equals("system")){
+                System.out.println("system");
+            }
+            else {
                 System.out.println("Please enter a valid Enterprise");
             };
 
