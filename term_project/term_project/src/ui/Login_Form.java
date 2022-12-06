@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import model.DB_INFO;
+import ui.analyse.AnalyseMenu;
 import ui.source.orgpenal.CateMenu;
 import ui.source.orgpenal.PurMenu;
 import ui.source.orgpenal.SouMenu;
@@ -284,6 +285,14 @@ public class Login_Form extends javax.swing.JFrame {
                              JOptionPane.showMessageDialog(null, "Please enter correct user info","Login Error",2);
                          };
                          
+                     } else if (rs.getString("enterprise").equals("data")){
+                         AnalyseMenu dataAdmin = new AnalyseMenu();
+                         dataAdmin.pack();
+                         dataAdmin.setExtendedState(dataAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                         Dimension r = dataAdmin.getBounds().getSize();
+                         dataAdmin.setVisible(true);
+                         dataAdmin.setLocationRelativeTo(null);
+                         dataAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                      } else {
                          JOptionPane.showMessageDialog(null, "Please enter correct user info","Login Error",2);
                      }
