@@ -74,7 +74,7 @@ public class SouMenu extends javax.swing.JFrame {
 
         btnOrder.setBackground(new java.awt.Color(255, 255, 255));
         btnOrder.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        btnOrder.setText("Order");
+        btnOrder.setText("Add Order");
         btnOrder.setBorderPainted(false);
         btnOrder.setContentAreaFilled(false);
         btnOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -84,8 +84,8 @@ public class SouMenu extends javax.swing.JFrame {
         });
 
         btnEditOrder.setBackground(new java.awt.Color(255, 255, 255));
-        btnEditOrder.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        btnEditOrder.setText("View");
+        btnEditOrder.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        btnEditOrder.setText("Check Order");
         btnEditOrder.setBorderPainted(false);
         btnEditOrder.setContentAreaFilled(false);
         btnEditOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -145,12 +145,12 @@ public class SouMenu extends javax.swing.JFrame {
                 .addGap(154, 154, 154)
                 .addComponent(btnCate1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPurchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPurchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 206, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
