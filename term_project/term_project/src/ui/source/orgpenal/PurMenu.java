@@ -10,6 +10,7 @@ import ui.source.EditCate;
 import ui.source.EditOrders;
 import ui.source.EditSouOrder;
 import ui.source.EditSpPane;
+import ui.source.ViewOrders;
 import ui.sysadmin.ManageUser;
 
 public class PurMenu extends javax.swing.JFrame {
@@ -59,7 +60,7 @@ public class PurMenu extends javax.swing.JFrame {
 
         btnOrder.setBackground(new java.awt.Color(255, 255, 255));
         btnOrder.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        btnOrder.setText("Order");
+        btnOrder.setText("Add Order");
         btnOrder.setBorderPainted(false);
         btnOrder.setContentAreaFilled(false);
         btnOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -70,9 +71,14 @@ public class PurMenu extends javax.swing.JFrame {
 
         btnEditOrder.setBackground(new java.awt.Color(255, 255, 255));
         btnEditOrder.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        btnEditOrder.setText("View");
+        btnEditOrder.setText("View Order");
         btnEditOrder.setBorderPainted(false);
         btnEditOrder.setContentAreaFilled(false);
+        btnEditOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditOrderActionPerformed(evt);
+            }
+        });
 
         btnLogin.setBackground(new java.awt.Color(255, 255, 255));
         btnLogin.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
@@ -93,14 +99,12 @@ public class PurMenu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(btnEditOrder))
-                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(btnEditOrder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,6 +169,12 @@ public class PurMenu extends javax.swing.JFrame {
         new Login_Form().setVisible(true);
 
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnEditOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditOrderActionPerformed
+        // TODO add your handling code here:
+        ViewOrders viewOrd = new ViewOrders();
+        splitPane.setRightComponent(viewOrd);
+    }//GEN-LAST:event_btnEditOrderActionPerformed
 
     /**
      * @param args the command line arguments
