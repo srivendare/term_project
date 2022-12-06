@@ -293,10 +293,25 @@ public class RegisterUser extends javax.swing.JFrame {
             String enterprise = selectEntr;
             String organization = txtOrg.getText();
             String role = txtRole.getText();
+            
+           if (selectEntr.equals("supply")){
+                System.out.println("supply");
+                if (!organization.equals("management") && !organization.equals("purchasing") && !organization.equals("Category")){
+                    JOptionPane.showMessageDialog(null, "Please enter correct orgranization","Login Error",2);
+                }
+            } else if (selectEntr.equals("source")){
+                System.out.println("source");
+            } else if (selectEntr.equals("finance")){
+                System.out.println("finance");
+            } else if (selectEntr.equals("data")){
+                System.out.println("data");
+            } else {
+                System.out.println("Please enter a valid Enterprise");
+            };
 
             Users user = new Users(null,uname,pass,null,fname,tel,email,enterprise,organization,role);
             Users.insertUser(user);
-            populateJtable();
+           
         }
         
     }//GEN-LAST:event_jButton_INSERT_ActionPerformed
