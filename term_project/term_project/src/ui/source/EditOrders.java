@@ -4,8 +4,10 @@
  */
 package ui.source;
 
+import com.mysql.jdbc.Blob;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -17,6 +19,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -93,6 +97,7 @@ public class EditOrders extends javax.swing.JPanel {
         txtQuan = new javax.swing.JLabel();
         txtTotal = new javax.swing.JLabel();
         lblDetail = new javax.swing.JLabel();
+        imgPro = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -160,39 +165,43 @@ public class EditOrders extends javax.swing.JPanel {
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtID)
+                    .addComponent(txtLoc)
+                    .addComponent(txtName)
+                    .addComponent(txtPrice)
+                    .addComponent(txtTotal))
+                .addGap(68, 68, 68)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtLog)
+                    .addComponent(txtCate)
+                    .addComponent(txtQuan)
+                    .addComponent(txtDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(161, 161, 161))
             .addGroup(panel1Layout.createSequentialGroup()
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtID)
-                            .addComponent(txtLoc)
-                            .addComponent(txtName)
-                            .addComponent(txtPrice)
-                            .addComponent(txtTotal))
-                        .addGap(68, 68, 68)
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(txtDate))
-                            .addComponent(txtLog)
-                            .addComponent(txtCate)
-                            .addComponent(txtQuan)))
+                        .addGap(85, 85, 85)
+                        .addComponent(lblDetail))
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(lblDetail)))
-                .addGap(80, 80, 80))
+                        .addGap(64, 64, 64)
+                        .addComponent(imgPro, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+            .addGroup(panel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblDetail)
-                .addGap(97, 97, 97)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(12, 12, 12)
+                .addComponent(imgPro, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtID)
-                    .addComponent(txtDate))
-                .addGap(18, 18, 18)
+                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtName)
                     .addComponent(txtCate))
@@ -206,7 +215,7 @@ public class EditOrders extends javax.swing.JPanel {
                     .addComponent(txtQuan))
                 .addGap(26, 26, 26)
                 .addComponent(txtTotal)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
@@ -248,7 +257,7 @@ public class EditOrders extends javax.swing.JPanel {
                             .addComponent(btnDel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -284,7 +293,7 @@ public class EditOrders extends javax.swing.JPanel {
         Connection connection = DB_INFO.getConnection();
         Integer index = jTable_ORDERS.getSelectedRow();
         String selID = jTable_ORDERS.getValueAt(index, 0).toString();
-        String query = "SELECT A.`id`, A.`order_date` AS order_date, C.`name` AS product_name , D.`name` AS category, E.company_name AS losgitic, E.location AS location, B.`quantity` AS quantity, B.`price` AS price, B.`total`\n" +
+        String query = "SELECT A.`id`, A.`order_date` AS order_date, C.`name` AS product_name , C.`picture` AS pic, D.`name` AS category, E.company_name AS losgitic, E.location AS location, B.`quantity` AS quantity, B.`price` AS price, B.`total`\n" +
                         "FROM \n" +
                         "`order_tbl` A\n" +
                         "LEFT JOIN `order_detail` B\n" +
@@ -325,6 +334,19 @@ public class EditOrders extends javax.swing.JPanel {
                 txtQuan.setForeground(Color.DARK_GRAY);
                 txtTotal.setText(String.valueOf("Total" +rs.getString("total")));
                 txtTotal.setForeground(Color.DARK_GRAY);
+                
+                Blob blob = (Blob) rs.getBlob("pic");
+                byte[] image1 = blob.getBytes(1L,(int)blob.length());
+                ImageIcon image = new ImageIcon(image1);
+                Image img = image.getImage();
+                Image resizeImg = img.getScaledInstance(120, 100, java.awt.Image.SCALE_SMOOTH);
+                image = new ImageIcon(resizeImg);
+                imgPro.setIcon(image);
+//                Blob blob = rs.getBlob("pic");
+//                ImageIcon pic = new ImageIcon(new ImageIcon
+//                                          (rs.getString("pic"))
+//                                           .getImage()
+//                                           .getScaledInstance(30, 20, Image.SCALE_SMOOTH));
                  
             }
             
@@ -344,6 +366,7 @@ public class EditOrders extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDel;
     private javax.swing.JButton btnView;
+    private javax.swing.JLabel imgPro;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_ORDERS;
