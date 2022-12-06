@@ -112,7 +112,7 @@ public class Sourcer {
     
     
     // insert a new customer
-     public static void insertCustomer(Sourcer customer)
+     public synchronized static void insertCustomer(Sourcer customer)
     {
         Connection con = DB_INFO.getConnection();
         PreparedStatement ps;
@@ -142,7 +142,7 @@ public class Sourcer {
     
     
      // update customer data
-    public static void updateCustomer(Sourcer customer)
+    public synchronized static void updateCustomer(Sourcer customer)
     {
         Connection con = DB_INFO.getConnection();
         PreparedStatement ps;
@@ -172,7 +172,7 @@ public class Sourcer {
     }
     
     // delete customer by id
-    public static void deleteCustomer(Integer customerId)
+    public synchronized static void deleteCustomer(Integer customerId)
     {
         
         Connection con = DB_INFO.getConnection();

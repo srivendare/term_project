@@ -79,7 +79,7 @@ public class Product {
     
     // update product
     // changeImage mean if you want to update the product image to
-    public static void updateProduct(Product product, boolean changeImage)
+    public synchronized static void updateProduct(Product product, boolean changeImage)
     {
         Connection con = DB_INFO.getConnection();
         PreparedStatement ps;
@@ -145,7 +145,7 @@ public class Product {
     
     
     // delete product by id
-    public static void deleteProduct(Integer id)
+    public synchronized static void deleteProduct(Integer id)
     {
         Connection con = DB_INFO.getConnection();
         PreparedStatement ps;

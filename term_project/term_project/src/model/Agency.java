@@ -142,7 +142,7 @@ public class Agency {
     
     
      // update customer data
-    public static void updateCustomer(Agency customer)
+    public synchronized static void updateCustomer(Agency customer)
     {
         Connection con = DB_INFO.getConnection();
         PreparedStatement ps;
@@ -172,7 +172,7 @@ public class Agency {
     }
     
     // delete customer by id
-    public static void deleteCustomer(Integer customerId)
+    public synchronized static void deleteCustomer(Integer customerId)
     {
         
         Connection con = DB_INFO.getConnection();
