@@ -123,7 +123,7 @@ public class Category {
     
     
     // insert a new category function
-    public static void insertCategory(Category category)
+    public synchronized static void insertCategory(Category category)
     {
         Connection con = DB_INFO.getConnection();
         PreparedStatement ps;
@@ -150,7 +150,7 @@ public class Category {
     
     
     // update a category function
-    public static void updateCategory(Category category)
+    public synchronized static void updateCategory(Category category)
     {
         Connection con = DB_INFO.getConnection();
         PreparedStatement ps;
@@ -177,7 +177,7 @@ public class Category {
     }
     
     // delete category function
-    public static void deleteCategory(Integer categoryId)
+    public synchronized static void deleteCategory(Integer categoryId)
     {
         
         Connection con = DB_INFO.getConnection();
