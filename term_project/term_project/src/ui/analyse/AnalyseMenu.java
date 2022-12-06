@@ -4,11 +4,19 @@
  */
 package ui.analyse;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.JFrame;
+import ui.Login_Form;
 import ui.MANAGE_PRODUCTS_FORM;
+import ui.finance.FinanceMenu;
 import ui.sysadmin.ManageUser;
 
+/**
+ *
+ * @author gulinigeer
+ */
 public class AnalyseMenu extends javax.swing.JFrame {
-
     /**
      * @return the splitPane
      */
@@ -28,7 +36,7 @@ public class AnalyseMenu extends javax.swing.JFrame {
      */
     
     public AnalyseMenu() {
-        initComponents();
+        initComponents();    
     }
 
     /**
@@ -42,33 +50,50 @@ public class AnalyseMenu extends javax.swing.JFrame {
 
         splitPane = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        btnUser = new javax.swing.JButton();
-        btnSupplier = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        BackButton = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnUser.setBackground(new java.awt.Color(255, 255, 255));
-        btnUser.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        btnUser.setText("Users");
-        btnUser.setBorder(null);
-        btnUser.setBorderPainted(false);
-        btnUser.setContentAreaFilled(false);
-        btnUser.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setBackground(new java.awt.Color(153, 153, 153));
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Sales Volume");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUserActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        btnSupplier.setBackground(new java.awt.Color(255, 255, 255));
-        btnSupplier.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        btnSupplier.setText("Add Products");
-        btnSupplier.setBorderPainted(false);
-        btnSupplier.setContentAreaFilled(false);
-        btnSupplier.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setBackground(new java.awt.Color(153, 153, 153));
+        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Analysis");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSupplierActionPerformed(evt);
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        BackButton.setText("Back");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+
+        jButton4.setBackground(new java.awt.Color(153, 153, 153));
+        jButton4.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Percentage of sales");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -77,30 +102,52 @@ public class AnalyseMenu extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(btnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BackButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(17, 17, 17))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(btnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(383, Short.MAX_VALUE))
+                .addGap(185, 185, 185)
+                .addComponent(jButton1)
+                .addGap(58, 58, 58)
+                .addComponent(jButton2)
+                .addGap(55, 55, 55)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
+                .addComponent(BackButton)
+                .addGap(23, 23, 23))
         );
 
         splitPane.setLeftComponent(jPanel1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 787, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 647, Short.MAX_VALUE)
+        );
+
+        splitPane.setRightComponent(jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+            .addComponent(splitPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,17 +157,35 @@ public class AnalyseMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ManageUser manageUser = new ManageUser();
-        splitPane.setRightComponent(manageUser.getEditPane());
-    }//GEN-LAST:event_btnUserActionPerformed
+        Chart chart = new Chart();
+        splitPane.setRightComponent(chart.getSalesVolumeChart());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplierActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        MANAGE_PRODUCTS_FORM manageProducts = new MANAGE_PRODUCTS_FORM();
-        splitPane.setRightComponent(manageProducts.getAddProduct());
-    }//GEN-LAST:event_btnSupplierActionPerformed
+        Chart chart = new Chart();
+        splitPane.setRightComponent(chart.getAnaylysis());
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        Chart chart = new Chart();
+        splitPane.setRightComponent(chart.getPercentage());
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        Login_Form loginForm = new Login_Form();
+        loginForm.pack();
+        loginForm.setExtendedState(loginForm.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+        Dimension r = loginForm.getBounds().getSize();
+        loginForm.setVisible(true);
+        loginForm.setLocationRelativeTo(null);
+        loginForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        this.dispose();
+    }//GEN-LAST:event_BackButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,134 +212,7 @@ public class AnalyseMenu extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AnalyseMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+       
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -285,9 +223,12 @@ public class AnalyseMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSupplier;
-    private javax.swing.JButton btnUser;
+    private javax.swing.JButton BackButton;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane splitPane;
     // End of variables declaration//GEN-END:variables
 }
