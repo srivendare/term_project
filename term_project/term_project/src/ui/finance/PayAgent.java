@@ -10,7 +10,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import model.Users;
 
-
 public class PayAgent extends javax.swing.JFrame {
 
     /**
@@ -36,8 +35,6 @@ public class PayAgent extends javax.swing.JFrame {
         return editPane;
     }
 
-    
-    
     // function to populate the jtable with users data
     public void populateJtable(){
         
@@ -67,10 +64,6 @@ public class PayAgent extends javax.swing.JFrame {
         jTable_USERS.setRowHeight(45);
     }
     
-    
-    
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,27 +77,29 @@ public class PayAgent extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField_ID = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField_USERNAME = new javax.swing.JTextField();
+        jTextField_ORIGINALPRICE = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField_PASSWORD = new javax.swing.JTextField();
+        jTextField_TAX = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField_TEL = new javax.swing.JTextField();
+        jTextField_CARDNUMBER = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField_EMAIL = new javax.swing.JTextField();
+        jTextField_VERIFICATIONCODE = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_USERS = new javax.swing.JTable();
-        jButton_INSERT_ = new javax.swing.JButton();
-        jButton_UPDATE_ = new javax.swing.JButton();
-        jButton_DELETE_ = new javax.swing.JButton();
-        jButton_CLEAR_ = new javax.swing.JButton();
+        jButton_Apple = new javax.swing.JButton();
+        jButton_Visa = new javax.swing.JButton();
+        jButton_Master = new javax.swing.JButton();
+        jButton_Pay = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jTextField_FULLNAME = new javax.swing.JTextField();
+        jTextField_TOTALPRICE = new javax.swing.JTextField();
         lblEntr = new javax.swing.JLabel();
         lblOrg = new javax.swing.JLabel();
         lblRole = new javax.swing.JLabel();
-        txtEntr = new javax.swing.JTextField();
-        txtOrg = new javax.swing.JTextField();
-        txtRole = new javax.swing.JTextField();
+        txtOWNERNAME = new javax.swing.JTextField();
+        txtADDRESS = new javax.swing.JTextField();
+        txtREMARK = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,34 +107,38 @@ public class PayAgent extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("ID:");
+        jLabel1.setText("Order ID:");
 
         jTextField_ID.setEditable(false);
         jTextField_ID.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Username:");
 
-        jTextField_USERNAME.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextField_ORIGINALPRICE.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Password:");
+        jLabel3.setText("Tax:");
 
-        jTextField_PASSWORD.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextField_TAX.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextField_TAX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_TAXActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel6.setText("Tel:");
+        jLabel6.setText("Card Number:");
 
-        jTextField_TEL.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextField_CARDNUMBER.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Email:");
+        jLabel5.setText("Verification Code:");
 
-        jTextField_EMAIL.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextField_VERIFICATIONCODE.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jTable_USERS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -157,129 +156,143 @@ public class PayAgent extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable_USERS);
 
-        jButton_INSERT_.setBackground(new java.awt.Color(0, 153, 153));
-        jButton_INSERT_.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton_INSERT_.setForeground(new java.awt.Color(51, 51, 51));
-        jButton_INSERT_.setText("Insert");
-        jButton_INSERT_.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Apple.setBackground(new java.awt.Color(0, 153, 153));
+        jButton_Apple.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton_Apple.setForeground(new java.awt.Color(51, 51, 51));
+        jButton_Apple.setText("Apple Pay");
+        jButton_Apple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_INSERT_ActionPerformed(evt);
+                jButton_AppleActionPerformed(evt);
             }
         });
 
-        jButton_UPDATE_.setBackground(new java.awt.Color(65, 131, 215));
-        jButton_UPDATE_.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton_UPDATE_.setForeground(new java.awt.Color(51, 51, 51));
-        jButton_UPDATE_.setText("Edit");
-        jButton_UPDATE_.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Visa.setBackground(new java.awt.Color(65, 131, 215));
+        jButton_Visa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton_Visa.setForeground(new java.awt.Color(51, 51, 51));
+        jButton_Visa.setText("Visa Card");
+        jButton_Visa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_UPDATE_ActionPerformed(evt);
+                jButton_VisaActionPerformed(evt);
             }
         });
 
-        jButton_DELETE_.setBackground(new java.awt.Color(246, 36, 89));
-        jButton_DELETE_.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton_DELETE_.setForeground(new java.awt.Color(51, 51, 51));
-        jButton_DELETE_.setText("Remove");
-        jButton_DELETE_.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Master.setBackground(new java.awt.Color(246, 36, 89));
+        jButton_Master.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton_Master.setForeground(new java.awt.Color(51, 51, 51));
+        jButton_Master.setText("Master Card");
+        jButton_Master.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_DELETE_ActionPerformed(evt);
+                jButton_MasterActionPerformed(evt);
             }
         });
 
-        jButton_CLEAR_.setBackground(new java.awt.Color(192, 57, 43));
-        jButton_CLEAR_.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton_CLEAR_.setForeground(new java.awt.Color(51, 51, 51));
-        jButton_CLEAR_.setText("Pay");
-        jButton_CLEAR_.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Pay.setBackground(new java.awt.Color(192, 57, 43));
+        jButton_Pay.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton_Pay.setForeground(new java.awt.Color(51, 51, 51));
+        jButton_Pay.setText("Pay");
+        jButton_Pay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_CLEAR_ActionPerformed(evt);
+                jButton_PayActionPerformed(evt);
             }
         });
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel8.setText("FullName:");
+        jLabel8.setText("Total Price:");
 
-        jTextField_FULLNAME.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextField_TOTALPRICE.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        lblEntr.setText("Entr");
+        lblEntr.setText("Owner Name:");
 
-        lblOrg.setText("Org");
+        lblOrg.setText("Address:");
 
-        lblRole.setText("Role");
+        lblRole.setText("Remark:");
 
-        txtEntr.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtOWNERNAME.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        txtOrg.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtADDRESS.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        txtRole.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtREMARK.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("Original Price:");
+
+        jLabel7.setBackground(new java.awt.Color(102, 102, 255));
+        jLabel7.setText("Unpaied Order");
 
         javax.swing.GroupLayout editPaneLayout = new javax.swing.GroupLayout(editPane);
         editPane.setLayout(editPaneLayout);
         editPaneLayout.setHorizontalGroup(
             editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPaneLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jTextField_FULLNAME, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(editPaneLayout.createSequentialGroup()
-                            .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3))
-                            .addGap(18, 18, 18)
-                            .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField_USERNAME)
-                                .addComponent(jTextField_ID)
-                                .addComponent(jTextField_PASSWORD, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jTextField_TEL, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(editPaneLayout.createSequentialGroup()
-                            .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblOrg)
-                                .addComponent(lblEntr)
-                                .addComponent(lblRole))
-                            .addGap(35, 35, 35)
-                            .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jTextField_EMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEntr, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtRole, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel8)
-                        .addComponent(jLabel5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPaneLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton_INSERT_, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_UPDATE_, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jButton_DELETE_, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
             .addGroup(editPaneLayout.createSequentialGroup()
                 .addGap(122, 122, 122)
-                .addComponent(jButton_CLEAR_, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_Pay, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPaneLayout.createSequentialGroup()
+                .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField_TOTALPRICE, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(editPaneLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(103, 103, 103)
+                        .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextField_ORIGINALPRICE)
+                            .addComponent(jTextField_ID)
+                            .addComponent(jTextField_TAX, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jTextField_CARDNUMBER, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(editPaneLayout.createSequentialGroup()
+                        .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel6))
+                        .addGap(202, 202, 202))
+                    .addGroup(editPaneLayout.createSequentialGroup()
+                        .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblEntr)
+                            .addComponent(lblOrg)
+                            .addComponent(lblRole)
+                            .addComponent(jLabel5))
+                        .addGap(38, 38, 38)
+                        .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField_VERIFICATIONCODE, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtOWNERNAME, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtADDRESS, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtREMARK, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(editPaneLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPaneLayout.createSequentialGroup()
+                        .addComponent(jButton_Apple, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton_Visa, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton_Master, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPaneLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(224, 224, 224))
         );
         editPaneLayout.setVerticalGroup(
             editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editPaneLayout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addGap(43, 43, 43)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(editPaneLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton_DELETE_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_UPDATE_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_INSERT_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton_Master, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_Visa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_Apple, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton_CLEAR_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton_Pay, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(editPaneLayout.createSequentialGroup()
                         .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -287,35 +300,36 @@ public class PayAgent extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField_USERNAME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField_ORIGINALPRICE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField_PASSWORD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField_TAX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(jTextField_FULLNAME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField_TOTALPRICE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jTextField_TEL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField_CARDNUMBER, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField_EMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField_VERIFICATIONCODE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblEntr)
-                            .addComponent(txtEntr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtOWNERNAME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(22, 22, 22)
-                        .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblOrg)
-                            .addComponent(txtOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtADDRESS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblOrg))
                         .addGap(18, 18, 18)
-                        .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRole)
-                            .addComponent(txtRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtREMARK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblRole))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -338,55 +352,53 @@ public class PayAgent extends javax.swing.JFrame {
 
         Integer rowIndex = jTable_USERS.getSelectedRow();
         jTextField_ID.setText(jTable_USERS.getValueAt(rowIndex, 0).toString());
-        jTextField_USERNAME.setText(jTable_USERS.getValueAt(rowIndex, 1).toString());
-        jTextField_PASSWORD.setText(jTable_USERS.getValueAt(rowIndex, 2).toString());
-        jTextField_FULLNAME.setText(jTable_USERS.getValueAt(rowIndex, 3).toString());
-        jTextField_TEL.setText(jTable_USERS.getValueAt(rowIndex, 4).toString());
-        jTextField_EMAIL.setText(jTable_USERS.getValueAt(rowIndex, 5).toString());
-        txtEntr.setText(jTable_USERS.getValueAt(rowIndex, 6).toString());
-        txtOrg.setText(jTable_USERS.getValueAt(rowIndex, 7).toString());
-        txtRole.setText(jTable_USERS.getValueAt(rowIndex, 8).toString());
+        jTextField_ORIGINALPRICE.setText(jTable_USERS.getValueAt(rowIndex, 1).toString());
+        jTextField_TAX.setText(jTable_USERS.getValueAt(rowIndex, 2).toString());
+        jTextField_TOTALPRICE.setText(jTable_USERS.getValueAt(rowIndex, 3).toString());
+        jTextField_CARDNUMBER.setText(jTable_USERS.getValueAt(rowIndex, 4).toString());
+        jTextField_VERIFICATIONCODE.setText(jTable_USERS.getValueAt(rowIndex, 5).toString());
+        txtOWNERNAME.setText(jTable_USERS.getValueAt(rowIndex, 6).toString());
+        txtADDRESS.setText(jTable_USERS.getValueAt(rowIndex, 7).toString());
+        txtREMARK.setText(jTable_USERS.getValueAt(rowIndex, 8).toString());
     }//GEN-LAST:event_jTable_USERSMouseClicked
 
-    
     // button add a new user
-    private void jButton_INSERT_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_INSERT_ActionPerformed
+    private void jButton_AppleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AppleActionPerformed
 
         if(verifFields())
         {
-            String uname = jTextField_USERNAME.getText();
-            String pass = jTextField_PASSWORD.getText();
-            String fname = jTextField_FULLNAME.getText();
-            String tel = jTextField_TEL.getText();
-            String email = jTextField_EMAIL.getText();
-            String enterprise = txtEntr.getText();
-            String organization = txtOrg.getText();
-            String role = txtRole.getText();
+            String uname = jTextField_ORIGINALPRICE.getText();
+            String pass = jTextField_TAX.getText();
+            String fname = jTextField_TOTALPRICE.getText();
+            String tel = jTextField_CARDNUMBER.getText();
+            String email = jTextField_VERIFICATIONCODE.getText();
+            String enterprise = txtOWNERNAME.getText();
+            String organization = txtADDRESS.getText();
+            String role = txtREMARK.getText();
 
             Users user = new Users(null,uname,pass,null,fname,tel,email,enterprise,organization,role);
             Users.insertUser(user);
             populateJtable();
         }
         
-    }//GEN-LAST:event_jButton_INSERT_ActionPerformed
+    }//GEN-LAST:event_jButton_AppleActionPerformed
 
-    
     // button update user
-    private void jButton_UPDATE_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UPDATE_ActionPerformed
+    private void jButton_VisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_VisaActionPerformed
 
         try{
             
             if(verifFields())
             {
                 Integer id = Integer.valueOf(jTextField_ID.getText());
-                String uname = jTextField_USERNAME.getText();
-                String pass = jTextField_PASSWORD.getText();
-                String fname = jTextField_FULLNAME.getText();
-                String tel = jTextField_TEL.getText();
-                String email = jTextField_EMAIL.getText();
-                String enterprise = txtEntr.getText();
-                String organization = txtOrg.getText();
-                String role = txtRole.getText();
+                String uname = jTextField_ORIGINALPRICE.getText();
+                String pass = jTextField_TAX.getText();
+                String fname = jTextField_TOTALPRICE.getText();
+                String tel = jTextField_CARDNUMBER.getText();
+                String email = jTextField_VERIFICATIONCODE.getText();
+                String enterprise = txtOWNERNAME.getText();
+                String organization = txtADDRESS.getText();
+                String role = txtREMARK.getText();
                 
 
                 // username`, `password`, `user_type`, `fullname`, `tel`, `email
@@ -400,43 +412,45 @@ public class PayAgent extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Select a User Before Editing", "No User Selected", 1);
                 }
         
-    }//GEN-LAST:event_jButton_UPDATE_ActionPerformed
+    }//GEN-LAST:event_jButton_VisaActionPerformed
 
     // button delete user
-    private void jButton_DELETE_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DELETE_ActionPerformed
+    private void jButton_MasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MasterActionPerformed
 
         try{
             Integer id = Integer.valueOf(jTextField_ID.getText());
             Users.deleteUser(id);
             populateJtable(); 
-            jButton_CLEAR_ActionPerformed(null);
+            jButton_PayActionPerformed(null);
         }catch(Exception ex){
                 JOptionPane.showMessageDialog(null, "Select a User Before Removing", "No User Selected", 1);
                 }
         
-    }//GEN-LAST:event_jButton_DELETE_ActionPerformed
+    }//GEN-LAST:event_jButton_MasterActionPerformed
 
     // button clear all textfields
-    private void jButton_CLEAR_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CLEAR_ActionPerformed
+    private void jButton_PayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_PayActionPerformed
        
            jTextField_ID.setText("");
-           jTextField_USERNAME.setText("");
-           jTextField_PASSWORD.setText("");
-           jTextField_FULLNAME.setText("");
-           jTextField_TEL.setText("");
-           jTextField_EMAIL.setText("");
-           txtEntr.setText("");
-           txtOrg.setText("");
-           txtRole.setText("");
+           jTextField_ORIGINALPRICE.setText("");
+           jTextField_TAX.setText("");
+           jTextField_TOTALPRICE.setText("");
+           jTextField_CARDNUMBER.setText("");
+           jTextField_VERIFICATIONCODE.setText("");
+           txtOWNERNAME.setText("");
+           txtADDRESS.setText("");
+           txtREMARK.setText("");
         
-    }//GEN-LAST:event_jButton_CLEAR_ActionPerformed
+    }//GEN-LAST:event_jButton_PayActionPerformed
 
+    private void jTextField_TAXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_TAXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_TAXActionPerformed
 
-    
     // function to check empty fields
     public boolean verifFields()
     {
-        if(jTextField_USERNAME.getText().equals("") || jTextField_PASSWORD.getText().equals("") || jTextField_FULLNAME.getText().equals(""))
+        if(jTextField_ORIGINALPRICE.getText().equals("") || jTextField_TAX.getText().equals("") || jTextField_TOTALPRICE.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null, "One Or More Fields Are Empty", "Empty Fields", 0);
             return false;
@@ -444,76 +458,34 @@ public class PayAgent extends javax.swing.JFrame {
             return true;
         }
     }
-    
-    
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PayAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PayAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PayAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PayAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PayAgent().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel editPane;
-    private javax.swing.JButton jButton_CLEAR_;
-    private javax.swing.JButton jButton_DELETE_;
-    private javax.swing.JButton jButton_INSERT_;
-    private javax.swing.JButton jButton_UPDATE_;
+    private javax.swing.JButton jButton_Apple;
+    private javax.swing.JButton jButton_Master;
+    private javax.swing.JButton jButton_Pay;
+    private javax.swing.JButton jButton_Visa;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_USERS;
-    private javax.swing.JTextField jTextField_EMAIL;
-    private javax.swing.JTextField jTextField_FULLNAME;
+    private javax.swing.JTextField jTextField_CARDNUMBER;
     private javax.swing.JTextField jTextField_ID;
-    private javax.swing.JTextField jTextField_PASSWORD;
-    private javax.swing.JTextField jTextField_TEL;
-    private javax.swing.JTextField jTextField_USERNAME;
+    private javax.swing.JTextField jTextField_ORIGINALPRICE;
+    private javax.swing.JTextField jTextField_TAX;
+    private javax.swing.JTextField jTextField_TOTALPRICE;
+    private javax.swing.JTextField jTextField_VERIFICATIONCODE;
     private javax.swing.JLabel lblEntr;
     private javax.swing.JLabel lblOrg;
     private javax.swing.JLabel lblRole;
-    private javax.swing.JTextField txtEntr;
-    private javax.swing.JTextField txtOrg;
-    private javax.swing.JTextField txtRole;
+    private javax.swing.JTextField txtADDRESS;
+    private javax.swing.JTextField txtOWNERNAME;
+    private javax.swing.JTextField txtREMARK;
     // End of variables declaration//GEN-END:variables
 }
