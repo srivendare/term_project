@@ -1,4 +1,4 @@
-package ui;
+package ui.supply;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -171,11 +171,11 @@ public class MANAGE_PRODUCTS_FORM extends javax.swing.JFrame {
             addProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addProductLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(addProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_UPDATE_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_INSERT_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_DELETE_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
+                .addGroup(addProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton_UPDATE_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_INSERT_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_DELETE_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(56, 56, 56)
                 .addGroup(addProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addProductLayout.createSequentialGroup()
                         .addComponent(jTextField_VALUE_TO_SEARCH)
@@ -199,11 +199,11 @@ public class MANAGE_PRODUCTS_FORM extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(addProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addProductLayout.createSequentialGroup()
-                        .addComponent(jButton_INSERT_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton_UPDATE_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton_DELETE_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton_INSERT_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton_UPDATE_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jButton_DELETE_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(77, Short.MAX_VALUE))
         );
@@ -225,11 +225,11 @@ public class MANAGE_PRODUCTS_FORM extends javax.swing.JFrame {
     // button insert product
     private void jButton_INSERT_PRODUCT_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_INSERT_PRODUCT_ActionPerformed
        
-//        Add_Product_Form addProductForm = new Add_Product_Form();
-//                addProductForm.pack();
-//                addProductForm.setVisible(true);
-//                addProductForm.setLocationRelativeTo(null);
-//                addProductForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Add_Product_Form addProductForm = new Add_Product_Form();
+                addProductForm.pack();
+                addProductForm.setVisible(true);
+                addProductForm.setLocationRelativeTo(null);
+                addProductForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
     }//GEN-LAST:event_jButton_INSERT_PRODUCT_ActionPerformed
 
@@ -244,35 +244,35 @@ public class MANAGE_PRODUCTS_FORM extends javax.swing.JFrame {
     // button update product
     private void jButton_UPDATE_PRODUCT_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UPDATE_PRODUCT_ActionPerformed
        
-//        try{
-//
-//            // open the edit product form and display data into the fields
-//            Edit_Product_Form editProductForm = new Edit_Product_Form();
-//
-//            Integer rowIndex = jTable_Products.getSelectedRow();
-//
-//            editProductForm.productId = Integer.valueOf(jTable_Products.getValueAt(rowIndex, 0).toString());
-//            editProductForm.jTextField_Name.setText(jTable_Products.getValueAt(rowIndex, 1).toString());
-//            editProductForm.jTextField_Price.setText(jTable_Products.getValueAt(rowIndex, 2).toString());
-//            editProductForm.jTextField_Quantity.setText(jTable_Products.getValueAt(rowIndex, 3).toString());
-//            editProductForm.jTextField_Description.setText(jTable_Products.getValueAt(rowIndex, 5).toString());
-//
-//            editProductForm.jComboBox1.setSelectedItem(jTable_Products.getValueAt(rowIndex, 6));
-//
-//            // display the image in jlabel
-//             ImageIcon image1 = (ImageIcon)jTable_Products.getValueAt(rowIndex, 4);
-//            Image image2 = image1.getImage().getScaledInstance(editProductForm.jLabel_Picture.getWidth(), editProductForm.jLabel_Picture.getHeight()
-//                     , Image.SCALE_SMOOTH);
-//            ImageIcon image3 = new ImageIcon(image2);
-//            editProductForm.jLabel_Picture.setIcon(image3);
-//
-//            editProductForm.setVisible(true);
-//                    editProductForm.pack();
-//                    editProductForm.setLocationRelativeTo(null);
-//                    editProductForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//        }catch(Exception Ex){
-//            JOptionPane.showMessageDialog(null, "You Must Select A Product From The Table", "No Product Selected", 2);
-//        }
+        try{
+
+            // open the edit product form and display data into the fields
+            Edit_Product_Form editProductForm = new Edit_Product_Form();
+
+            Integer rowIndex = jTable_Products.getSelectedRow();
+
+            editProductForm.productId = Integer.valueOf(jTable_Products.getValueAt(rowIndex, 0).toString());
+            editProductForm.jTextField_Name.setText(jTable_Products.getValueAt(rowIndex, 1).toString());
+            editProductForm.jTextField_Price.setText(jTable_Products.getValueAt(rowIndex, 2).toString());
+            editProductForm.jTextField_Quantity.setText(jTable_Products.getValueAt(rowIndex, 3).toString());
+            editProductForm.jTextField_Description.setText(jTable_Products.getValueAt(rowIndex, 5).toString());
+
+            editProductForm.jComboBox1.setSelectedItem(jTable_Products.getValueAt(rowIndex, 6));
+
+            // display the image in jlabel
+             ImageIcon image1 = (ImageIcon)jTable_Products.getValueAt(rowIndex, 4);
+            Image image2 = image1.getImage().getScaledInstance(editProductForm.jLabel_Picture.getWidth(), editProductForm.jLabel_Picture.getHeight()
+                     , Image.SCALE_SMOOTH);
+            ImageIcon image3 = new ImageIcon(image2);
+            editProductForm.jLabel_Picture.setIcon(image3);
+
+            editProductForm.setVisible(true);
+                    editProductForm.pack();
+                    editProductForm.setLocationRelativeTo(null);
+                    editProductForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }catch(Exception Ex){
+            JOptionPane.showMessageDialog(null, "You Must Select A Product From The Table", "No Product Selected", 2);
+        }
     }//GEN-LAST:event_jButton_UPDATE_PRODUCT_ActionPerformed
 
     
