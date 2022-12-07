@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 
 import model.DB_INFO;
 import ui.analyse.AnalyseMenu;
+import ui.analyse.StrategyMenu;
 import ui.source.orgpenal.CateMenu;
 import ui.source.orgpenal.PurMenu;
 import ui.source.orgpenal.SouMenu;
@@ -82,6 +83,11 @@ public class Login_Form extends javax.swing.JFrame {
 
         txtName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtName.setText("admin");
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
 
         txtPw.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtPw.setText("adminpass");
@@ -90,7 +96,7 @@ public class Login_Form extends javax.swing.JFrame {
         jButton_LOGIN.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_LOGIN.setForeground(new java.awt.Color(255, 255, 255));
         jButton_LOGIN.setText("Login");
-        jButton_LOGIN.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton_LOGIN.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton_LOGIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_LOGINActionPerformed(evt);
@@ -286,13 +292,28 @@ public class Login_Form extends javax.swing.JFrame {
                          };
                          
                      } else if (rs.getString("enterprise").equals("data")){
-                         AnalyseMenu dataAdmin = new AnalyseMenu();
-                         dataAdmin.pack();
-                         dataAdmin.setExtendedState(dataAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
-                         Dimension r = dataAdmin.getBounds().getSize();
-                         dataAdmin.setVisible(true);
-                         dataAdmin.setLocationRelativeTo(null);
-                         dataAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                         switch(rs.getString("organization")) {
+                             case "analysisdepartment":
+                                 AnalyseMenu dataAdmin = new AnalyseMenu();
+                                 dataAdmin.pack();
+                                 dataAdmin.setExtendedState(dataAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                                 Dimension r = dataAdmin.getBounds().getSize();
+                                 dataAdmin.setVisible(true);
+                                 dataAdmin.setLocationRelativeTo(null);
+                                 dataAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                 break;
+                             case "strategydepartment":
+                                 StrategyMenu strategyMenu = new StrategyMenu();
+                                 strategyMenu.pack();
+                                 strategyMenu.setExtendedState(strategyMenu.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                                 r = strategyMenu.getBounds().getSize();
+                                 strategyMenu.setVisible(true);
+                                 strategyMenu.setLocationRelativeTo(null);
+                                 strategyMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                 break;
+                             default:
+                                 break;
+                         }
                      } else {
                          JOptionPane.showMessageDialog(null, "Please enter correct user info","Login Error",2);
                      }
@@ -320,6 +341,10 @@ public class Login_Form extends javax.swing.JFrame {
     private void comboEntrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEntrActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboEntrActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
 
     /**
      * @param args the command line arguments
