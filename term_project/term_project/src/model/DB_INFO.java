@@ -16,7 +16,7 @@ public class DB_INFO {
     private static String username = "root";
     private static String password = "INFO5100@group";
     
-       static Connection con=null;
+    static Connection con=null;
     public static Connection getConnection()
     {
         if (con != null) return con;

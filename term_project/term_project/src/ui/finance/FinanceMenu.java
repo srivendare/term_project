@@ -4,7 +4,7 @@
  */
 package ui.finance;
 
-import ui.MANAGE_PRODUCTS_FORM;
+import ui.supply.MANAGE_PRODUCTS_FORM;
 import ui.sysadmin.ManageUser;
 
 public class FinanceMenu extends javax.swing.JFrame {
