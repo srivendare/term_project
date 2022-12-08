@@ -55,9 +55,8 @@ public class Pay {
         ArrayList<Pay> pay_list = new ArrayList<>();
         connection = DB_INFO.getConnection();
         ResultSet rs;
-        PreparedStatement ps;
-
-               String query = "SELECT `id`, `name`, `tax_rate` FROM `category`";
+        PreparedStatement ps;                              
+        String query = "SELECT `id`, `order_id`, `status`, `original_price`, `tax`, `total_price`, `card_number`, `verification_code`, `owner_name`, `address`, `remark` FROM `pay`";
 
         try {
 
@@ -69,15 +68,15 @@ public class Pay {
                 while(rs.next()){
                     pay = new Pay(rs.getInt("id"),
                                   rs.getInt("order_id"),
-                                  rs.getInt("name"),
-                                  rs.getString("name"),
-                                  rs.getString("name"),
-                                  rs.getString("name"),
-                                  rs.getString("name"),
-                                  rs.getString("name"),
-                                  rs.getString("name"),
-                                  rs.getString("name"),
-                                  rs.getString("name")
+                                  rs.getInt("status"),
+                                  rs.getString("original_price"),
+                                  rs.getString("tax"),
+                                  rs.getString("total_price"),
+                                  rs.getString("card_number"),
+                                  rs.getString("verification_code"),
+                                  rs.getString("owner_name"),
+                                  rs.getString("address"),
+                                  rs.getString("remark")
                                   );
 
                     pay_list.add(pay);
@@ -97,19 +96,25 @@ public class Pay {
         PreparedStatement ps;
 
         try {
-            ps = (PreparedStatement) con.prepareStatement("INSERT INTO `pay`(`name`, `tax_rate`) VALUES (?,?)");
+            ps = (PreparedStatement) con.prepareStatement("INSERT INTO `pay`(`order_id`, `status`, `original_price`, `tax`, `total_price`, `card_number`, `verification_code`, `owner_name`, `address`, `remark`) VALUES (?,?,?,?,?,?,?,?,?,?)");
 
             ps.setInt(1, pay.getOrderId());
             ps.setInt(2, pay.getStatus());
+            ps.setString(3, pay.getOriginalPrice());
+            ps.setString(4, pay.getTax());
+            ps.setString(5, pay.getTotalPrice());
+            ps.setString(6, pay.getCardNumber());
+            ps.setString(7, pay.getVerificationCode());
+            ps.setString(8, pay.getOwnerName());
+            ps.setString(9, pay.getAddress());
+            ps.setString(10, pay.getRemark());
 
             if(ps.executeUpdate() != 0){
                 JOptionPane.showMessageDialog(null, "New Pay Inserted");
-
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "Something Wrong");
-
-                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Something Wrong");
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
@@ -124,11 +129,19 @@ public class Pay {
         PreparedStatement ps;
 
         try {
-            ps = (PreparedStatement) con.prepareStatement("UPDATE `pay` SET `name` = ?, `tax_rate` = ? WHERE `id` = ?");
+            ps = (PreparedStatement) con.prepareStatement("UPDATE `pay` SET `order_id` = ?, `status` = ?, `original_price` = ?, `tax` = ?, `total_price` = ?, `card_number` = ?, `verification_code` = ?, `owner_name` = ?, `address` = ?, `remark` = ? WHERE `id` = ?");
 
             ps.setInt(1, pay.getOrderId());
             ps.setInt(2, pay.getStatus());
-            ps.setInt(3, pay.getId());
+            ps.setString(3, pay.getOriginalPrice());
+            ps.setString(4, pay.getTax());
+            ps.setString(5, pay.getTotalPrice());
+            ps.setString(6, pay.getCardNumber());
+            ps.setString(7, pay.getVerificationCode());
+            ps.setString(8, pay.getOwnerName());
+            ps.setString(9, pay.getAddress());
+            ps.setString(10, pay.getRemark());
+            ps.setInt(11, pay.getId());
 
             if(ps.executeUpdate() != 0){
                 JOptionPane.showMessageDialog(null, "pay Updated");
@@ -175,6 +188,20 @@ public class Pay {
             Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    
+
+    public void generatePayRecord(){
+        SourceOrder order = new SourceOrder();
+        ArrayList<SourceOrder> orderList = order.ordersList();
+        
+        ArrayList<Pay> payList = payList();
+        
+        Category category = new Category();
+        ArrayList<Category> taxlist = category.categoriesList();
+        
+        //TODO
+        
     }
 
     public Connection getConnection() {
