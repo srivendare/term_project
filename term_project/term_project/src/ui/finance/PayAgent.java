@@ -1,6 +1,5 @@
 package ui.finance;
 
-import ui.sysadmin.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
@@ -8,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import model.Pay;
 import model.Users;
 
 public class PayAgent extends javax.swing.JFrame {
@@ -20,13 +20,13 @@ public class PayAgent extends javax.swing.JFrame {
         
         populateJtable();
         
-        jTable_USERS.setShowGrid(true);
+        jTable_Pay.setShowGrid(true);
         
-        jTable_USERS.setGridColor(Color.gray);
+        jTable_Pay.setGridColor(Color.gray);
         
-        jTable_USERS.setSelectionBackground(Color.gray);
+        jTable_Pay.setSelectionBackground(Color.gray);
         
-        JTableHeader th = jTable_USERS.getTableHeader();
+        JTableHeader th = jTable_Pay.getTableHeader();
 
         th.setFont(new Font("Tahoma", Font.PLAIN, 16));
     }
@@ -38,30 +38,25 @@ public class PayAgent extends javax.swing.JFrame {
     // function to populate the jtable with users data
     public void populateJtable(){
         
-        Users user = new Users();
-        ArrayList<Users> userList = user.UsersList();
-        
-        String[] colNames = {"Id","username","password","fullname","Tel","Email", "Enterpirse", "Org", "Role"};
-        Object[][] rows = new Object[userList.size()][9];
+        Pay pay = new Pay();
+        ArrayList<Pay> payList = pay.payList();
+        String[] colNames = {"Id","orderId","status","originalPrice","tax","totalPrice"};
+        Object[][] rows = new Object[payList.size()][11];
 
-        for(int i = 0; i < userList.size(); i++){
+        for(int i = 0; i < payList.size(); i++){
           
-            rows[i][0] = userList.get(i).getId();
-            rows[i][1] = userList.get(i).getUsername();
-            rows[i][2] = userList.get(i).getPassword();
-            rows[i][3] = userList.get(i).getFullname();
+            rows[i][0] = payList.get(i).getId();
+            rows[i][1] = payList.get(i).getOrderId();
+            rows[i][2] = payList.get(i).getStatus();
+            rows[i][3] = payList.get(i).getOriginalPrice();
+            rows[i][4] = payList.get(i).getTax();
+            rows[i][5] = payList.get(i).getTotalPrice();
             
-            rows[i][4] = userList.get(i).getTel();
-            rows[i][5] = userList.get(i).getEmail();
-            rows[i][6] = userList.get(i).getEnterprise();
-            rows[i][7] = userList.get(i).getOrganization();
-            rows[i][8] = userList.get(i).getRole();
-          
         }
         
         DefaultTableModel mmodel = new DefaultTableModel(rows, colNames);
-        jTable_USERS.setModel(mmodel);
-        jTable_USERS.setRowHeight(45);
+        jTable_Pay.setModel(mmodel);
+        jTable_Pay.setRowHeight(45);
     }
     
     /**
@@ -85,8 +80,7 @@ public class PayAgent extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField_VERIFICATIONCODE = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_USERS = new javax.swing.JTable();
-        jButton_Apple = new javax.swing.JButton();
+        jTable_Pay = new javax.swing.JTable();
         jButton_Visa = new javax.swing.JButton();
         jButton_Master = new javax.swing.JButton();
         jButton_Pay = new javax.swing.JButton();
@@ -115,12 +109,14 @@ public class PayAgent extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
 
+        jTextField_ORIGINALPRICE.setEditable(false);
         jTextField_ORIGINALPRICE.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Tax:");
 
+        jTextField_TAX.setEditable(false);
         jTextField_TAX.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTextField_TAX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,7 +136,7 @@ public class PayAgent extends javax.swing.JFrame {
 
         jTextField_VERIFICATIONCODE.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        jTable_USERS.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_Pay.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -148,23 +144,13 @@ public class PayAgent extends javax.swing.JFrame {
 
             }
         ));
-        jTable_USERS.setSelectionBackground(new java.awt.Color(153, 153, 153));
-        jTable_USERS.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTable_Pay.setSelectionBackground(new java.awt.Color(153, 153, 153));
+        jTable_Pay.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable_USERSMouseClicked(evt);
+                jTable_PayMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable_USERS);
-
-        jButton_Apple.setBackground(new java.awt.Color(0, 153, 153));
-        jButton_Apple.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton_Apple.setForeground(new java.awt.Color(51, 51, 51));
-        jButton_Apple.setText("Apple Pay");
-        jButton_Apple.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_AppleActionPerformed(evt);
-            }
-        });
+        jScrollPane1.setViewportView(jTable_Pay);
 
         jButton_Visa.setBackground(new java.awt.Color(65, 131, 215));
         jButton_Visa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -200,6 +186,7 @@ public class PayAgent extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Total Price:");
 
+        jTextField_TOTALPRICE.setEditable(false);
         jTextField_TOTALPRICE.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         lblEntr.setText("Owner Name:");
@@ -219,7 +206,7 @@ public class PayAgent extends javax.swing.JFrame {
         jLabel2.setText("Original Price:");
 
         jLabel7.setBackground(new java.awt.Color(102, 102, 255));
-        jLabel7.setText("Unpaied Order");
+        jLabel7.setText("Order Record");
 
         javax.swing.GroupLayout editPaneLayout = new javax.swing.GroupLayout(editPane);
         editPane.setLayout(editPaneLayout);
@@ -266,12 +253,10 @@ public class PayAgent extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPaneLayout.createSequentialGroup()
-                        .addComponent(jButton_Apple, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jButton_Visa, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addGap(89, 89, 89)
                         .addComponent(jButton_Master, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63))))
+                        .addGap(90, 90, 90))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPaneLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7)
@@ -289,8 +274,7 @@ public class PayAgent extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton_Master, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_Visa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_Apple, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton_Visa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jButton_Pay, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(editPaneLayout.createSequentialGroup()
@@ -348,89 +332,127 @@ public class PayAgent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // get selected user data from jtable to textfields
-    private void jTable_USERSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_USERSMouseClicked
+    private void jTable_PayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_PayMouseClicked
 
-        Integer rowIndex = jTable_USERS.getSelectedRow();
-        jTextField_ID.setText(jTable_USERS.getValueAt(rowIndex, 0).toString());
-        jTextField_ORIGINALPRICE.setText(jTable_USERS.getValueAt(rowIndex, 1).toString());
-        jTextField_TAX.setText(jTable_USERS.getValueAt(rowIndex, 2).toString());
-        jTextField_TOTALPRICE.setText(jTable_USERS.getValueAt(rowIndex, 3).toString());
-        jTextField_CARDNUMBER.setText(jTable_USERS.getValueAt(rowIndex, 4).toString());
-        jTextField_VERIFICATIONCODE.setText(jTable_USERS.getValueAt(rowIndex, 5).toString());
-        txtOWNERNAME.setText(jTable_USERS.getValueAt(rowIndex, 6).toString());
-        txtADDRESS.setText(jTable_USERS.getValueAt(rowIndex, 7).toString());
-        txtREMARK.setText(jTable_USERS.getValueAt(rowIndex, 8).toString());
-    }//GEN-LAST:event_jTable_USERSMouseClicked
+        Integer rowIndex = jTable_Pay.getSelectedRow();
 
-    // button add a new user
-    private void jButton_AppleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AppleActionPerformed
-
-        if(verifFields())
-        {
-            String uname = jTextField_ORIGINALPRICE.getText();
-            String pass = jTextField_TAX.getText();
-            String fname = jTextField_TOTALPRICE.getText();
-            String tel = jTextField_CARDNUMBER.getText();
-            String email = jTextField_VERIFICATIONCODE.getText();
-            String enterprise = txtOWNERNAME.getText();
-            String organization = txtADDRESS.getText();
-            String role = txtREMARK.getText();
-
-            Users user = new Users(null,uname,pass,null,fname,tel,email,enterprise,organization,role);
-            Users.insertUser(user);
-            populateJtable();
-        }
+        Pay pay = new Pay();
+        ArrayList<Pay> payList = pay.payList();
+        Integer id = (Integer)jTable_Pay.getValueAt(rowIndex, 0);
         
-    }//GEN-LAST:event_jButton_AppleActionPerformed
+        payList.forEach((t) -> {
+            if(id == t.getId()){
+                jTextField_ID.setText(t.getOrderId().toString());
+                jTextField_ORIGINALPRICE.setText(t.getOriginalPrice());
+                jTextField_TAX.setText(t.getTax());
+                jTextField_TOTALPRICE.setText(t.getTotalPrice());
+                jTextField_VERIFICATIONCODE.setText(t.getVerificationCode());
+                txtOWNERNAME.setText(t.getOwnerName());
+                txtADDRESS.setText(t.getAddress());
+                txtREMARK.setText(t.getRemark());
+            }
+        });
+        
+        
+    }//GEN-LAST:event_jTable_PayMouseClicked
 
     // button update user
     private void jButton_VisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_VisaActionPerformed
 
         try{
             
-            if(verifFields())
-            {
-                Integer id = Integer.valueOf(jTextField_ID.getText());
-                String uname = jTextField_ORIGINALPRICE.getText();
-                String pass = jTextField_TAX.getText();
-                String fname = jTextField_TOTALPRICE.getText();
-                String tel = jTextField_CARDNUMBER.getText();
-                String email = jTextField_VERIFICATIONCODE.getText();
-                String enterprise = txtOWNERNAME.getText();
-                String organization = txtADDRESS.getText();
-                String role = txtREMARK.getText();
-                
+        Integer rowIndex = jTable_Pay.getSelectedRow();
 
-                // username`, `password`, `user_type`, `fullname`, `tel`, `email
-                Users user = new Users(id,uname,pass,null,fname,tel,email,enterprise,organization,role);
-                Users.updateUser(user);
-                populateJtable();
+        Pay pay = new Pay();
+        ArrayList<Pay> payList = pay.payList();
+        Integer id = (Integer)jTable_Pay.getValueAt(rowIndex, 0);
+        
+        payList.forEach((t) -> {
+            if(id == t.getId()){
+                jTextField_ID.setText(t.getOrderId().toString());
+                jTextField_ORIGINALPRICE.setText(t.getOriginalPrice());
+                jTextField_TAX.setText(t.getTax());
+                jTextField_TOTALPRICE.setText(t.getTotalPrice());
+                jTextField_VERIFICATIONCODE.setText(t.getVerificationCode());
+                txtOWNERNAME.setText(t.getOwnerName());
+                txtADDRESS.setText(t.getAddress());
+                txtREMARK.setText(t.getRemark());
             }
-            
+        });
+        
         }
         catch(Exception ex){
-                JOptionPane.showMessageDialog(null, "Select a User Before Editing", "No User Selected", 1);
-                }
+                JOptionPane.showMessageDialog(null, "Select a Pay Record", "No Pay Record Selected", 1);
+        }
         
     }//GEN-LAST:event_jButton_VisaActionPerformed
 
     // button delete user
     private void jButton_MasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MasterActionPerformed
-
         try{
-            Integer id = Integer.valueOf(jTextField_ID.getText());
-            Users.deleteUser(id);
-            populateJtable(); 
-            jButton_PayActionPerformed(null);
-        }catch(Exception ex){
-                JOptionPane.showMessageDialog(null, "Select a User Before Removing", "No User Selected", 1);
-                }
+            
+        Integer rowIndex = jTable_Pay.getSelectedRow();
+
+        Pay pay = new Pay();
+        ArrayList<Pay> payList = pay.payList();
+        Integer id = (Integer)jTable_Pay.getValueAt(rowIndex, 0);
         
+        payList.forEach((t) -> {
+            if(id == t.getId()){
+                jTextField_ID.setText(t.getOrderId().toString());
+                jTextField_ORIGINALPRICE.setText(t.getOriginalPrice());
+                jTextField_TAX.setText(t.getTax());
+                jTextField_TOTALPRICE.setText(t.getTotalPrice());
+                jTextField_VERIFICATIONCODE.setText(t.getVerificationCode());
+                txtOWNERNAME.setText(t.getOwnerName());
+                txtADDRESS.setText(t.getAddress());
+                txtREMARK.setText(t.getRemark());
+            }
+        });
+        
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Select a Record", "No Record Selected", 1);
+        }
     }//GEN-LAST:event_jButton_MasterActionPerformed
 
     // button clear all textfields
     private void jButton_PayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_PayActionPerformed
-       
+
+        if(verifFields()){
+            Integer orderId = Integer.parseInt(jTextField_ID.getText());
+
+            Pay pay = new Pay();
+            ArrayList<Pay> payList = pay.payList();
+            payList.forEach((t) -> {
+            if(orderId == t.getOrderId()){
+                if(t.getStatus() == 1){
+                    JOptionPane.showMessageDialog(null, "Payment for this order has been completed", "paied order", 1);
+                }else{    
+                    
+                    
+                    
+                    
+                    
+                }
+            }
+        });
+            
+            
+            clear();
+        
+        }else{
+            JOptionPane.showMessageDialog(null, "Please check if there is any missing information or if a payment record is selected", "Missing Information", 1);
+        }
+
+    }//GEN-LAST:event_jButton_PayActionPerformed
+
+    private void jTextField_TAXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_TAXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_TAXActionPerformed
+
+    // function to clear pay info
+    private void clear(){
            jTextField_ID.setText("");
            jTextField_ORIGINALPRICE.setText("");
            jTextField_TAX.setText("");
@@ -440,17 +462,12 @@ public class PayAgent extends javax.swing.JFrame {
            txtOWNERNAME.setText("");
            txtADDRESS.setText("");
            txtREMARK.setText("");
-        
-    }//GEN-LAST:event_jButton_PayActionPerformed
-
-    private void jTextField_TAXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_TAXActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_TAXActionPerformed
-
+    }
+    
     // function to check empty fields
     public boolean verifFields()
     {
-        if(jTextField_ORIGINALPRICE.getText().equals("") || jTextField_TAX.getText().equals("") || jTextField_TOTALPRICE.getText().equals(""))
+        if(jTextField_ID.getText().equals("") || jTextField_ORIGINALPRICE.getText().equals("") || jTextField_TAX.getText().equals("") || jTextField_TOTALPRICE.getText().equals("") || jTextField_CARDNUMBER.getText().equals("") || jTextField_VERIFICATIONCODE.getText().equals("") || txtOWNERNAME.getText().equals("") || txtADDRESS.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null, "One Or More Fields Are Empty", "Empty Fields", 0);
             return false;
@@ -461,7 +478,6 @@ public class PayAgent extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel editPane;
-    private javax.swing.JButton jButton_Apple;
     private javax.swing.JButton jButton_Master;
     private javax.swing.JButton jButton_Pay;
     private javax.swing.JButton jButton_Visa;
@@ -474,7 +490,7 @@ public class PayAgent extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable_USERS;
+    private javax.swing.JTable jTable_Pay;
     private javax.swing.JTextField jTextField_CARDNUMBER;
     private javax.swing.JTextField jTextField_ID;
     private javax.swing.JTextField jTextField_ORIGINALPRICE;
