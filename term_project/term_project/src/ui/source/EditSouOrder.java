@@ -65,7 +65,7 @@ public class EditSouOrder extends javax.swing.JPanel {
         Agency customer = new Agency();
         ArrayList<Agency> CustomerList = customer.customersList();
         
-        String[] colNames = {"Id","Company","Location","Tel","Email"};
+        String[] colNames = {"Id","Name","Location","Tel","Email"};
         Object[][] rows = new Object[CustomerList.size()][5];
         DefaultTableModel model = (DefaultTableModel) jTable_CUSTOMERS_.getModel();
         
@@ -194,7 +194,7 @@ public class EditSouOrder extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Customer ID:");
+        jLabel4.setText("Warehouse:");
 
         jTextField_ORDER_ID.setEditable(false);
         jTextField_ORDER_ID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -218,7 +218,7 @@ public class EditSouOrder extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Id", "Name", "Price", "Quantity", "Quantity X Price"
+                "Id", "Name", "Price", "Quantity", "Total"
             }
         ));
         jScrollPane3.setViewportView(jTable_PRODUCTS_IN_ORDER_);
@@ -269,7 +269,7 @@ public class EditSouOrder extends javax.swing.JPanel {
             }
         });
 
-        jButton_TRANSFER_FROM_PRODUCT_TO_ORDER_.setText(">>>");
+        jButton_TRANSFER_FROM_PRODUCT_TO_ORDER_.setText(">");
         jButton_TRANSFER_FROM_PRODUCT_TO_ORDER_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_TRANSFER_FROM_PRODUCT_TO_ORDER_ActionPerformed(evt);
@@ -290,7 +290,7 @@ public class EditSouOrder extends javax.swing.JPanel {
 
         lblPar1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lblPar1.setForeground(new java.awt.Color(51, 51, 51));
-        lblPar1.setText("Logistic Company:");
+        lblPar1.setText("Warehouse:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -304,17 +304,17 @@ public class EditSouOrder extends javax.swing.JPanel {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton_TRANSFER_FROM_PRODUCT_TO_ORDER_, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblPar1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblCate1)
                                 .addGap(26, 26, 26)
-                                .addComponent(jComboBox_CATEGORIES_, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jComboBox_CATEGORIES_, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton_TRANSFER_FROM_PRODUCT_TO_ORDER_, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -330,10 +330,12 @@ public class EditSouOrder extends javax.swing.JPanel {
                                             .addComponent(jLabel4)
                                             .addComponent(jLabel1)
                                             .addComponent(jLabel3))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jTextField_ORDER_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jTextField_CUSTOMER_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jTextField_ORDER_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(151, 151, 151)
                                 .addComponent(jButton_REMOVE_PRODUCT_FROM_ORDER_TABLEè, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -372,9 +374,9 @@ public class EditSouOrder extends javax.swing.JPanel {
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField_ORDER_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel1)
+                            .addComponent(jTextField_ORDER_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -442,7 +444,7 @@ public class EditSouOrder extends javax.swing.JPanel {
 
         if(jTextField_CUSTOMER_ID.getText().equals(""))
         {
-            JOptionPane.showMessageDialog(null, "Select A Customer To Add The Order", "No Customer Selected", 1);
+            JOptionPane.showMessageDialog(null, "Select A Warehouse To Store The Order", "No Warehouse Selected", 1);
         }
 
         else if(jTable_PRODUCTS_IN_ORDER_.getRowCount() > 0)
