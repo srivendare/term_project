@@ -7,7 +7,7 @@ package ui.source;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Agency;
+import model.Warehouse;
 import model.SourceOrder;
 
 /**
@@ -28,8 +28,8 @@ public class EditSpPane extends javax.swing.JPanel {
         // function to populate the jtable with customers data
     public void populateJtable(){
         
-        Agency customer = new Agency();
-        ArrayList<Agency> CustomerList = customer.customersList();
+        Warehouse customer = new Warehouse();
+        ArrayList<Warehouse> CustomerList = customer.customersList();
         
         String[] colNames = {"Id","Name","Location","Tel","Email"};
         Object[][] rows = new Object[CustomerList.size()][5];
@@ -286,8 +286,8 @@ public class EditSpPane extends javax.swing.JPanel {
             String tel = jTextField_TEL.getText();
             String email = jTextField_EMAIL.getText();
 
-            Agency customer = new Agency(null, fname, lname, tel, email);
-            Agency.insertCustomer(customer);
+            Warehouse customer = new Warehouse(null, fname, lname, tel, email);
+            Warehouse.insertCustomer(customer);
             populateJtable();
         }
     }//GEN-LAST:event_jButton_INSERT_ActionPerformed
@@ -303,8 +303,8 @@ public class EditSpPane extends javax.swing.JPanel {
                 String email = jTextField_EMAIL.getText();
                 Integer id = Integer.valueOf(jTextField_ID.getText());
 
-                Agency customer = new Agency(id, fname, lname, tel, email);
-                Agency.updateCustomer(customer);
+                Warehouse customer = new Warehouse(id, fname, lname, tel, email);
+                Warehouse.updateCustomer(customer);
                 populateJtable();
             }
         }catch(Exception ex){
@@ -317,7 +317,7 @@ public class EditSpPane extends javax.swing.JPanel {
 
         try{
             Integer id = Integer.valueOf(jTextField_ID.getText());
-            Agency.deleteCustomer(id);
+            Warehouse.deleteCustomer(id);
             populateJtable();
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Select an Agency Before Removing", "No Customer Selected", 1);
