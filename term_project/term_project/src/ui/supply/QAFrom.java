@@ -13,7 +13,7 @@ import model.MyTableModel;
 import model.Product;
 
 
-public class MANAGE_PRODUCTS_FORM extends javax.swing.JFrame {
+public class QAFrom extends javax.swing.JFrame {
 
     /**
      * Creates new form MANAGE_PRODUCTS_FORM
@@ -21,7 +21,7 @@ public class MANAGE_PRODUCTS_FORM extends javax.swing.JFrame {
     String imagePth = null;
     Product product;
     
-    public MANAGE_PRODUCTS_FORM() {
+    public QAFrom() {
         
         initComponents();
        
@@ -92,7 +92,6 @@ public class MANAGE_PRODUCTS_FORM extends javax.swing.JFrame {
     private void initComponents() {
 
         addProduct = new javax.swing.JPanel();
-        jButton_INSERT_PRODUCT_ = new javax.swing.JButton();
         jButton_UPDATE_PRODUCT_ = new javax.swing.JButton();
         jButton_DELETE_PRODUCT_ = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -106,20 +105,10 @@ public class MANAGE_PRODUCTS_FORM extends javax.swing.JFrame {
 
         addProduct.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton_INSERT_PRODUCT_.setBackground(new java.awt.Color(30, 130, 76));
-        jButton_INSERT_PRODUCT_.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton_INSERT_PRODUCT_.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_INSERT_PRODUCT_.setText("Add New Product");
-        jButton_INSERT_PRODUCT_.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_INSERT_PRODUCT_ActionPerformed(evt);
-            }
-        });
-
         jButton_UPDATE_PRODUCT_.setBackground(new java.awt.Color(65, 131, 215));
         jButton_UPDATE_PRODUCT_.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton_UPDATE_PRODUCT_.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_UPDATE_PRODUCT_.setText("Edit Selected Product");
+        jButton_UPDATE_PRODUCT_.setText("Update Quality");
         jButton_UPDATE_PRODUCT_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_UPDATE_PRODUCT_ActionPerformed(evt);
@@ -172,8 +161,7 @@ public class MANAGE_PRODUCTS_FORM extends javax.swing.JFrame {
             .addGroup(addProductLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(addProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton_UPDATE_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_INSERT_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_UPDATE_PRODUCT_, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_DELETE_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(56, 56, 56)
                 .addGroup(addProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,10 +187,8 @@ public class MANAGE_PRODUCTS_FORM extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(addProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addProductLayout.createSequentialGroup()
-                        .addComponent(jButton_INSERT_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
                         .addComponent(jButton_UPDATE_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
+                        .addGap(29, 29, 29)
                         .addComponent(jButton_DELETE_PRODUCT_, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(77, Short.MAX_VALUE))
@@ -222,17 +208,6 @@ public class MANAGE_PRODUCTS_FORM extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    // button insert product
-    private void jButton_INSERT_PRODUCT_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_INSERT_PRODUCT_ActionPerformed
-       
-        Add_Product_Form addProductForm = new Add_Product_Form();
-                addProductForm.pack();
-                addProductForm.setVisible(true);
-                addProductForm.setLocationRelativeTo(null);
-                addProductForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
-    }//GEN-LAST:event_jButton_INSERT_PRODUCT_ActionPerformed
-
     // button search
     private void jButton_SEARCH_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SEARCH_ActionPerformed
        
@@ -247,7 +222,7 @@ public class MANAGE_PRODUCTS_FORM extends javax.swing.JFrame {
         try{
 
             // open the edit product form and display data into the fields
-            Edit_Product_Form editProductForm = new Edit_Product_Form();
+            EditQAForm editProductForm = new EditQAForm();
 
             Integer rowIndex = jTable_Products.getSelectedRow();
 
@@ -255,12 +230,14 @@ public class MANAGE_PRODUCTS_FORM extends javax.swing.JFrame {
             editProductForm.jTextField_Name.setText(jTable_Products.getValueAt(rowIndex, 1).toString());
             editProductForm.jTextField_Price.setText(jTable_Products.getValueAt(rowIndex, 2).toString());
             editProductForm.jTextField_Quantity.setText(jTable_Products.getValueAt(rowIndex, 3).toString());
-            editProductForm.jTextField_Description.setText(jTable_Products.getValueAt(rowIndex, 5).toString());
-
+            //editProductForm.jTextField_Description.setText(jTable_Products.getValueAt(rowIndex, 5).toString());
+            
+            
+            //editProductForm.comboQA.setSelectedItem(jTable_Products.getValueAt(rowIndex, 5));
             editProductForm.jComboBox1.setSelectedItem(jTable_Products.getValueAt(rowIndex, 6));
 
             // display the image in jlabel
-             ImageIcon image1 = (ImageIcon)jTable_Products.getValueAt(rowIndex, 4);
+            ImageIcon image1 = (ImageIcon)jTable_Products.getValueAt(rowIndex, 4);
             Image image2 = image1.getImage().getScaledInstance(editProductForm.jLabel_Picture.getWidth(), editProductForm.jLabel_Picture.getHeight()
                      , Image.SCALE_SMOOTH);
             ImageIcon image3 = new ImageIcon(image2);
@@ -313,21 +290,23 @@ public class MANAGE_PRODUCTS_FORM extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MANAGE_PRODUCTS_FORM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QAFrom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MANAGE_PRODUCTS_FORM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QAFrom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MANAGE_PRODUCTS_FORM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QAFrom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MANAGE_PRODUCTS_FORM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QAFrom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MANAGE_PRODUCTS_FORM().setVisible(true);
+                new QAFrom().setVisible(true);
             }
         });
     }
@@ -335,7 +314,6 @@ public class MANAGE_PRODUCTS_FORM extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addProduct;
     private javax.swing.JButton jButton_DELETE_PRODUCT_;
-    private javax.swing.JButton jButton_INSERT_PRODUCT_;
     private javax.swing.JButton jButton_REFRESH_;
     private javax.swing.JButton jButton_SEARCH_;
     private javax.swing.JButton jButton_UPDATE_PRODUCT_;

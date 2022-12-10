@@ -4,6 +4,7 @@
  */
 package ui.supply;
 
+import ui.Login_Form;
 import ui.sysadmin.ManageUser;
 
 /**
@@ -47,8 +48,9 @@ public class SupMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnRequire = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
-        btnSupplier1 = new javax.swing.JButton();
-        btnManage = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        btnQA = new javax.swing.JButton();
+        btnManage1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -75,26 +77,42 @@ public class SupMenu extends javax.swing.JFrame {
         btnLogin.setText("Back");
         btnLogin.setBorderPainted(false);
         btnLogin.setContentAreaFilled(false);
-
-        btnSupplier1.setBackground(new java.awt.Color(255, 255, 255));
-        btnSupplier1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        btnSupplier1.setText("Manage Items");
-        btnSupplier1.setBorderPainted(false);
-        btnSupplier1.setContentAreaFilled(false);
-        btnSupplier1.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSupplier1ActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
 
-        btnManage.setBackground(new java.awt.Color(255, 255, 255));
-        btnManage.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
-        btnManage.setText("Add Product");
-        btnManage.setBorderPainted(false);
-        btnManage.setContentAreaFilled(false);
-        btnManage.addActionListener(new java.awt.event.ActionListener() {
+        btnAdd.setBackground(new java.awt.Color(255, 255, 255));
+        btnAdd.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        btnAdd.setText("Add Items");
+        btnAdd.setBorderPainted(false);
+        btnAdd.setContentAreaFilled(false);
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageActionPerformed(evt);
+                btnAddActionPerformed(evt);
+            }
+        });
+
+        btnQA.setBackground(new java.awt.Color(255, 255, 255));
+        btnQA.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        btnQA.setText("QA Items");
+        btnQA.setBorderPainted(false);
+        btnQA.setContentAreaFilled(false);
+        btnQA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQAActionPerformed(evt);
+            }
+        });
+
+        btnManage1.setBackground(new java.awt.Color(255, 255, 255));
+        btnManage1.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        btnManage1.setText("Manage Items");
+        btnManage1.setBorderPainted(false);
+        btnManage1.setContentAreaFilled(false);
+        btnManage1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManage1ActionPerformed(evt);
             }
         });
 
@@ -105,25 +123,35 @@ public class SupMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnManage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnLogin)
-                            .addComponent(btnRequire, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSupplier1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(btnLogin)
+                        .addContainerGap(82, Short.MAX_VALUE))
+                    .addComponent(btnManage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(btnQA))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(btnRequire)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(140, 140, 140)
+                .addGap(146, 146, 146)
                 .addComponent(btnRequire, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnManage, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSupplier1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
+                .addComponent(btnManage1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnQA, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
                 .addComponent(btnLogin)
                 .addGap(15, 15, 15))
         );
@@ -175,18 +203,30 @@ public class SupMenu extends javax.swing.JFrame {
         splitPane.setRightComponent(viewCate);
     }//GEN-LAST:event_btnRequireActionPerformed
 
-    private void btnSupplier1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplier1ActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         AddProducts addProducts = new AddProducts();
         splitPane.setRightComponent(addProducts.getAddProduct());
         
-    }//GEN-LAST:event_btnSupplier1ActionPerformed
+    }//GEN-LAST:event_btnAddActionPerformed
 
-    private void btnManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageActionPerformed
+    private void btnQAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQAActionPerformed
         // TODO add your handling code here:
-        MANAGE_PRODUCTS_FORM addProducts = new MANAGE_PRODUCTS_FORM();
-        splitPane.setRightComponent(addProducts.getAddProduct());
-    }//GEN-LAST:event_btnManageActionPerformed
+        QAFrom qaProducts = new QAFrom();
+        splitPane.setRightComponent(qaProducts.getAddProduct());
+    }//GEN-LAST:event_btnQAActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new Login_Form().setVisible(true);
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnManage1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManage1ActionPerformed
+        // TODO add your handling code here:
+        ManageProduct manageProduct = new ManageProduct();
+        splitPane.setRightComponent(manageProduct.getAddProduct());
+    }//GEN-LAST:event_btnManage1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,10 +267,11 @@ public class SupMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnLogin;
-    private javax.swing.JButton btnManage;
+    private javax.swing.JButton btnManage1;
+    private javax.swing.JButton btnQA;
     private javax.swing.JButton btnRequire;
-    private javax.swing.JButton btnSupplier1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

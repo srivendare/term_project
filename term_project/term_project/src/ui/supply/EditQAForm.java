@@ -6,6 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Category;
 import model.Myfunc;
@@ -21,21 +23,34 @@ import model.Product;
  *
  * @author 1BestCsharp
  */
-public class Add_Product_Form extends javax.swing.JFrame {
+public class EditQAForm extends javax.swing.JFrame {
 
     /**
-     * Creates new form Add_Product_Form
+     * Creates new form EDIT_PRODUCT_FORM
      */
     
     // get the image path
     String imagePth = null;
-    public Add_Product_Form() {
+    
+    // get the id of the product to edit from the manage product form
+    public Integer productId;
+    
+    public EditQAForm() {
         initComponents();
         
         // populate the combobox with key and value
         BindCombo();
-        jTextField_Description.setText("pending");
-        jTextField_Description.setEnabled(false);;
+        jComboBox1.setEditable(false);
+        jComboBox1.setEnabled(false);
+        jTextField_Name.setEditable(false);
+        jTextField_Name.setEnabled(false);
+        jTextField_Quantity.setEditable(false);
+        jTextField_Quantity.setEnabled(false);
+        jTextField_Price.setEditable(false);
+        jTextField_Price.setEnabled(false);
+
+        jButton_BROWSE_PIC.setBorderPainted( false );
+        jButton_BROWSE_PIC.setFocusPainted( false );
     }
 
     /**
@@ -49,7 +64,6 @@ public class Add_Product_Form extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField_Description = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jTextField_Price = new javax.swing.JTextField();
@@ -60,9 +74,10 @@ public class Add_Product_Form extends javax.swing.JFrame {
         jLabel_Picture = new javax.swing.JLabel();
         jButton_BROWSE_PIC = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton_ADD_PRODUCT = new javax.swing.JButton();
+        jButton_EDIT_PRODUCT = new javax.swing.JButton();
         jButton_CANCEL = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        comboQA = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,9 +85,7 @@ public class Add_Product_Form extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("Description:");
-
-        jTextField_Description.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("QA Result:");
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
@@ -84,7 +97,6 @@ public class Add_Product_Form extends javax.swing.JFrame {
 
         jTextField_Price.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Quantity:");
@@ -108,20 +120,19 @@ public class Add_Product_Form extends javax.swing.JFrame {
         jLabel_Picture.setOpaque(true);
 
         jButton_BROWSE_PIC.setText("Select a Picture");
-        jButton_BROWSE_PIC.setToolTipText("");
         jButton_BROWSE_PIC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_BROWSE_PICActionPerformed(evt);
             }
         });
 
-        jButton_ADD_PRODUCT.setBackground(new java.awt.Color(30, 130, 76));
-        jButton_ADD_PRODUCT.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton_ADD_PRODUCT.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_ADD_PRODUCT.setText("Add");
-        jButton_ADD_PRODUCT.addActionListener(new java.awt.event.ActionListener() {
+        jButton_EDIT_PRODUCT.setBackground(new java.awt.Color(65, 131, 215));
+        jButton_EDIT_PRODUCT.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton_EDIT_PRODUCT.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_EDIT_PRODUCT.setText("Update QA");
+        jButton_EDIT_PRODUCT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_ADD_PRODUCTActionPerformed(evt);
+                jButton_EDIT_PRODUCTActionPerformed(evt);
             }
         });
 
@@ -136,50 +147,50 @@ public class Add_Product_Form extends javax.swing.JFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Picture:");
+
+        comboQA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "quality_approved", "quality_reject", "pending" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField_Description, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField_Quantity)
-                                    .addComponent(jTextField_Price)
-                                    .addComponent(jTextField_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton_BROWSE_PIC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                                    .addComponent(jLabel_Picture, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton_CANCEL, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton_ADD_PRODUCT, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(comboQA, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField_Quantity)
+                            .addComponent(jTextField_Price)
+                            .addComponent(jTextField_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jButton_CANCEL, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                            .addComponent(jButton_EDIT_PRODUCT, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(32, 32, 32))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton_BROWSE_PIC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                                .addComponent(jLabel_Picture, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +199,7 @@ public class Add_Product_Form extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jComboBox1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextField_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -200,21 +211,21 @@ public class Add_Product_Form extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jTextField_Price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField_Description, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                    .addComponent(comboQA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel_Picture, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addComponent(jButton_BROWSE_PIC)
-                .addGap(64, 64, 64)
+                .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_ADD_PRODUCT, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_CANCEL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(43, 43, 43))
+                    .addComponent(jButton_EDIT_PRODUCT)
+                    .addComponent(jButton_CANCEL))
+                .addGap(45, 45, 45))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -231,75 +242,8 @@ public class Add_Product_Form extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    // browse image button
-    private void jButton_BROWSE_PICActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BROWSE_PICActionPerformed
+    // create the methode to fill combobox with keys and values
 
-        Myfunc mf = new Myfunc();
-       imagePth = mf.browseImage(jLabel_Picture);
-       System.out.println(imagePth);
-        
-    }//GEN-LAST:event_jButton_BROWSE_PICActionPerformed
-
-    // button insert
-    private void jButton_ADD_PRODUCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ADD_PRODUCTActionPerformed
-       
-        Product product;
-        Category category = new Category();
-
-        HashMap<String, Integer> map = category.populateCombo();
-
-        String name = jTextField_Name.getText();
-        String price;
-        String description = "pending";
-        Integer quantity;
-        Integer catId;
-        
-        byte[] img;
-        if(imagePth != null){
-        try {
-            if(verifFields())
-            {
-                quantity = Integer.valueOf(jTextField_Quantity.getText());
-                
-                // get the category id
-                catId = map.get(jComboBox1.getSelectedItem().toString());
-                price = jTextField_Price.getText();
-
-                 Path path = Paths.get(imagePth);
-                 img = Files.readAllBytes(path);
-
-                 product = new Product(null,name,catId,price,img,quantity,description,null);
-
-                 Product.insertProduct(product);
-            }
-        }
-        catch (IOException ex) {
-            JOptionPane.showMessageDialog(null,ex.getMessage());
-        }
-        }else{
-            JOptionPane.showMessageDialog(null, "You Must Select A Profile Picture");
-        }
-
-    }//GEN-LAST:event_jButton_ADD_PRODUCTActionPerformed
-
-    // close the button
-    private void jButton_CANCELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CANCELActionPerformed
-        
-        System.exit(0);
-        
-    }//GEN-LAST:event_jButton_CANCELActionPerformed
-
-    // Allow OnLy Numbers on key typed
-    private void jTextField_QuantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_QuantityKeyTyped
-       
-        if(!Character.isDigit(evt.getKeyChar())){
-            evt.consume();
-        }
-    }//GEN-LAST:event_jTextField_QuantityKeyTyped
-
-    
-    
-    // create a methode to fill combobox with keys and values
     public void BindCombo(){
 
         Category category = new Category();
@@ -314,6 +258,85 @@ public class Add_Product_Form extends javax.swing.JFrame {
 
     }
 
+    // browse image button
+    private void jButton_BROWSE_PICActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BROWSE_PICActionPerformed
+
+        Myfunc mf = new Myfunc();
+        imagePth = mf.browseImage(jLabel_Picture);
+        System.out.println(imagePth);
+
+    }//GEN-LAST:event_jButton_BROWSE_PICActionPerformed
+    
+    // update product
+    private void jButton_EDIT_PRODUCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EDIT_PRODUCTActionPerformed
+
+        Product product;
+        Category category = new Category();
+
+        HashMap<String, Integer> map = category.populateCombo();
+        
+        
+        String name = jTextField_Name.getText();
+        
+        String price;
+        String selectQA = comboQA.getSelectedItem().toString();
+        String description = selectQA;
+        Integer quantity;
+        Integer catId;
+
+        byte[] img;
+        if(imagePth != null){// update the image to
+            try {
+                    if(verifFields())
+                    {
+                        Path path = Paths.get(imagePth);
+                        img = Files.readAllBytes(path);
+
+                        quantity = Integer.valueOf(jTextField_Quantity.getText());
+                        
+                        // get the category id
+                        catId = map.get(jComboBox1.getSelectedItem().toString());
+                        price = jTextField_Price.getText();
+
+                        product = new Product(productId,name,catId,price,img,quantity,description,null);
+
+                        Product.updateProduct(product, true);   
+                    }
+                
+            }
+            catch (IOException ex) {
+                Logger.getLogger(EditQAForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{ // not updating the image to
+             if(verifFields())
+                    {
+                        quantity = Integer.valueOf(jTextField_Quantity.getText());
+                        catId = map.get(jComboBox1.getSelectedItem().toString());
+                        price = jTextField_Price.getText();
+
+                        product = new Product(productId,name,catId,price,null,quantity,description,null);
+                        Product.updateProduct(product, false);
+                    }
+        }
+
+    }//GEN-LAST:event_jButton_EDIT_PRODUCTActionPerformed
+
+    private void jButton_CANCELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CANCELActionPerformed
+
+        System.exit(0);
+
+    }//GEN-LAST:event_jButton_CANCELActionPerformed
+
+    // Allow OnLy Numbers on key typed
+    private void jTextField_QuantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_QuantityKeyTyped
+        
+        if(!Character.isDigit(evt.getKeyChar())){
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_jTextField_QuantityKeyTyped
+
+    
     // verify the empty fields
     public boolean verifFields()
     {
@@ -336,8 +359,6 @@ public class Add_Product_Form extends javax.swing.JFrame {
     }
     
     
-
-   
     /**
      * @param args the command line arguments
      */
@@ -355,41 +376,47 @@ public class Add_Product_Form extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Add_Product_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditQAForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Add_Product_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditQAForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Add_Product_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditQAForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Add_Product_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditQAForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Add_Product_Form().setVisible(true);
+                new EditQAForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_ADD_PRODUCT;
+    private javax.swing.JComboBox<String> comboQA;
     private javax.swing.JButton jButton_BROWSE_PIC;
     private javax.swing.JButton jButton_CANCEL;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButton_EDIT_PRODUCT;
+    public javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel_Picture;
+    public javax.swing.JLabel jLabel_Picture;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField_Description;
-    private javax.swing.JTextField jTextField_Name;
-    private javax.swing.JTextField jTextField_Price;
-    private javax.swing.JTextField jTextField_Quantity;
+    public javax.swing.JTextField jTextField_Name;
+    public javax.swing.JTextField jTextField_Price;
+    public javax.swing.JTextField jTextField_Quantity;
     // End of variables declaration//GEN-END:variables
 }
