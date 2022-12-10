@@ -18,7 +18,7 @@ import model.Category;
 import model.TableModel;
 import model.Product;
 import model.SourceOrder;
-import model.Agency;
+import model.Warehouse;
 
 /**
  *
@@ -62,8 +62,8 @@ public class EditSouOrder extends javax.swing.JPanel {
     // populate the customers jtable
     public void populateCustomerJtable(){
         
-        Agency customer = new Agency();
-        ArrayList<Agency> CustomerList = customer.customersList();
+        Warehouse customer = new Warehouse();
+        ArrayList<Warehouse> CustomerList = customer.customersList();
         
         String[] colNames = {"Id","Name","Location","Tel","Email"};
         Object[][] rows = new Object[CustomerList.size()][5];
