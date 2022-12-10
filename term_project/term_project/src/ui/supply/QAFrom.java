@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.JTableHeader;
-import model.MyTableModel;
+import model.TableModel;
 import model.Product;
 
 
@@ -72,7 +72,7 @@ public class QAFrom extends javax.swing.JFrame {
 
         }
         
-        MyTableModel mmd = new MyTableModel(rows, colNames);
+        TableModel mmd = new TableModel(rows, colNames);
         jTable_Products.setModel(mmd);
         jTable_Products.setRowHeight(80);
         jTable_Products.getColumnModel().getColumn(5).setPreferredWidth(150);

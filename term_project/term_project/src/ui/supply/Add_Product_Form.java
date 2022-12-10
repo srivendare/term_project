@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import model.Category;
-import model.Myfunc;
+import model.Imagefunc;
 import model.Product;
 
 /*
@@ -234,7 +234,7 @@ public class Add_Product_Form extends javax.swing.JFrame {
     // browse image button
     private void jButton_BROWSE_PICActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BROWSE_PICActionPerformed
 
-        Myfunc mf = new Myfunc();
+        Imagefunc mf = new Imagefunc();
        imagePth = mf.browseImage(jLabel_Picture);
        System.out.println(imagePth);
         
