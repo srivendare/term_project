@@ -11,7 +11,7 @@ import ui.sysadmin.ManageUser;
  *
  * @author ruishang
  */
-public class SupMenu extends javax.swing.JFrame {
+public class SupQAMenu extends javax.swing.JFrame {
 
     /**
      * @return the splitPane
@@ -31,7 +31,7 @@ public class SupMenu extends javax.swing.JFrame {
      * Creates new form Home
      */
     
-    public SupMenu() {
+    public SupQAMenu() {
         initComponents();
     }
 
@@ -48,9 +48,7 @@ public class SupMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnRequire = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
-        btnAdd = new javax.swing.JButton();
         btnQA = new javax.swing.JButton();
-        btnManage1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -83,17 +81,6 @@ public class SupMenu extends javax.swing.JFrame {
             }
         });
 
-        btnAdd.setBackground(new java.awt.Color(255, 255, 255));
-        btnAdd.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
-        btnAdd.setText("Add Items");
-        btnAdd.setBorderPainted(false);
-        btnAdd.setContentAreaFilled(false);
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
-
         btnQA.setBackground(new java.awt.Color(255, 255, 255));
         btnQA.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         btnQA.setText("QA Items");
@@ -102,17 +89,6 @@ public class SupMenu extends javax.swing.JFrame {
         btnQA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnQAActionPerformed(evt);
-            }
-        });
-
-        btnManage1.setBackground(new java.awt.Color(255, 255, 255));
-        btnManage1.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
-        btnManage1.setText("Manage Items");
-        btnManage1.setBorderPainted(false);
-        btnManage1.setContentAreaFilled(false);
-        btnManage1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManage1ActionPerformed(evt);
             }
         });
 
@@ -125,33 +101,22 @@ public class SupMenu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnLogin)
-                        .addContainerGap(82, Short.MAX_VALUE))
-                    .addComponent(btnManage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 76, Short.MAX_VALUE))
+                    .addComponent(btnQA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btnQA))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(btnRequire)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addComponent(btnRequire, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(146, 146, 146)
+                .addGap(140, 140, 140)
                 .addComponent(btnRequire, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnManage1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnQA, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 352, Short.MAX_VALUE)
                 .addComponent(btnLogin)
                 .addGap(15, 15, 15))
         );
@@ -203,13 +168,6 @@ public class SupMenu extends javax.swing.JFrame {
         splitPane.setRightComponent(viewCate);
     }//GEN-LAST:event_btnRequireActionPerformed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-        AddProducts addProducts = new AddProducts();
-        splitPane.setRightComponent(addProducts.getAddProduct());
-        
-    }//GEN-LAST:event_btnAddActionPerformed
-
     private void btnQAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQAActionPerformed
         // TODO add your handling code here:
         QAFrom qaProducts = new QAFrom();
@@ -221,10 +179,6 @@ public class SupMenu extends javax.swing.JFrame {
         setVisible(false);
         new Login_Form().setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
-
-    private void btnManage1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManage1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnManage1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,14 +197,18 @@ public class SupMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SupMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SupQAMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SupMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SupQAMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SupMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SupQAMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SupMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SupQAMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -259,15 +217,13 @@ public class SupMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SupMenu().setVisible(true);
+                new SupQAMenu().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnLogin;
-    private javax.swing.JButton btnManage1;
     private javax.swing.JButton btnQA;
     private javax.swing.JButton btnRequire;
     private javax.swing.JLabel jLabel1;

@@ -89,7 +89,7 @@ public class EditSouOrder extends javax.swing.JPanel {
         Product prd = new Product();
         ArrayList<Product> ProductList = prd.productsInCategoryList(categoryId);
         
-        String[] colNames = {"Id","Name","Price","Quantity","Image","Description"};
+        String[] colNames = {"Id","Name","Price","Quantity","Image","QA Result"};
         Object[][] rows = new Object[ProductList.size()][7];
         
         for(int i = 0; i < ProductList.size(); i++){
@@ -159,8 +159,10 @@ public class EditSouOrder extends javax.swing.JPanel {
         jButton_REMOVE_PRODUCT_FROM_ORDER_TABLEè = new javax.swing.JButton();
         jButton_CLEAR_ORDER_TABLE_ = new javax.swing.JButton();
         jButton_TRANSFER_FROM_PRODUCT_TO_ORDER_ = new javax.swing.JButton();
-        lblCate = new javax.swing.JLabel();
+        lblPar = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        lblCate1 = new javax.swing.JLabel();
+        lblPar1 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -274,13 +276,21 @@ public class EditSouOrder extends javax.swing.JPanel {
             }
         });
 
-        lblCate.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lblCate.setForeground(new java.awt.Color(51, 51, 51));
-        lblCate.setText("Category:");
+        lblPar.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblPar.setForeground(new java.awt.Color(51, 51, 51));
+        lblPar.setText("Current Order Info:");
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Place A Order");
+
+        lblCate1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblCate1.setForeground(new java.awt.Color(51, 51, 51));
+        lblCate1.setText("Category:");
+
+        lblPar1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblPar1.setForeground(new java.awt.Color(51, 51, 51));
+        lblPar1.setText("Logistic Company:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -290,40 +300,45 @@ public class EditSouOrder extends javax.swing.JPanel {
                 .addGap(70, 70, 70)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton_TRANSFER_FROM_PRODUCT_TO_ORDER_, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel5)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblCate)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox_CATEGORIES_, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton_INSERT_ORDER_)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_CLEAR_ORDER_TABLE_, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton_SHOW_ORDERS_, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton_TRANSFER_FROM_PRODUCT_TO_ORDER_, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblPar1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblCate1)
+                                .addGap(26, 26, 26)
+                                .addComponent(jComboBox_CATEGORIES_, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField_ORDER_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_CUSTOMER_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(151, 151, 151)
-                .addComponent(jButton_REMOVE_PRODUCT_FROM_ORDER_TABLEè, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButton_INSERT_ORDER_)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton_CLEAR_ORDER_TABLE_, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButton_SHOW_ORDERS_, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jLabel3))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jTextField_ORDER_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextField_CUSTOMER_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(151, 151, 151)
+                                .addComponent(jButton_REMOVE_PRODUCT_FROM_ORDER_TABLEè, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblPar))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,9 +350,11 @@ public class EditSouOrder extends javax.swing.JPanel {
                 .addGap(0, 17, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox_CATEGORIES_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCate))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox_CATEGORIES_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCate1))
+                    .addComponent(lblPar))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(104, 104, 104)
@@ -347,9 +364,9 @@ public class EditSouOrder extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField_CUSTOMER_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
@@ -361,15 +378,18 @@ public class EditSouOrder extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton_INSERT_ORDER_)
                             .addComponent(jButton_SHOW_ORDERS_)
                             .addComponent(jButton_CLEAR_ORDER_TABLE_))
                         .addGap(54, 54, 54))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblPar1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36))))
+                        .addGap(18, 18, 18))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -607,6 +627,8 @@ public class EditSouOrder extends javax.swing.JPanel {
     private javax.swing.JTable jTable_PRODUCTS_IN_ORDER_;
     private javax.swing.JTextField jTextField_CUSTOMER_ID;
     private javax.swing.JTextField jTextField_ORDER_ID;
-    private javax.swing.JLabel lblCate;
+    private javax.swing.JLabel lblCate1;
+    private javax.swing.JLabel lblPar;
+    private javax.swing.JLabel lblPar1;
     // End of variables declaration//GEN-END:variables
 }

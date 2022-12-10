@@ -4,6 +4,7 @@
  */
 package ui.source.orgpenal;
 
+import ui.Login_Form;
 import ui.supply.MANAGE_PRODUCTS_FORM;
 import ui.source.EditCate;
 import ui.source.EditOrders;
@@ -85,6 +86,11 @@ public class CateMenu extends javax.swing.JFrame {
         btnLogin.setText("Back");
         btnLogin.setBorderPainted(false);
         btnLogin.setContentAreaFilled(false);
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -165,6 +171,12 @@ public class CateMenu extends javax.swing.JFrame {
         EditCate editCate = new EditCate();
         splitPane.setRightComponent(editCate);
     }//GEN-LAST:event_btnCate1ActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new Login_Form().setVisible(true);
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
