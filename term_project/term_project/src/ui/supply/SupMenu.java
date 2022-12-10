@@ -224,6 +224,8 @@ public class SupMenu extends javax.swing.JFrame {
 
     private void btnManage1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManage1ActionPerformed
         // TODO add your handling code here:
+        ManageProduct manageProduct = new ManageProduct();
+        splitPane.setRightComponent(manageProduct.getAddProduct());
     }//GEN-LAST:event_btnManage1ActionPerformed
 
     /**
