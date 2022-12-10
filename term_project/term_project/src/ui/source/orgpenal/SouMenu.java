@@ -63,7 +63,7 @@ public class SouMenu extends javax.swing.JFrame {
 
         btnPurchaser.setBackground(new java.awt.Color(255, 255, 255));
         btnPurchaser.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        btnPurchaser.setText("Partner");
+        btnPurchaser.setText("Warehouse");
         btnPurchaser.setBorderPainted(false);
         btnPurchaser.setContentAreaFilled(false);
         btnPurchaser.addActionListener(new java.awt.event.ActionListener() {
