@@ -6,14 +6,14 @@ import javax.swing.table.AbstractTableModel;
 
 
 // create a table model to display the products images in jtable
-public class MyTableModel extends AbstractTableModel {
+public class TableModel extends AbstractTableModel {
 
     private String[] columns;
     private Object[][] rows;
     
-    public MyTableModel(){}
+    public TableModel(){}
     
-    public MyTableModel(Object[][] data, String[] columnsName){
+    public TableModel(Object[][] data, String[] columnsName){
         this.columns = columnsName;
         this.rows = data;
     }
