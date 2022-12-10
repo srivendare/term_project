@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import model.Category;
-import model.MyTableModel;
+import model.TableModel;
 import model.Product;
 
 /**
@@ -447,7 +447,7 @@ public class EditCate extends javax.swing.JPanel {
                 rows[i][5] = ProductList.get(i).getDescription();
             }
 
-            MyTableModel mmd = new MyTableModel(rows, colNames);
+            TableModel mmd = new TableModel(rows, colNames);
             productsInCategoryForm.jTable_PRODUCTS_IN_CATEGORY.setModel(mmd);
             productsInCategoryForm.jTable_PRODUCTS_IN_CATEGORY.setRowHeight(80);
             productsInCategoryForm.jTable_PRODUCTS_IN_CATEGORY.getColumnModel().getColumn(5).setPreferredWidth(150);
