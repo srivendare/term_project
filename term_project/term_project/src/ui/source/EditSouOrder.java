@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Category;
-import model.MyTableModel;
+import model.TableModel;
 import model.Product;
 import model.SourceOrder;
 import model.Agency;
@@ -109,7 +109,7 @@ public class EditSouOrder extends javax.swing.JPanel {
 
         }
         
-        MyTableModel mmd = new MyTableModel(rows, colNames);
+        TableModel mmd = new TableModel(rows, colNames);
         jTable_PRODUCTS_.setModel(mmd);
         jTable_PRODUCTS_.setRowHeight(80);
         jTable_PRODUCTS_.getColumnModel().getColumn(0).setPreferredWidth(50);

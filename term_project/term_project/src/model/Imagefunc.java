@@ -7,7 +7,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class Myfunc {
+public class Imagefunc {
 
 
     public ImageIcon resizePic(String picPath,byte[] BLOBpic, int wdth, int hgt){
@@ -41,13 +41,8 @@ public class Myfunc {
         if(fileState == JFileChooser.APPROVE_OPTION){
             
             File selectedFile = filec.getSelectedFile();
-            path = selectedFile.getAbsolutePath();
-//            imagePth = path;
-//             display the image in the jlabel using resize image
-            
+            path = selectedFile.getAbsolutePath();          
             lbl.setIcon(resizePic(path,null, lbl.getWidth(),lbl.getHeight()));
-            
-            //jLabelPic.setIcon(new ImageIcon(path));
             
         }
         // if the user cancel
