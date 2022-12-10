@@ -35,7 +35,7 @@ public class AddProducts extends javax.swing.JFrame {
         
         JTableHeader th = jTable_Products.getTableHeader();
 
-        th.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        th.setFont(new Font("Tahoma", Font.PLAIN, 12));
     }
     
     
@@ -51,7 +51,7 @@ public class AddProducts extends javax.swing.JFrame {
         Product prd = new Product();
         ArrayList<Product> ProductList = prd.productsList(val);
         
-        String[] colNames = {"Id","Name","Price","Quantity","Image","Description","Category"};
+        String[] colNames = {"Id","Name","Price","Quantity","Image","QA Result","Category"};
         Object[][] rows = new Object[ProductList.size()][7];
         
         for(int i = 0; i < ProductList.size(); i++){
@@ -165,7 +165,7 @@ public class AddProducts extends javax.swing.JFrame {
         addProductLayout.setVerticalGroup(
             addProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addProductLayout.createSequentialGroup()
-                .addContainerGap(81, Short.MAX_VALUE)
+                .addGap(81, 81, 81)
                 .addGroup(addProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_SEARCH_)
                     .addComponent(jTextField_VALUE_TO_SEARCH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

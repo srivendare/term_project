@@ -20,6 +20,8 @@ import ui.analyse.AnalyseMenu;
 import ui.source.orgpenal.CateMenu;
 import ui.source.orgpenal.PurMenu;
 import ui.source.orgpenal.SouMenu;
+import ui.supply.SupQAMenu;
+import ui.supply.SupSpMenu;
 
 
 
@@ -241,14 +243,36 @@ public class Login_Form extends javax.swing.JFrame {
                 } else {
                      String selectEntr = comboEntr.getSelectedItem().toString();
                      if(rs.getString("enterprise").equals("supply")&& rs.getString("enterprise").equals(selectEntr)){
-                         SupMenu supAdmin = new SupMenu();
-                         supAdmin.pack();
-                         supAdmin.setExtendedState(supAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
-                         Dimension r = supAdmin.getBounds().getSize();
-                         supAdmin.setVisible(true);
-                         supAdmin.setLocationRelativeTo(null);
-                         supAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                         System.out.println("supply is comming soon");
+                         if(rs.getString("organization").equals("management")){
+                            SupMenu supAdmin = new SupMenu();
+                            supAdmin.pack();
+                            supAdmin.setExtendedState(supAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                            Dimension r = supAdmin.getBounds().getSize();
+                            supAdmin.setVisible(true);
+                            supAdmin.setLocationRelativeTo(null);
+                            supAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                            System.out.println("supply Manager Here");
+                         } else if (rs.getString("organization").equals("specialist")){
+                             SupSpMenu supSp = new SupSpMenu();
+                             supSp.pack();
+                             supSp.setExtendedState(supSp.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                             Dimension r = supSp.getBounds().getSize();
+                             supSp.setVisible(true);
+                             supSp.setLocationRelativeTo(null);
+                             supSp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                             System.out.println("supply Specialist Here");
+                         } else if (rs.getString("organization").equals("quality")){
+                             SupQAMenu supQA = new SupQAMenu();
+                             supQA.pack();
+                             supQA.setExtendedState(supQA.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                             Dimension r = supQA.getBounds().getSize();
+                             supQA.setVisible(true);
+                             supQA.setLocationRelativeTo(null);
+                             supQA.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                             System.out.println("supply QA Here");
+                         } else {
+                         JOptionPane.showMessageDialog(null, "Please enter correct user info","Login Error",2);
+                         };
                      } else if(rs.getString("enterprise").equals("source")&& rs.getString("enterprise").equals(selectEntr)){
                          if(rs.getString("organization").equals("management")){
                             setVisible(false);
