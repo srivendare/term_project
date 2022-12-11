@@ -59,7 +59,6 @@ public class Login_Form extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         txtPw = new javax.swing.JPasswordField();
         jButton_LOGIN = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         lblPw1 = new javax.swing.JLabel();
         comboEntr = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -110,18 +109,6 @@ public class Login_Form extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Become a member?");
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setFocusCycleRoot(true);
-        jButton1.setFocusTraversalKeysEnabled(false);
-        jButton1.setFocusable(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         lblPw1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblPw1.setForeground(new java.awt.Color(51, 51, 51));
         lblPw1.setText("Enterprise:");
@@ -139,9 +126,7 @@ public class Login_Form extends javax.swing.JFrame {
             LoginPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LoginPaneLayout.createSequentialGroup()
                 .addGap(137, 137, 137)
-                .addGroup(LoginPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton_LOGIN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButton_LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginPaneLayout.createSequentialGroup()
                 .addContainerGap(86, Short.MAX_VALUE)
@@ -183,8 +168,6 @@ public class Login_Form extends javax.swing.JFrame {
                     .addComponent(comboEntr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(jButton_LOGIN)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -323,6 +306,7 @@ public class Login_Form extends javax.swing.JFrame {
                      } else if (rs.getString("enterprise").equals("data") && rs.getString("enterprise").equals(selectEntr)){
                          switch(rs.getString("organization")) {
                              case "analysisdepartment":
+                                 setVisible(false);
                                  AnalyseMenu dataAdmin = new AnalyseMenu();
                                  dataAdmin.pack();
                                  dataAdmin.setExtendedState(dataAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
@@ -332,6 +316,7 @@ public class Login_Form extends javax.swing.JFrame {
                                  dataAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                                  break;
                              case "strategydepartment":
+                                 setVisible(false);
                                  StrategyMenu strategyMenu = new StrategyMenu();
                                  strategyMenu.pack();
                                  strategyMenu.setExtendedState(strategyMenu.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
@@ -361,11 +346,6 @@ public class Login_Form extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_jButton_LOGINActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Comming Soon!", "Warning", JOptionPane.WARNING_MESSAGE);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void comboEntrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEntrActionPerformed
         // TODO add your handling code here:
@@ -418,7 +398,6 @@ public class Login_Form extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel LoginPane;
     private javax.swing.JComboBox<String> comboEntr;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_LOGIN;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblName;
