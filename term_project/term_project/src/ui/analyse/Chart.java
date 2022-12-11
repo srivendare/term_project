@@ -213,12 +213,12 @@ public ChartPanel getSalesVolumeChart(){
   public ChartPanel getStrategy(){
         DefaultXYDataset xydataset = getXYDataset();
         JFreeChart chart = ChartFactory.createScatterPlot("strategy", "Time", "Exception", xydataset,
-                PlotOrientation.VERTICAL, true, true, false);//设置表头，x轴，y轴，name表示问题的类型
+                PlotOrientation.VERTICAL, true, true, false);
 
         XYPlot xyplot = (XYPlot) chart.getPlot();
-        xyplot.setBackgroundPaint(Color.white);//设置背景面板颜色
+        xyplot.setBackgroundPaint(Color.white);
         ValueAxis vaaxis = xyplot.getDomainAxis();
-        vaaxis.setAxisLineStroke(new BasicStroke(1.5f));//设置坐标轴粗细
+        vaaxis.setAxisLineStroke(new BasicStroke(1.5f));
 
         
         ChartPanel frame1=new ChartPanel (chart,true);
@@ -228,7 +228,7 @@ public ChartPanel getSalesVolumeChart(){
 
     private DefaultXYDataset getXYDataset() {
         DefaultXYDataset xydataset = new DefaultXYDataset();
-        double[][] data = new double[16][16];
+        double[][] data = new double[2][16];
         String query = "SELECT IFNULL(sum(d.total),0),c.`name` FROM\n" +
 "category c \n" +
 "LEFT JOIN product p ON c.id = p.category_id\n" +
@@ -248,7 +248,7 @@ public ChartPanel getSalesVolumeChart(){
                     if (i*j >= result.size()) {
                         data[i][j] = 0;
                     }else{ 
-                        data[i][j] = (double)result.get(i*j);
+                        data[i][j] = Double.valueOf(result.get(i*j)+"");
                     }
                 }
             }   
@@ -256,7 +256,7 @@ public ChartPanel getSalesVolumeChart(){
             Logger.getLogger(Chart.class.getName()).log(Level.SEVERE, null, e);
         }
 
-        xydataset.addSeries("title", data);//设置点的图标title一般表示这画的是决策变量还是目标函数值
+        xydataset.addSeries("title", data);
         return xydataset;
     }
 }
