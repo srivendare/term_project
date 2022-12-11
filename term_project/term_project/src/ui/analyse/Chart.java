@@ -4,6 +4,8 @@
  */
 package ui.analyse;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +16,7 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Category;
@@ -37,6 +40,7 @@ import org.jfree.data.time.RegularTimePeriod;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.time.TimeSeriesDataItem;
+import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
 
 /**
@@ -197,13 +201,62 @@ public ChartPanel getSalesVolumeChart(){
 	  
 	      pieplot.setIgnoreNullValues(true);
 	      pieplot.setIgnoreZeroValues(true);
-	     ChartPanel frame1=new ChartPanel (chart,true);
+	      ChartPanel frame1=new ChartPanel (chart,true);
 	      chart.getTitle().setFont(new Font("宋体",Font.BOLD,20));
 	      PiePlot piePlot= (PiePlot) chart.getPlot();
 	      piePlot.setLabelFont(new Font("宋体",Font.BOLD,10));
 	      chart.getLegend().setItemFont(new Font("黑体",Font.BOLD,10));
               return frame1;
+              
+  }
+  
+  public ChartPanel getStrategy(){
+        DefaultXYDataset xydataset = getXYDataset();
+        JFreeChart chart = ChartFactory.createScatterPlot("strategy", "Time", "Exception", xydataset,
+                PlotOrientation.VERTICAL, true, true, false);//设置表头，x轴，y轴，name表示问题的类型
 
+        XYPlot xyplot = (XYPlot) chart.getPlot();
+        xyplot.setBackgroundPaint(Color.white);//设置背景面板颜色
+        ValueAxis vaaxis = xyplot.getDomainAxis();
+        vaaxis.setAxisLineStroke(new BasicStroke(1.5f));//设置坐标轴粗细
+
+        
+        ChartPanel frame1=new ChartPanel (chart,true);
+        return frame1;
   
   }
+
+    private DefaultXYDataset getXYDataset() {
+        DefaultXYDataset xydataset = new DefaultXYDataset();
+        double[][] data = new double[16][16];
+        String query = "SELECT IFNULL(sum(d.total),0),c.`name` FROM\n" +
+"category c \n" +
+"LEFT JOIN product p ON c.id = p.category_id\n" +
+"LEFT JOIN order_detail d ON p.id = d.product_id\n" +
+"LEFT JOIN order_tbl t ON t.id = d.order_id\n" +
+"WHERE  DATE_FORMAT(t.`order_date`,'%Y-%m') <= '2022-12' \n" +
+"AND  DATE_FORMAT(t.`order_date`,'%Y-%m') >= '2022-01' \n" +
+"GROUP BY c.`name`;";
+        try {
+            ResultSet rs = queryDataResult(query);
+            ArrayList result = new ArrayList<>();
+            while(rs.next()){
+                result.add(rs.getInt(1));
+            }
+            for (int i = 0; i < data.length; i++) {
+                for (int j = 0; j < data[i].length; j++) {
+                    if (i*j >= result.size()) {
+                        data[i][j] = 0;
+                    }else{ 
+                        data[i][j] = (double)result.get(i*j);
+                    }
+                }
+            }   
+        } catch (Exception e) {
+            Logger.getLogger(Chart.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        xydataset.addSeries("title", data);//设置点的图标title一般表示这画的是决策变量还是目标函数值
+        return xydataset;
+    }
 }
