@@ -246,7 +246,7 @@ public class Login_Form extends javax.swing.JFrame {
                             supAdmin.setLocationRelativeTo(null);
                             supAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                             System.out.println("supply Manager Here");
-                         } else if (rs.getString("organization").equals("specialist")){
+                         } else if (rs.getString("organization").equals("supplier")){
                              SupSpMenu supSp = new SupSpMenu();
                              supSp.pack();
                              supSp.setExtendedState(supSp.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
