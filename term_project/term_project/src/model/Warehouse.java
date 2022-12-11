@@ -74,8 +74,8 @@ public class Warehouse {
         this.email = email;
     }
     
-    // get the customers list
-    public ArrayList<Warehouse> customersList(){
+
+    public ArrayList<Warehouse> warehouseList(){
         
         ArrayList<Warehouse> customer_list = new ArrayList<>();
         connection = DB_INFO.getConnection();
