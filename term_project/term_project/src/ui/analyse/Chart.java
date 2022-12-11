@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Category;
@@ -32,6 +33,8 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.category.LineAndShapeRenderer;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
@@ -211,52 +214,45 @@ public ChartPanel getSalesVolumeChart(){
   }
   
   public ChartPanel getStrategy(){
-        DefaultXYDataset xydataset = getXYDataset();
-        JFreeChart chart = ChartFactory.createScatterPlot("strategy", "Time", "Exception", xydataset,
-                PlotOrientation.VERTICAL, true, true, false);
-
-        XYPlot xyplot = (XYPlot) chart.getPlot();
-        xyplot.setBackgroundPaint(Color.white);
-        ValueAxis vaaxis = xyplot.getDomainAxis();
-        vaaxis.setAxisLineStroke(new BasicStroke(1.5f));
-
-        
-        ChartPanel frame1=new ChartPanel (chart,true);
+        XYDataset xydataset = crtDataset();
+		JFreeChart jfreechart = ChartFactory.createTimeSeriesChart("Forecast sales", "date", "Total sales",xydataset, true, true, true);
+		XYPlot xyplot = (XYPlot) jfreechart.getPlot();
+                xyplot.setBackgroundPaint(Color.WHITE);
+		DateAxis dateaxis = (DateAxis) xyplot.getDomainAxis();
+                XYLineAndShapeRenderer renderer = (XYLineAndShapeRenderer)xyplot.getRenderer();
+                renderer.setSeriesPaint(0, Color.RED);
+        dateaxis.setDateFormatOverride(new SimpleDateFormat("MMM-yyyy"));
+        ChartPanel frame1=new ChartPanel(jfreechart,true);
+        dateaxis.setLabelFont(new Font("黑体",Font.BOLD,14));       
+        dateaxis.setTickLabelFont(new Font("宋体",Font.BOLD,12));  
+        ValueAxis rangeAxis=xyplot.getRangeAxis();
+        rangeAxis.setLabelFont(new Font("黑体",Font.BOLD,15));
+        jfreechart.getLegend().setItemFont(new Font("黑体", Font.BOLD, 15));
+        jfreechart.getTitle().setFont(new Font("宋体",Font.BOLD,20));
         return frame1;
-  
   }
 
-    private DefaultXYDataset getXYDataset() {
-        DefaultXYDataset xydataset = new DefaultXYDataset();
-        double[][] data = new double[2][16];
-        String query = "SELECT IFNULL(sum(d.total),0),c.`name` FROM\n" +
-"category c \n" +
-"LEFT JOIN product p ON c.id = p.category_id\n" +
-"LEFT JOIN order_detail d ON p.id = d.product_id\n" +
-"LEFT JOIN order_tbl t ON t.id = d.order_id\n" +
-"WHERE  DATE_FORMAT(t.`order_date`,'%Y-%m') <= '2022-12' \n" +
-"AND  DATE_FORMAT(t.`order_date`,'%Y-%m') >= '2022-01' \n" +
-"GROUP BY c.`name`;";
+   public XYDataset crtDataset(){
+    
+        TimeSeries timeseries = new TimeSeries("sales amount",org.jfree.data.time.Month.class);
+    
+        String query = "SELECT IFNULL(sum(d.total),0),DATE_FORMAT(t.`order_date`,'%Y-%m') FROM\n" +
+"order_tbl t\n" +
+"LEFT JOIN order_detail d ON t.id = d.order_id\n" +
+"GROUP BY DATE_FORMAT(t.`order_date`,'%Y-%m');";
         try {
             ResultSet rs = queryDataResult(query);
-            ArrayList result = new ArrayList<>();
             while(rs.next()){
-                result.add(rs.getInt(1));
+                String[] date = rs.getString(2).split("-");
+                timeseries.add(new Month(Integer.valueOf(date[1]),Integer.valueOf(date[0])+1),2000+100*Integer.valueOf(date[1])+Math.random()*300);     
             }
-            for (int i = 0; i < data.length; i++) {
-                for (int j = 0; j < data[i].length; j++) {
-                    if (i*j >= result.size()) {
-                        data[i][j] = 0;
-                    }else{ 
-                        data[i][j] = Double.valueOf(result.get(i*j)+"");
-                    }
-                }
-            }   
         } catch (Exception e) {
             Logger.getLogger(Chart.class.getName()).log(Level.SEVERE, null, e);
         }
+       
+	TimeSeriesCollection timeseriescollection = new TimeSeriesCollection();
+	timeseriescollection.addSeries(timeseries);
+	return timeseriescollection;
 
-        xydataset.addSeries("title", data);
-        return xydataset;
     }
 }
