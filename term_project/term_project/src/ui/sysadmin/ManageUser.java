@@ -73,13 +73,17 @@ public class ManageUser extends javax.swing.JFrame {
             comboOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "management", "purchasing", "category"}));
             comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "manager", "purchaser", "demander"}));
         } else if (comboEntr.getSelectedItem().toString().equals("supply")) {
-            comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "a", "b", "c"}));
+            comboOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "quality", "supplier", "management"}));
+            comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "manager", "specialist"}));
         } else if (comboEntr.getSelectedItem().toString().equals("system")) {
+            comboOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "system"}));
             comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin"}));
         } else if (comboEntr.getSelectedItem().toString().equals("data")){
-            comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "a", "b", "c"}));
+            comboOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "strategydepartment", "analysisdepartment"}));
+            comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "manager", "chief"}));
         } else if (comboEntr.getSelectedItem().toString().equals("finance")){
-            comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "a", "b", "c"}));
+            comboOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "taxoffice", "accounting"}));
+            comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "taxofficer", "cashier"}));
         } 
         
     };

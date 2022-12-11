@@ -5,6 +5,7 @@
 package ui.sysadmin;
 
 import ui.Login_Form;
+import ui.supply.SupMenu;
 
 /**
  *
@@ -210,6 +211,8 @@ public class SysMenu extends javax.swing.JFrame {
 
     private void btnSupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupActionPerformed
         // TODO add your handling code here:
+        SupMenu adminSpp = new SupMenu();
+        splitPane.setRightComponent(adminSpp);
     }//GEN-LAST:event_btnSupActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed

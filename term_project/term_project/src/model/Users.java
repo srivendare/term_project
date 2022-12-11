@@ -176,7 +176,7 @@ public class Users {
         PreparedStatement ps;
         
         try {
-            ps = con.prepareStatement("INSERT INTO `users`(`username`, `password`, `user_type`, `fullname`, `tel`, `email`, `enterprise`, `organization`, `role`) VALUES (?,?,?,?,?,?,?,?)");
+            ps = con.prepareStatement("INSERT INTO `users`(`username`, `password`, `user_type`, `fullname`, `tel`, `email`, `enterprise`, `organization`, `role`) VALUES (?,?,?,?,?,?,?,?,?)");
 
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
@@ -217,10 +217,11 @@ public class Users {
             ps.setString(3, user.getFullname());
             ps.setString(4, user.getTel());
             ps.setString(5, user.getEmail());
-            ps.setInt(6, user.getId());
-            ps.setString(7, user.getEnterprise());
-            ps.setString(8, user.getOrganization());
-            ps.setString(9, user.getRole());
+            ps.setString(6, user.getEnterprise());
+            ps.setString(7, user.getOrganization());
+            ps.setString(8, user.getRole());
+            ps.setInt(9, user.getId());
+            
 
             if(ps.executeUpdate() != 0){
                 JOptionPane.showMessageDialog(null, "User Updated");
