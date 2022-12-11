@@ -75,7 +75,7 @@ public class Sourcer {
     }
     
     // get the customers list
-    public ArrayList<Sourcer> customersList(){
+    public ArrayList<Sourcer> warehouseList(){
         
         ArrayList<Sourcer> customer_list = new ArrayList<>();
         connection = DB_INFO.getConnection();
