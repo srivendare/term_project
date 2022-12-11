@@ -63,7 +63,7 @@ public class EditSouOrder extends javax.swing.JPanel {
     public void populateCustomerJtable(){
         
         Warehouse customer = new Warehouse();
-        ArrayList<Warehouse> CustomerList = customer.customersList();
+        ArrayList<Warehouse> CustomerList = customer.warehouseList();
         
         String[] colNames = {"Id","Name","Location","Tel","Email"};
         Object[][] rows = new Object[CustomerList.size()][5];
