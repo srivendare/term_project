@@ -93,6 +93,11 @@ public class Login_Form extends javax.swing.JFrame {
 
         txtPw.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtPw.setText("adminpass");
+        txtPw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPwActionPerformed(evt);
+            }
+        });
 
         jButton_LOGIN.setBackground(new java.awt.Color(95, 111, 148));
         jButton_LOGIN.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -315,7 +320,7 @@ public class Login_Form extends javax.swing.JFrame {
                              JOptionPane.showMessageDialog(null, "Please enter correct user info","Login Error",2);
                          };
                          
-                     } else if (rs.getString("enterprise").equals("data")){
+                     } else if (rs.getString("enterprise").equals("data") && rs.getString("enterprise").equals(selectEntr)){
                          switch(rs.getString("organization")) {
                              case "analysisdepartment":
                                  AnalyseMenu dataAdmin = new AnalyseMenu();
@@ -369,6 +374,10 @@ public class Login_Form extends javax.swing.JFrame {
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
+
+    private void txtPwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPwActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPwActionPerformed
 
     /**
      * @param args the command line arguments
