@@ -11,7 +11,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
+/**
+ *
+ * @author 1BestCsharp
+ */
 public class Category {
     
     
@@ -19,6 +22,15 @@ public class Category {
     
     private Integer id;
     private String name;
+    private Integer taxRate;
+
+    public Integer getTaxRate() {
+        return taxRate;
+    }
+
+    public void setTaxRate(Integer taxRate) {
+        this.taxRate = taxRate;
+    }
 
     public Integer getId() {
         return id;
@@ -45,6 +57,12 @@ public class Category {
         this.name = NAME;
     }
     
+    public Category(Integer ID, String NAME, Integer TaxRate)
+    {
+        this.id = ID;
+        this.name = NAME;
+        this.taxRate = TaxRate;
+    }
     
     // get all the categories
     public ArrayList<Category> categoriesList(){
@@ -54,7 +72,7 @@ public class Category {
         ResultSet rs;
         PreparedStatement ps;
         
-               String query = "SELECT `id`, `name` FROM `category`";
+               String query = "SELECT `id`, `name`, `tax_rate` FROM `category`";
         
         try {
 
@@ -65,7 +83,8 @@ public class Category {
 
                 while(rs.next()){
                     category = new Category(rs.getInt("id"), 
-                                     rs.getString("name")
+                                     rs.getString("name"),
+                            rs.getInt("tax_rate")
                                      );
 
                     category_list.add(category);
@@ -120,16 +139,16 @@ public class Category {
     
     
     // insert a new category function
-    public synchronized static void insertCategory(Category category)
+    public static void insertCategory(Category category)
     {
         Connection con = DB_INFO.getConnection();
         PreparedStatement ps;
         
         try {
-            ps = con.prepareStatement("INSERT INTO `category`(`name`) VALUES (?)");
+            ps = con.prepareStatement("INSERT INTO `category`(`name`, `tax_rate`) VALUES (?,?)");
 
             ps.setString(1, category.getName());
-
+            ps.setInt(2, category.getTaxRate());
 
             if(ps.executeUpdate() != 0){
                 JOptionPane.showMessageDialog(null, "New Category Inserted");
@@ -147,16 +166,17 @@ public class Category {
     
     
     // update a category function
-    public synchronized static void updateCategory(Category category)
+    public static void updateCategory(Category category)
     {
         Connection con = DB_INFO.getConnection();
         PreparedStatement ps;
         
         try {
-            ps = con.prepareStatement("UPDATE `category` SET `name`=? WHERE `id` = ?");
+            ps = con.prepareStatement("UPDATE `category` SET `name` = ?, `tax_rate` = ? WHERE `id` = ?");
 
             ps.setString(1, category.getName());
-            ps.setInt(2, category.getId());
+            ps.setInt(2, category.getTaxRate());
+            ps.setInt(3, category.getId());
 
             if(ps.executeUpdate() != 0){
                 JOptionPane.showMessageDialog(null, "Category Updated");
@@ -174,7 +194,7 @@ public class Category {
     }
     
     // delete category function
-    public synchronized static void deleteCategory(Integer categoryId)
+    public static void deleteCategory(Integer categoryId)
     {
         
         Connection con = DB_INFO.getConnection();
