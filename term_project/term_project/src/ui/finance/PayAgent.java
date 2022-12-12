@@ -371,6 +371,7 @@ public class PayAgent extends javax.swing.JFrame {
                 jTextField_ORIGINALPRICE.setText(t.getOriginalPrice());
                 jTextField_TAX.setText(t.getTax());
                 jTextField_TOTALPRICE.setText(t.getTotalPrice());
+                jTextField_CARDNUMBER.setText(t.getCardNumber());
                 jTextField_VERIFICATIONCODE.setText(t.getVerificationCode());
                 txtOWNERNAME.setText(t.getOwnerName());
                 txtADDRESS.setText(t.getAddress());
