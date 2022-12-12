@@ -16,13 +16,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import model.DB_INFO;
-import ui.analyse.AnalyseMenu;
-import ui.analyse.StrategyMenu;
-import ui.source.orgpenal.CateMenu;
-import ui.source.orgpenal.PurMenu;
-import ui.source.orgpenal.SouMenu;
-import ui.supply.SupQAMenu;
-import ui.supply.SupSpMenu;
+import ui.finance.FinanceMenu;
+import ui.source.SouMenu;
 
 
 
@@ -59,8 +54,7 @@ public class Login_Form extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         txtPw = new javax.swing.JPasswordField();
         jButton_LOGIN = new javax.swing.JButton();
-        lblPw1 = new javax.swing.JLabel();
-        comboEntr = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,11 +62,11 @@ public class Login_Form extends javax.swing.JFrame {
 
         LoginPane.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblName.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lblName.setForeground(new java.awt.Color(51, 51, 51));
         lblName.setText("Username:");
 
-        lblPw.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblPw.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lblPw.setForeground(new java.awt.Color(51, 51, 51));
         lblPw.setText("Password:");
 
@@ -83,7 +77,7 @@ public class Login_Form extends javax.swing.JFrame {
         lblTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtName.setText("admin");
+        txtName.setText("pacino");
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
@@ -91,32 +85,33 @@ public class Login_Form extends javax.swing.JFrame {
         });
 
         txtPw.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtPw.setText("adminpass");
+        txtPw.setText("pacinopass");
         txtPw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPwActionPerformed(evt);
             }
         });
 
-        jButton_LOGIN.setBackground(new java.awt.Color(95, 111, 148));
+        jButton_LOGIN.setBackground(new java.awt.Color(153, 153, 153));
         jButton_LOGIN.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_LOGIN.setForeground(new java.awt.Color(255, 255, 255));
         jButton_LOGIN.setText("Login");
-        jButton_LOGIN.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton_LOGIN.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton_LOGIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_LOGINActionPerformed(evt);
             }
         });
 
-        lblPw1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblPw1.setForeground(new java.awt.Color(51, 51, 51));
-        lblPw1.setText("Enterprise:");
-
-        comboEntr.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "supply", "source", "finance", "data", "system" }));
-        comboEntr.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Become a member?");
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusCycleRoot(true);
+        jButton1.setFocusTraversalKeysEnabled(false);
+        jButton1.setFocusable(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboEntrActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -124,10 +119,6 @@ public class Login_Form extends javax.swing.JFrame {
         LoginPane.setLayout(LoginPaneLayout);
         LoginPaneLayout.setHorizontalGroup(
             LoginPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginPaneLayout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addComponent(jButton_LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginPaneLayout.createSequentialGroup()
                 .addContainerGap(86, Short.MAX_VALUE)
                 .addGroup(LoginPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,18 +127,19 @@ public class Login_Form extends javax.swing.JFrame {
                         .addComponent(lblTitle))
                     .addGroup(LoginPaneLayout.createSequentialGroup()
                         .addComponent(lblName)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(LoginPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(LoginPaneLayout.createSequentialGroup()
-                            .addComponent(lblPw1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(comboEntr, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(LoginPaneLayout.createSequentialGroup()
-                            .addComponent(lblPw)
-                            .addGap(21, 21, 21)
-                            .addComponent(txtPw, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(124, 124, 124))
+                    .addGroup(LoginPaneLayout.createSequentialGroup()
+                        .addComponent(lblPw)
+                        .addGap(16, 16, 16)
+                        .addComponent(txtPw, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(130, 130, 130))
+            .addGroup(LoginPaneLayout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addGroup(LoginPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton_LOGIN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         LoginPaneLayout.setVerticalGroup(
             LoginPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,12 +154,10 @@ public class Login_Form extends javax.swing.JFrame {
                 .addGroup(LoginPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPw)
                     .addComponent(txtPw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(LoginPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPw1)
-                    .addComponent(comboEntr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(41, 41, 41)
                 .addComponent(jButton_LOGIN)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -182,7 +172,7 @@ public class Login_Form extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(LoginPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -213,123 +203,56 @@ public class Login_Form extends javax.swing.JFrame {
             if(rs.next()){
                 
                 
+                
+                System.out.println("choosing type");
+                
                 if(rs.getString("user_type").equals("admin"))
                 {   
-                    
-                    if (comboEntr.getSelectedItem().toString().equals("system")){
-                        SysMenu sysAdmin = new SysMenu();
-                        //homeForm.jMenu5_USER_.setVisible(false);
-                        System.out.println("user is admin");
-                        //splitPane.setRightComponent(updateJPanel);
-                        sysAdmin.pack();
-                        sysAdmin.setExtendedState(sysAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
-                        Dimension r = sysAdmin.getBounds().getSize();
-                        //homeForm.jLabel_BackgroundImage.setPreferredSize(r);
-                        sysAdmin.setVisible(true);
+                    SysMenu sysAdmin = new SysMenu();
+                    //homeForm.jMenu5_USER_.setVisible(false);
+                    System.out.println("user is admin");
+                    //splitPane.setRightComponent(updateJPanel);
+                    sysAdmin.pack();
+                    sysAdmin.setExtendedState(sysAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                    Dimension r = sysAdmin.getBounds().getSize();
+                    //homeForm.jLabel_BackgroundImage.setPreferredSize(r);
+                    sysAdmin.setVisible(true);
 
-                        sysAdmin.setLocationRelativeTo(null);
-                        sysAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                        //homeForm.getSplitPane().setLeftComponent(adminNav); // set nav bar
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Please enter correct user info","Login Error",2);
-                    };
+                    sysAdmin.setLocationRelativeTo(null);
+                    sysAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    //homeForm.getSplitPane().setLeftComponent(adminNav); // set nav bar
 
+                    this.dispose();
                 } else {
-                     String selectEntr = comboEntr.getSelectedItem().toString();
-                     if(rs.getString("enterprise").equals("supply")&& rs.getString("enterprise").equals(selectEntr)){
-                         if(rs.getString("organization").equals("management")){
-                            SupMenu supAdmin = new SupMenu();
-                            supAdmin.pack();
-                            supAdmin.setExtendedState(supAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
-                            Dimension r = supAdmin.getBounds().getSize();
-                            supAdmin.setVisible(true);
-                            supAdmin.setLocationRelativeTo(null);
-                            supAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                            System.out.println("supply Manager Here");
-                         } else if (rs.getString("organization").equals("supplier")){
-                             SupSpMenu supSp = new SupSpMenu();
-                             supSp.pack();
-                             supSp.setExtendedState(supSp.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
-                             Dimension r = supSp.getBounds().getSize();
-                             supSp.setVisible(true);
-                             supSp.setLocationRelativeTo(null);
-                             supSp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                             System.out.println("supply Specialist Here");
-                         } else if (rs.getString("organization").equals("quality")){
-                             SupQAMenu supQA = new SupQAMenu();
-                             supQA.pack();
-                             supQA.setExtendedState(supQA.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
-                             Dimension r = supQA.getBounds().getSize();
-                             supQA.setVisible(true);
-                             supQA.setLocationRelativeTo(null);
-                             supQA.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                             System.out.println("supply QA Here");
-                         } else {
-                         JOptionPane.showMessageDialog(null, "Please enter correct user info","Login Error",2);
-                         };
-                     } else if(rs.getString("enterprise").equals("source")&& rs.getString("enterprise").equals(selectEntr)){
-                         if(rs.getString("organization").equals("management")){
-                            setVisible(false);
-                            SouMenu souAdmin = new SouMenu();
-                            souAdmin.pack();
-                            souAdmin.setExtendedState(souAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
-                            Dimension r = souAdmin.getBounds().getSize();
-                            souAdmin.setVisible(true);
-                            souAdmin.setLocationRelativeTo(null);
-                            souAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
+                     if(rs.getString("enterprise").equals("supply")){
+                         SupMenu supAdmin = new SupMenu();
+                         supAdmin.pack();
+                         supAdmin.setExtendedState(supAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                         Dimension r = supAdmin.getBounds().getSize();
+                         //homeForm.jLabel_BackgroundImage.setPreferredSize(r);
+                         supAdmin.setVisible(true);
+
+                         supAdmin.setLocationRelativeTo(null);
+                         supAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                         System.out.println("supply is comming soon");
+                     } else if(rs.getString("enterprise").equals("source")){
+                         SouMenu souAdmin = new SouMenu();
+                         souAdmin.pack();
+                         souAdmin.setExtendedState(souAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                         Dimension r = souAdmin.getBounds().getSize();
+                         souAdmin.setVisible(true);
+                         souAdmin.setLocationRelativeTo(null);
+                         souAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
                          
-                         } else if (rs.getString("organization").equals("purchasing")){
-                             setVisible(false);
-                             PurMenu purAdmin = new PurMenu();
-                             purAdmin.pack();
-                             purAdmin.setExtendedState(purAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
-                             Dimension r = purAdmin.getBounds().getSize();
-                             purAdmin.setVisible(true);
-                             purAdmin.setLocationRelativeTo(null);
-                             purAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                             System.out.println("SOURCE BUT pruchasing");
-                         } else if (rs.getString("organization").equals("category")){
-                             setVisible(false);
-                             CateMenu cateAdmin = new CateMenu();
-                             cateAdmin.pack();
-                             cateAdmin.setExtendedState(cateAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
-                             Dimension r = cateAdmin.getBounds().getSize();
-                             cateAdmin.setVisible(true);
-                             cateAdmin.setLocationRelativeTo(null);
-                             cateAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                             System.out.println("SOURCE BUT categoy");
-                         }       
-                         else {
-                             JOptionPane.showMessageDialog(null, "Please enter correct user info","Login Error",2);
-                         };
+                     } else if(rs.getString("enterprise").equals("finance")){
+                         FinanceMenu souAdmin = new FinanceMenu();
+                         souAdmin.pack();
+                         souAdmin.setExtendedState(souAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                         Dimension r = souAdmin.getBounds().getSize();
+                         souAdmin.setVisible(true);
+                         souAdmin.setLocationRelativeTo(null);
+                         souAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
                          
-                     } else if (rs.getString("enterprise").equals("data") && rs.getString("enterprise").equals(selectEntr)){
-                         switch(rs.getString("organization")) {
-                             case "analysisdepartment":
-                                 setVisible(false);
-                                 AnalyseMenu dataAdmin = new AnalyseMenu();
-                                 dataAdmin.pack();
-                                 dataAdmin.setExtendedState(dataAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
-                                 Dimension r = dataAdmin.getBounds().getSize();
-                                 dataAdmin.setVisible(true);
-                                 dataAdmin.setLocationRelativeTo(null);
-                                 dataAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                                 break;
-                             case "strategydepartment":
-                                 setVisible(false);
-                                 StrategyMenu strategyMenu = new StrategyMenu();
-                                 strategyMenu.pack();
-                                 strategyMenu.setExtendedState(strategyMenu.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
-                                 r = strategyMenu.getBounds().getSize();
-                                 strategyMenu.setVisible(true);
-                                 strategyMenu.setLocationRelativeTo(null);
-                                 strategyMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                                 break;
-                             default:
-                                 break;
-                         }
-                     } else {
-                         JOptionPane.showMessageDialog(null, "Please enter correct user info","Login Error",2);
                      }
                 
                 }
@@ -337,7 +260,7 @@ public class Login_Form extends javax.swing.JFrame {
                 
 
         }else {
-                JOptionPane.showMessageDialog(null, "Invalid username or password","Login Error",2);
+                JOptionPane.showMessageDialog(null, "invalid username or password","Login Error",2);
         }
             
         } catch (SQLException ex) {
@@ -347,17 +270,18 @@ public class Login_Form extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton_LOGINActionPerformed
 
-    private void comboEntrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEntrActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_comboEntrActionPerformed
-
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
+        JOptionPane.showMessageDialog(null, "Comming Soon!", "Warning", JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtPwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPwActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPwActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -397,12 +321,11 @@ public class Login_Form extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel LoginPane;
-    private javax.swing.JComboBox<String> comboEntr;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_LOGIN;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPw;
-    private javax.swing.JLabel lblPw1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPw;
