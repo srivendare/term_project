@@ -53,9 +53,9 @@ public class PayAgent extends javax.swing.JFrame {
         for(int i = 0; i < filterList.size(); i++){
 
             rows[i][0] = filterList.get(i).getId();
-            rows[i][3] = filterList.get(i).getOriginalPrice();
-            rows[i][4] = filterList.get(i).getTax();
-            rows[i][5] = filterList.get(i).getTotalPrice();
+            rows[i][1] = filterList.get(i).getOriginalPrice();
+            rows[i][2] = filterList.get(i).getTax();
+            rows[i][3] = filterList.get(i).getTotalPrice();
             
         }
         
@@ -73,9 +73,9 @@ public class PayAgent extends javax.swing.JFrame {
         for(int i = 0; i < filterList.size(); i++){
 
             rows[i][0] = filterList.get(i).getId();
-            rows[i][3] = filterList.get(i).getOriginalPrice();
-            rows[i][4] = filterList.get(i).getTax();
-            rows[i][5] = filterList.get(i).getTotalPrice();
+            rows[i][1] = filterList.get(i).getOriginalPrice();
+            rows[i][2] = filterList.get(i).getTax();
+            rows[i][3] = filterList.get(i).getTotalPrice();
             
         }
         
@@ -393,7 +393,6 @@ public class PayAgent extends javax.swing.JFrame {
             
         }
         catch(Exception ex){
-                JOptionPane.showMessageDialog(null, "No Pay Record", "No Pay Record", 1);
         }
         
     }//GEN-LAST:event_jButton_PaidActionPerformed
@@ -409,7 +408,6 @@ public class PayAgent extends javax.swing.JFrame {
             
         }
         catch(Exception ex){
-                JOptionPane.showMessageDialog(null, "No Unpaid Record", "No Unpaid Record", 1);
         }
     }//GEN-LAST:event_jButton_UnpaidActionPerformed
 
