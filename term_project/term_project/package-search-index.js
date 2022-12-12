@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"model"},{"l":"ui"},{"l":"ui.analyse"},{"l":"ui.finance"},{"l":"ui.source"},{"l":"ui.source.orgpenal"},{"l":"ui.supply"},{"l":"ui.sysadmin"}];updateSearchResults();
