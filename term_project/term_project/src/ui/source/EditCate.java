@@ -348,7 +348,7 @@ public class EditCate extends javax.swing.JPanel {
         try{
             if(!jTextField_CATEGORY_NAME.getText().equals(""))
             {
-                Category category = new Category(null,jTextField_CATEGORY_NAME.getText());
+                Category category = new Category(null,jTextField_CATEGORY_NAME.getText(), 0);
                 Category.insertCategory(category);
                 populateJtable();
             }else{
@@ -366,7 +366,7 @@ public class EditCate extends javax.swing.JPanel {
 
             if(!jTextField_CATEGORY_NAME.getText().equals(""))
             {
-                Category category = new Category(Integer.valueOf(jTextField_CATEGORY_ID.getText()),jTextField_CATEGORY_NAME.getText());
+                Category category = new Category(Integer.valueOf(jTextField_CATEGORY_ID.getText()),jTextField_CATEGORY_NAME.getText(), 0);
                 Category.updateCategory(category);
                 populateJtable();
             }
