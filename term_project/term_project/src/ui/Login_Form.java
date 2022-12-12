@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import model.DB_INFO;
 import ui.analyse.AnalyseMenu;
 import ui.analyse.StrategyMenu;
+import ui.finance.TaxMenu;
 import ui.source.orgpenal.CateMenu;
 import ui.source.orgpenal.PurMenu;
 import ui.source.orgpenal.SouMenu;
@@ -334,21 +335,21 @@ public class Login_Form extends javax.swing.JFrame {
                         switch(rs.getString("organization")) {
                             case "taxoffice":
                                 setVisible(false);
+                                TaxMenu taxAdmin = new TaxMenu();
+                                taxAdmin.pack();
+                                taxAdmin.setExtendedState(taxAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                                taxAdmin.setVisible(true);
+                                taxAdmin.setLocationRelativeTo(null);
+                                taxAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                break;
+                            case "accounting":
+                                setVisible(false);
                                 FinanceMenu financeAdmin = new FinanceMenu();
                                 financeAdmin.pack();
                                 financeAdmin.setExtendedState(financeAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
                                 financeAdmin.setVisible(true);
                                 financeAdmin.setLocationRelativeTo(null);
                                 financeAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                                break;
-                            case "accounting":
-                                setVisible(false);
-                                FinanceMenu taxAdmin = new FinanceMenu();
-                                taxAdmin.pack();
-                                taxAdmin.setExtendedState(taxAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
-                                taxAdmin.setVisible(true);
-                                taxAdmin.setLocationRelativeTo(null);
-                                taxAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                                 break;
                             default:
                                 break;

@@ -10,7 +10,7 @@ import ui.Login_Form;
 import ui.supply.MANAGE_PRODUCTS_FORM;
 import ui.sysadmin.ManageUser;
 
-public class FinanceMenu extends javax.swing.JFrame {
+public class TaxMenu extends javax.swing.JFrame {
 
     /**
      * @return the splitPane
@@ -30,7 +30,7 @@ public class FinanceMenu extends javax.swing.JFrame {
      * Creates new form Home
      */
     
-    public FinanceMenu() {
+    public TaxMenu() {
         initComponents();
     }
 
@@ -45,8 +45,8 @@ public class FinanceMenu extends javax.swing.JFrame {
 
         splitPane = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        PayButton = new javax.swing.JButton();
-        jButton_Back = new javax.swing.JButton();
+        TaxButton = new javax.swing.JButton();
+        jButton_back = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
 
@@ -54,49 +54,48 @@ public class FinanceMenu extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        PayButton.setBackground(new java.awt.Color(102, 255, 255));
-        PayButton.setText("Pay Agent");
-        PayButton.addActionListener(new java.awt.event.ActionListener() {
+        TaxButton.setBackground(new java.awt.Color(102, 255, 255));
+        TaxButton.setText("Tax Office");
+        TaxButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PayButtonActionPerformed(evt);
+                TaxButtonActionPerformed(evt);
             }
         });
 
-        jButton_Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/static/icons/backIcon.png"))); // NOI18N
-        jButton_Back.setText("Back");
-        jButton_Back.addActionListener(new java.awt.event.ActionListener() {
+        jButton_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/static/icons/backIcon.png"))); // NOI18N
+        jButton_back.setText("Back");
+        jButton_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_BackActionPerformed(evt);
+                jButton_backActionPerformed(evt);
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/static/accounting.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/static/taxoffice.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(PayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton_Back)))
-                .addContainerGap(18, Short.MAX_VALUE))
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jButton_back)
+                    .addComponent(jLabel1))
+                .addGap(97, 97, 97))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(TaxButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(168, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(PayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126)
-                .addComponent(jButton_Back)
+                .addGap(231, 231, 231)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107)
+                .addComponent(TaxButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addComponent(jButton_back)
                 .addContainerGap())
         );
 
@@ -110,7 +109,7 @@ public class FinanceMenu extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 647, Short.MAX_VALUE)
+            .addGap(0, 753, Short.MAX_VALUE)
         );
 
         splitPane.setRightComponent(jPanel2);
@@ -129,13 +128,13 @@ public class FinanceMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayButtonActionPerformed
+    private void TaxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TaxButtonActionPerformed
         // TODO add your handling code here:
-        PayAgent payAgent = new PayAgent();
-        splitPane.setRightComponent(payAgent.getPayPanel());
-    }//GEN-LAST:event_PayButtonActionPerformed
+        TaxOffice taxOffice = new TaxOffice();
+        splitPane.setRightComponent(taxOffice.getTaxPanel());
+    }//GEN-LAST:event_TaxButtonActionPerformed
 
-    private void jButton_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BackActionPerformed
+    private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
         // TODO add your handling code here:
         Login_Form loginForm = new Login_Form();
         loginForm.pack();
@@ -144,11 +143,11 @@ public class FinanceMenu extends javax.swing.JFrame {
         loginForm.setLocationRelativeTo(null);
         loginForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
-    }//GEN-LAST:event_jButton_BackActionPerformed
+    }//GEN-LAST:event_jButton_backActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton PayButton;
-    private javax.swing.JButton jButton_Back;
+    private javax.swing.JButton TaxButton;
+    private javax.swing.JButton jButton_back;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
