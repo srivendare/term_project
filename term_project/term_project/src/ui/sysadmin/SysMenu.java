@@ -48,7 +48,6 @@ public class SysMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnUser = new javax.swing.JButton();
         btnSup = new javax.swing.JButton();
-        btnLogin = new javax.swing.JButton();
         btnData = new javax.swing.JButton();
         btnSou2 = new javax.swing.JButton();
         btnFin1 = new javax.swing.JButton();
@@ -79,19 +78,6 @@ public class SysMenu extends javax.swing.JFrame {
         btnSup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSupActionPerformed(evt);
-            }
-        });
-
-        btnLogin.setBackground(new java.awt.Color(255, 255, 255));
-        btnLogin.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        btnLogin.setForeground(new java.awt.Color(102, 102, 102));
-        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/static/icons/backIcon.png"))); // NOI18N
-        btnLogin.setText("Back");
-        btnLogin.setBorderPainted(false);
-        btnLogin.setContentAreaFilled(false);
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
             }
         });
 
@@ -135,7 +121,6 @@ public class SysMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSup, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSou2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnData, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,9 +144,7 @@ public class SysMenu extends javax.swing.JFrame {
                 .addComponent(btnData, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
-                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(jPanel1);
@@ -193,7 +176,7 @@ public class SysMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE)
+            .addComponent(splitPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,13 +198,6 @@ public class SysMenu extends javax.swing.JFrame {
         splitPane.setRightComponent(adminSpp.getSplitPane());
         
     }//GEN-LAST:event_btnSupActionPerformed
-
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-        new Login_Form().setVisible(true);
-
-    }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataActionPerformed
         // TODO add your handling code here:
@@ -291,7 +267,6 @@ public class SysMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnData;
     private javax.swing.JButton btnFin1;
-    private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnSou2;
     private javax.swing.JButton btnSup;
     private javax.swing.JButton btnUser;

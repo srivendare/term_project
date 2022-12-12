@@ -219,6 +219,7 @@ public class Login_Form extends javax.swing.JFrame {
                 {
 
                     if (comboEntr.getSelectedItem().toString().equals("system")){
+                        setVisible(false);
                         SysMenu sysAdmin = new SysMenu();
                         //homeForm.jMenu5_USER_.setVisible(false);
                         System.out.println("user is admin");
@@ -240,6 +241,7 @@ public class Login_Form extends javax.swing.JFrame {
                     String selectEntr = comboEntr.getSelectedItem().toString();
                     if(rs.getString("enterprise").equals("supply")&& rs.getString("enterprise").equals(selectEntr)){
                         if(rs.getString("organization").equals("management")){
+                            setVisible(false);
                             SupMenu supAdmin = new SupMenu();
                             supAdmin.pack();
                             supAdmin.setExtendedState(supAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
@@ -249,6 +251,7 @@ public class Login_Form extends javax.swing.JFrame {
                             supAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                             System.out.println("supply Manager Here");
                         } else if (rs.getString("organization").equals("supplier")){
+                            setVisible(false);
                             SupSpMenu supSp = new SupSpMenu();
                             supSp.pack();
                             supSp.setExtendedState(supSp.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
@@ -258,6 +261,7 @@ public class Login_Form extends javax.swing.JFrame {
                             supSp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                             System.out.println("supply Specialist Here");
                         } else if (rs.getString("organization").equals("quality")){
+                            setVisible(false);
                             SupQAMenu supQA = new SupQAMenu();
                             supQA.pack();
                             supQA.setExtendedState(supQA.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
