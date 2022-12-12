@@ -110,7 +110,7 @@ public class Pay {
             ps.setString(10, pay.getRemark());
 
             if(ps.executeUpdate() != 0){
-                JOptionPane.showMessageDialog(null, "New Pay Inserted");
+                //JOptionPane.showMessageDialog(null, "Order Payment status Inserted");
             }
             else{
                 JOptionPane.showMessageDialog(null, "Something Wrong");

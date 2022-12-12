@@ -248,7 +248,7 @@ public class SourceOrder {
             
 
             if(ps.executeUpdate() != 0){
-                JOptionPane.showMessageDialog(null, "New Order Added");
+                JOptionPane.showMessageDialog(null, "New Order Added, waiting for paynment");
                 
                 }
                 else{

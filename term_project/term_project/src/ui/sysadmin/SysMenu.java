@@ -5,6 +5,8 @@
 package ui.sysadmin;
 
 import ui.Login_Form;
+import ui.analyse.AnaMenu;
+import ui.finance.FinanMenu;
 import ui.supply.SupMenu;
 
 /**
@@ -201,6 +203,8 @@ public class SysMenu extends javax.swing.JFrame {
 
     private void btnDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataActionPerformed
         // TODO add your handling code here:
+        AnaMenu adminAna = new AnaMenu();
+        splitPane.setRightComponent(adminAna.getSplitPane());
     }//GEN-LAST:event_btnDataActionPerformed
 
     private void btnSou2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSou2ActionPerformed
@@ -212,6 +216,8 @@ public class SysMenu extends javax.swing.JFrame {
 
     private void btnFin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFin1ActionPerformed
         // TODO add your handling code here:
+        FinanMenu adminFi = new FinanMenu();
+        splitPane.setRightComponent(adminFi);
     }//GEN-LAST:event_btnFin1ActionPerformed
 
     /**

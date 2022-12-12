@@ -127,7 +127,7 @@ public class Warehouse {
             
 
             if(ps.executeUpdate() != 0){
-                JOptionPane.showMessageDialog(null, "New Customer Added");
+                JOptionPane.showMessageDialog(null, "New Warehouse Info Added");
                 
                 }
                 else{
@@ -157,7 +157,7 @@ public class Warehouse {
             ps.setInt(5, customer.getId());
 
             if(ps.executeUpdate() != 0){
-                JOptionPane.showMessageDialog(null, "Customer Updated");
+                JOptionPane.showMessageDialog(null, "Warehouse Info Updated");
                 
                 }
                 else{
@@ -184,11 +184,11 @@ public class Warehouse {
             ps.setInt(1, customerId);
 
             // show a confirmation message before deleting the Warehouse
-            int YesOrNo = JOptionPane.showConfirmDialog(null,"Do You Really Want To Delete This Customer","Delete Customer", JOptionPane.YES_NO_OPTION);
+            int YesOrNo = JOptionPane.showConfirmDialog(null,"Do You Really Want To Delete it","Delete Warehouse Info", JOptionPane.YES_NO_OPTION);
             if(YesOrNo == 0){
                 
                 if(ps.executeUpdate() != 0){
-                JOptionPane.showMessageDialog(null, "Customer Deleted");
+                JOptionPane.showMessageDialog(null, "Warehouse Info Deleted");
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Something Wrong");
