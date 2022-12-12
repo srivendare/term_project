@@ -1,5 +1,6 @@
 package ui;
 
+import ui.finance.FinanceMenu;
 import ui.sysadmin.SysMenu;
 import ui.supply.SupMenu;
 import java.awt.Dimension;
@@ -324,6 +325,30 @@ public class Login_Form extends javax.swing.JFrame {
                                 strategyMenu.setVisible(true);
                                 strategyMenu.setLocationRelativeTo(null);
                                 strategyMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                break;
+                            default:
+                                break;
+
+                        }
+                    } else if (rs.getString("enterprise").equals("finance") && rs.getString("enterprise").equals(selectEntr)) {
+                        switch(rs.getString("organization")) {
+                            case "taxoffice":
+                                setVisible(false);
+                                FinanceMenu financeAdmin = new FinanceMenu();
+                                financeAdmin.pack();
+                                financeAdmin.setExtendedState(financeAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                                financeAdmin.setVisible(true);
+                                financeAdmin.setLocationRelativeTo(null);
+                                financeAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                break;
+                            case "accounting":
+                                setVisible(false);
+                                FinanceMenu taxAdmin = new FinanceMenu();
+                                taxAdmin.pack();
+                                taxAdmin.setExtendedState(taxAdmin.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
+                                taxAdmin.setVisible(true);
+                                taxAdmin.setLocationRelativeTo(null);
+                                taxAdmin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                                 break;
                             default:
                                 break;
