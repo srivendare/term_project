@@ -47,7 +47,6 @@ public class SupMenu extends javax.swing.JFrame {
         splitPane = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         btnRequire = new javax.swing.JButton();
-        btnLogin = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnQA = new javax.swing.JButton();
         btnManage1 = new javax.swing.JButton();
@@ -67,19 +66,6 @@ public class SupMenu extends javax.swing.JFrame {
         btnRequire.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRequireActionPerformed(evt);
-            }
-        });
-
-        btnLogin.setBackground(new java.awt.Color(255, 255, 255));
-        btnLogin.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        btnLogin.setForeground(new java.awt.Color(102, 102, 102));
-        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/static/icons/backIcon.png"))); // NOI18N
-        btnLogin.setText("Back");
-        btnLogin.setBorderPainted(false);
-        btnLogin.setContentAreaFilled(false);
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
             }
         });
 
@@ -123,10 +109,7 @@ public class SupMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnLogin)
-                        .addContainerGap(82, Short.MAX_VALUE))
-                    .addComponent(btnManage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnManage1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -151,9 +134,7 @@ public class SupMenu extends javax.swing.JFrame {
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnQA, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
-                .addComponent(btnLogin)
-                .addGap(15, 15, 15))
+                .addContainerGap(297, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(jPanel1);
@@ -216,12 +197,6 @@ public class SupMenu extends javax.swing.JFrame {
         splitPane.setRightComponent(qaProducts.getAddProduct());
     }//GEN-LAST:event_btnQAActionPerformed
 
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-        new Login_Form().setVisible(true);
-    }//GEN-LAST:event_btnLoginActionPerformed
-
     private void btnManage1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManage1ActionPerformed
         // TODO add your handling code here:
         ManageProduct manageProduct = new ManageProduct();
@@ -268,7 +243,6 @@ public class SupMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnManage1;
     private javax.swing.JButton btnQA;
     private javax.swing.JButton btnRequire;

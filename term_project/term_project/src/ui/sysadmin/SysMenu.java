@@ -212,7 +212,8 @@ public class SysMenu extends javax.swing.JFrame {
     private void btnSupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupActionPerformed
         // TODO add your handling code here:
         SupMenu adminSpp = new SupMenu();
-        splitPane.setRightComponent(adminSpp);
+        splitPane.setRightComponent(adminSpp.getSplitPane());
+        
     }//GEN-LAST:event_btnSupActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
