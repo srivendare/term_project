@@ -308,7 +308,7 @@ public class EditSpPane extends javax.swing.JPanel {
                 populateJtable();
             }
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "Select an Agency Before Editing", "No Customer Selected", 1);
+            JOptionPane.showMessageDialog(null, "Select an Row Before Editing", "No Data Selected", 1);
         }
 
     }//GEN-LAST:event_jButton_UPDATE_ActionPerformed
@@ -320,7 +320,7 @@ public class EditSpPane extends javax.swing.JPanel {
             Warehouse.deleteCustomer(id);
             populateJtable();
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "Select an Agency Before Removing", "No Customer Selected", 1);
+            JOptionPane.showMessageDialog(null, "Select an Row Before Removing", "No Data Selected", 1);
         }
 
     }//GEN-LAST:event_jButton_DELETE_ActionPerformed
