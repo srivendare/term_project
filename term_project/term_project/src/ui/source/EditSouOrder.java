@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Category;
+import model.Pay;
 import model.TableModel;
 import model.Product;
 import model.SourceOrder;
@@ -37,6 +38,9 @@ public class EditSouOrder extends javax.swing.JPanel {
         jComboBox_CATEGORIES_ActionPerformed(null);
         
         SourceOrder ord = new SourceOrder();
+        
+        jTextField_CUSTOMER_ID.setEnabled(false);
+        jTextField_ORDER_ID.setEnabled(false);
         
         // display the new order id in textfield
         try{
@@ -455,6 +459,9 @@ public class EditSouOrder extends javax.swing.JPanel {
             Integer qty;
             String price;
             String total;
+            String taxTotal;
+            
+            
 
             // insert the order
             SourceOrder.insertOrder(orderId, orderDate, Integer.valueOf(jTextField_CUSTOMER_ID.getText()));
@@ -466,6 +473,14 @@ public class EditSouOrder extends javax.swing.JPanel {
                 price = jTable_PRODUCTS_IN_ORDER_.getValueAt(i, 2).toString();
                 qty = Integer.valueOf(jTable_PRODUCTS_IN_ORDER_.getValueAt(i, 3).toString());
                 total = jTable_PRODUCTS_IN_ORDER_.getValueAt(i, 4).toString();
+                
+                
+                Double totax = Double.valueOf(jTable_PRODUCTS_IN_ORDER_.getValueAt(i, 4).toString()) * 1.12;
+                taxTotal = totax.toString();
+                
+                // insert payment 
+                Pay pay = new Pay(orderId+100, orderId, 0, price, "12", taxTotal,"","","","", "");           
+                Pay.insertPay(pay);
 
                 // insert the order details
                 SourceOrder.insertOrderDetails(productId, orderId, qty, price, total);
@@ -483,6 +498,9 @@ public class EditSouOrder extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "You Must Add At Least 1 Product To The Order", "No Product Added", 1);
 
         }
+        
+        
+        
 
     }//GEN-LAST:event_jButton_INSERT_ORDER_ActionPerformed
 

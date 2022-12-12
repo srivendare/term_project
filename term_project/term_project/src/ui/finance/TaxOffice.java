@@ -19,6 +19,9 @@ public class TaxOffice extends javax.swing.JFrame {
         initComponents();
         
         populateJtable();
+        jTextField_ID.setEnabled(false);
+        jTextField_CATEGORY.setEnabled(false);
+        
         
         jTable_Tax.setShowGrid(true);
         

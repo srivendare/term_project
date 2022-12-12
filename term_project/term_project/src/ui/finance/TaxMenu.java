@@ -46,8 +46,8 @@ public class TaxMenu extends javax.swing.JFrame {
         splitPane = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         TaxButton = new javax.swing.JButton();
-        jButton_back = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton_Back = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,41 +62,37 @@ public class TaxMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/static/icons/backIcon.png"))); // NOI18N
-        jButton_back.setText("Back");
-        jButton_back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_backActionPerformed(evt);
-            }
-        });
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/static/taxoffice.png"))); // NOI18N
+
+        jButton_Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/static/icons/backIcon.png"))); // NOI18N
+        jButton_Back.setText("Back");
+        jButton_Back.setBorderPainted(false);
+        jButton_Back.setContentAreaFilled(false);
+        jButton_Back.setDefaultCapable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_back)
-                    .addComponent(jLabel1))
-                .addGap(97, 97, 97))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(TaxButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TaxButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addComponent(jButton_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(231, 231, 231)
+                .addGap(196, 196, 196)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TaxButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-                .addComponent(jButton_back)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
+                .addComponent(jButton_Back)
+                .addGap(31, 31, 31))
         );
 
         splitPane.setLeftComponent(jPanel1);
@@ -134,20 +130,9 @@ public class TaxMenu extends javax.swing.JFrame {
         splitPane.setRightComponent(taxOffice.getTaxPanel());
     }//GEN-LAST:event_TaxButtonActionPerformed
 
-    private void jButton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_backActionPerformed
-        // TODO add your handling code here:
-        Login_Form loginForm = new Login_Form();
-        loginForm.pack();
-        loginForm.setExtendedState(loginForm.getExtendedState()); //| JFrame.MAXIMIZED_BOTH)
-        loginForm.setVisible(true);
-        loginForm.setLocationRelativeTo(null);
-        loginForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_jButton_backActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton TaxButton;
-    private javax.swing.JButton jButton_back;
+    private javax.swing.JButton jButton_Back;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

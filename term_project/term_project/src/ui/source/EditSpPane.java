@@ -23,6 +23,7 @@ public class EditSpPane extends javax.swing.JPanel {
         
         initComponents();
         populateJtable();
+        jTextField_ID.setEnabled(false);
     }
     
         // function to populate the jtable with customers data
