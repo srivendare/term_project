@@ -84,7 +84,7 @@ public class Pay extends Order {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
         }
         return pay_list;
 
@@ -118,7 +118,7 @@ public class Pay extends Order {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -154,7 +154,7 @@ public class Pay extends Order {
                 }
 
         } catch (SQLException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -186,25 +186,100 @@ public class Pay extends Order {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-    
 
-    public void generatePayRecord(){
-        Order order = new Order();
-        ArrayList<Order> orderList = order.ordersList();
-        
-        ArrayList<Pay> payList = payList();
-        
-        Category category = new Category();
-        ArrayList<Category> taxlist = category.categoriesList();
-        
-        //TODO
-        
+    public static void deletePay(Integer payId,String s)
+    {
+
+        Connection con = DB_INFO.getConnection();
+        PreparedStatement ps;
+
+        try {
+            ps = (PreparedStatement) con.prepareStatement("DELETE FROM `pay` WHERE `id` = ?");
+
+            ps.setInt(1, payId);
+
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
+    public void generatePayRecord(){
+        
+        ArrayList<Pay> payList = payList();
+        ArrayList<Integer> orderInPay = new ArrayList<>();
+        payList.forEach((t) -> {
+            orderInPay.add(t.getOrderId());
+        });
+        Order order = new Order();
+        ArrayList<Order> orderList = order.ordersList();
+        try {
+            for (Order order1 : orderList) {
+                if (orderInPay.contains(order1.getId())) {
+                    for (Pay pay : payList()) {
+                        if (order1.getId() == pay.getOrderId() && 0 == pay.getStatus()) {
+                            ResultSet rs = queryTax(pay.getOrderId());
+                            while(rs.next()){
+                                pay.setOriginalPrice(rs.getString("original_price"));
+                                pay.setTax(rs.getString("tax"));
+                                pay.setTotalPrice(rs.getString("total_price"));
+                            }
+                            updatePay(pay);
+                        }
+                        if(pay.getOriginalPrice().equals("0")){
+                            deletePay(pay.getId(),"");
+                        }
+                    }
+                }else{
+                    Pay newPay = new Pay();
+                    ResultSet rs = queryTax(order1.getId());
+                    while(rs.next()){
+                        newPay.setOriginalPrice(rs.getString("original_price"));
+                        newPay.setTax(rs.getString("tax"));
+                        newPay.setTotalPrice(rs.getString("total_price"));
+                    }
+                    newPay.setStatus(0);
+                    newPay.setOrderId(order1.getId());
+                    newPay.setCardNumber("");
+                    newPay.setOwnerName("");
+                    newPay.setVerificationCode("");
+                    newPay.setAddress("");
+                    insertPay(newPay);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private ResultSet queryTax(Integer orderId){
+    
+        connection = DB_INFO.getConnection();
+        ResultSet rs = null;
+        PreparedStatement ps;                              
+        String query = "SELECT IFNULL(SUM(d.total),0) as original_price, IFNULL(SUM(d.total*IFNULL(c.tax_rate,0))/100,0) as tax, IFNULL(SUM(d.total)+SUM(d.total*IFNULL(c.tax_rate,0))/100,0) as total_price\n" +
+"FROM order_detail d \n" +
+"LEFT JOIN product p ON p.id = d.product_id\n" +
+"LEFT JOIN category c ON c.id = p.category_id\n" +
+"WHERE d.order_id = ?;";
+
+        try {
+            ps = (PreparedStatement) connection.prepareStatement(query);
+            ps.setInt(1, orderId);
+            rs = ps.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(Pay.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rs;
+    } 
+    
     public Connection getConnection() {
         return connection;
     }

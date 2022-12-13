@@ -21,8 +21,8 @@ public class PayAgent extends javax.swing.JFrame {
     public PayAgent() {
         initComponents();
         
-        Pay pay = new Pay();
-        pay.generatePayRecord();
+//        Pay pay = new Pay();
+//        pay.generatePayRecord();
         
         populateJtable();
         
