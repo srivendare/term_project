@@ -30,6 +30,12 @@ There are 4 operational enterprises (Supply, Sourcing, Finance, and Data) + a Sy
 
 
 
+### UML Case Modelling
+
+Detials in the presentation slides [Link][https://docs.google.com/presentation/d/1a9e6gEYaD0UUziV6Nl2MkX0FqiEnUolCvnCOXC-Z0cI/edit?usp=sharing]
+
+
+
 ### UML Class Diagram
 
 Class Diagram
@@ -42,4 +48,5 @@ Class Diagram
 
 
 
-![image](./desc/img/seq.jpeg)
+![image](./diagrams/seq.jpeg)
+
