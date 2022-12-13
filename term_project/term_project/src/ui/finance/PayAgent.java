@@ -48,15 +48,16 @@ public class PayAgent extends javax.swing.JFrame {
         ArrayList<Pay> payList = pay.payList();
         List<Pay> filterList = payList.stream().filter(a -> a.getStatus() == 0).collect(Collectors.toList());
             
-        String[] colNames = {"Id","originalPrice","tax","totalPrice"};
-        Object[][] rows = new Object[filterList.size()][4];
+        String[] colNames = {"Id", "Order","originalPrice","tax","totalPrice"};
+        Object[][] rows = new Object[filterList.size()][5];
 
         for(int i = 0; i < filterList.size(); i++){
 
             rows[i][0] = filterList.get(i).getId();
-            rows[i][1] = filterList.get(i).getOriginalPrice();
-            rows[i][2] = filterList.get(i).getTax();
-            rows[i][3] = filterList.get(i).getTotalPrice();
+            rows[i][1] = filterList.get(i).getOrderId();
+            rows[i][2] = filterList.get(i).getOriginalPrice();
+            rows[i][3] = filterList.get(i).getTax();
+            rows[i][4] = filterList.get(i).getTotalPrice();
             
         }
         

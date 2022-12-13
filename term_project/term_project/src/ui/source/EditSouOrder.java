@@ -470,31 +470,31 @@ public class EditSouOrder extends javax.swing.JPanel {
                 
                 // get tax rate
                 
-//                Connection con = DB_INFO.getConnection();
-//                
-//                String tax_ratio = null;
-//                ResultSet rs;
-//                PreparedStatement ps;
-//                
-//                try {
-//                    ps = con.prepareStatement("SELECT category.tax_rate \n" +
-//                            "FROM product \n" +
-//                            "LEFT JOIN category ON product.category_id = category.id\n" +
-//                            "WHERE product.id = ?");
-//                    ps.setString(1, productId.toString());
-//                    rs = ps.executeQuery();
-//                    while(rs.next()){
-//                       tax_ratio = rs.getString("category.tax_rate");
-//                    }
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(EditSouOrder.class.getName()).log(Level.SEVERE, null, ex);
-//                }
+                Connection con = DB_INFO.getConnection();
                 
-                Double totax = Double.valueOf(jTable_PRODUCTS_IN_ORDER_.getValueAt(i, 4).toString()) *1.12; //(1+ Double.valueOf(tax_ratio)/100)
+                String tax_ratio = null;
+                ResultSet rs;
+                PreparedStatement ps;
+                
+                try {
+                    ps = con.prepareStatement("SELECT category.tax_rate \n" +
+                            "FROM product \n" +
+                            "LEFT JOIN category ON product.category_id = category.id\n" +
+                            "WHERE product.id = ?");
+                    ps.setString(1, productId.toString());
+                    rs = ps.executeQuery();
+                    while(rs.next()){
+                       tax_ratio = rs.getString("category.tax_rate");
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(EditSouOrder.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                Integer totax = (int) Math.round(Double.valueOf(jTable_PRODUCTS_IN_ORDER_.getValueAt(i, 4).toString()) * (1+ Double.valueOf(tax_ratio)/100)); //(1+ Double.valueOf(tax_ratio)/100)
                 taxTotal = totax.toString();
                 
                 // insert payment 
-                Pay pay = new Pay(orderId+100, orderId, 0, price, "12", taxTotal,"","","","", "");           
+                Pay pay = new Pay(orderId+100, orderId, 0, price, tax_ratio, taxTotal,"","","","", "");           
                 Pay.insertPay(pay);
 
                 // insert the order details
