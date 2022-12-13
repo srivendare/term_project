@@ -159,7 +159,6 @@ public class EditSouOrder extends javax.swing.JPanel {
         jTable_PRODUCTS_IN_ORDER_ = new javax.swing.JTable();
         jComboBox_CATEGORIES_ = new javax.swing.JComboBox<>();
         jButton_INSERT_ORDER_ = new javax.swing.JButton();
-        jButton_SHOW_ORDERS_ = new javax.swing.JButton();
         jButton_REMOVE_PRODUCT_FROM_ORDER_TABLEè = new javax.swing.JButton();
         jButton_CLEAR_ORDER_TABLE_ = new javax.swing.JButton();
         jButton_TRANSFER_FROM_PRODUCT_TO_ORDER_ = new javax.swing.JButton();
@@ -245,16 +244,6 @@ public class EditSouOrder extends javax.swing.JPanel {
             }
         });
 
-        jButton_SHOW_ORDERS_.setBackground(new java.awt.Color(62, 109, 156));
-        jButton_SHOW_ORDERS_.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton_SHOW_ORDERS_.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_SHOW_ORDERS_.setText("Show All Orders");
-        jButton_SHOW_ORDERS_.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_SHOW_ORDERS_ActionPerformed(evt);
-            }
-        });
-
         jButton_REMOVE_PRODUCT_FROM_ORDER_TABLEè.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton_REMOVE_PRODUCT_FROM_ORDER_TABLEè.setText("Remove Product");
         jButton_REMOVE_PRODUCT_FROM_ORDER_TABLEè.addActionListener(new java.awt.event.ActionListener() {
@@ -324,11 +313,10 @@ public class EditSouOrder extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton_INSERT_ORDER_)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton_CLEAR_ORDER_TABLE_, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton_SHOW_ORDERS_, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(116, 116, 116)
+                                        .addComponent(jButton_INSERT_ORDER_, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButton_CLEAR_ORDER_TABLE_, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel4)
@@ -387,7 +375,6 @@ public class EditSouOrder extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton_INSERT_ORDER_)
-                            .addComponent(jButton_SHOW_ORDERS_)
                             .addComponent(jButton_CLEAR_ORDER_TABLE_))
                         .addGap(54, 54, 54))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -503,16 +490,6 @@ public class EditSouOrder extends javax.swing.JPanel {
         
 
     }//GEN-LAST:event_jButton_INSERT_ORDER_ActionPerformed
-
-    private void jButton_SHOW_ORDERS_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SHOW_ORDERS_ActionPerformed
-
-        AllSouOrd allOrdersForm = new AllSouOrd();
-        allOrdersForm.pack();
-        allOrdersForm.setVisible(true);
-        allOrdersForm.setLocationRelativeTo(null);
-        allOrdersForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-    }//GEN-LAST:event_jButton_SHOW_ORDERS_ActionPerformed
 
     private void jButton_REMOVE_PRODUCT_FROM_ORDER_TABLEèActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_REMOVE_PRODUCT_FROM_ORDER_TABLEèActionPerformed
 
@@ -630,7 +607,6 @@ public class EditSouOrder extends javax.swing.JPanel {
     private javax.swing.JButton jButton_CLEAR_ORDER_TABLE_;
     private javax.swing.JButton jButton_INSERT_ORDER_;
     private javax.swing.JButton jButton_REMOVE_PRODUCT_FROM_ORDER_TABLEè;
-    private javax.swing.JButton jButton_SHOW_ORDERS_;
     private javax.swing.JButton jButton_TRANSFER_FROM_PRODUCT_TO_ORDER_;
     private javax.swing.JComboBox<String> jComboBox_CATEGORIES_;
     private com.toedter.calendar.JDateChooser jDateChooser1;

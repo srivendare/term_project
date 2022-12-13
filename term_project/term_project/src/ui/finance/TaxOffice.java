@@ -78,7 +78,6 @@ public class TaxOffice extends javax.swing.JFrame {
         jTextField_TAXRATE = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_Tax = new javax.swing.JTable();
-        jButton_INSERT_ = new javax.swing.JButton();
         jButton_UPDATE_ = new javax.swing.JButton();
         jButton_DELETE_ = new javax.swing.JButton();
         jButton_CLEAR_ = new javax.swing.JButton();
@@ -122,20 +121,10 @@ public class TaxOffice extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable_Tax);
 
-        jButton_INSERT_.setBackground(new java.awt.Color(0, 153, 153));
-        jButton_INSERT_.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton_INSERT_.setForeground(new java.awt.Color(51, 51, 51));
-        jButton_INSERT_.setText("Insert");
-        jButton_INSERT_.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_INSERT_ActionPerformed(evt);
-            }
-        });
-
         jButton_UPDATE_.setBackground(new java.awt.Color(65, 131, 215));
         jButton_UPDATE_.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton_UPDATE_.setForeground(new java.awt.Color(51, 51, 51));
-        jButton_UPDATE_.setText("Edit");
+        jButton_UPDATE_.setText("Update");
         jButton_UPDATE_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_UPDATE_ActionPerformed(evt);
@@ -155,7 +144,7 @@ public class TaxOffice extends javax.swing.JFrame {
         jButton_CLEAR_.setBackground(new java.awt.Color(192, 57, 43));
         jButton_CLEAR_.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton_CLEAR_.setForeground(new java.awt.Color(51, 51, 51));
-        jButton_CLEAR_.setText("clear");
+        jButton_CLEAR_.setText("Clear");
         jButton_CLEAR_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_CLEAR_ActionPerformed(evt);
@@ -183,28 +172,21 @@ public class TaxOffice extends javax.swing.JFrame {
                         .addGap(107, 107, 107)
                         .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton_CLEAR_, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                            .addComponent(jButton_INSERT_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButton_UPDATE_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPaneLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton_UPDATE_, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(jButton_DELETE_, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton_DELETE_, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(165, 165, 165))
         );
         editPaneLayout.setVerticalGroup(
             editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editPaneLayout.createSequentialGroup()
                 .addGap(72, 72, 72)
                 .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(editPaneLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton_DELETE_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_UPDATE_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(editPaneLayout.createSequentialGroup()
                         .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -219,9 +201,11 @@ public class TaxOffice extends javax.swing.JFrame {
                             .addComponent(jTextField_TAXRATE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addComponent(jButton_CLEAR_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton_INSERT_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(83, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_UPDATE_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton_DELETE_)
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -248,28 +232,6 @@ public class TaxOffice extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTable_TaxMouseClicked
 
-    // button add a new tax
-    private void jButton_INSERT_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_INSERT_ActionPerformed
-
-        if(verifFields())
-        {   
-            Pattern patternTax = Pattern.compile("[0-9]{1,2}");
-            String categoryName = jTextField_CATEGORY.getText();
-            String taxRate = jTextField_TAXRATE.getText();
-
-            
-            if (!patternTax.matcher(taxRate.toString()).matches()){
-                
-                JOptionPane.showMessageDialog(null, "Please Enter a vialid Tax Rate!", "Warning", 1);
-            } else {
-                Category category = new Category(null,categoryName,Integer.valueOf(taxRate));
-                Category.insertCategory(category);
-                populateJtable();     
-            }
-        }
-        
-    }//GEN-LAST:event_jButton_INSERT_ActionPerformed
-
     // button update tax
     private void jButton_UPDATE_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UPDATE_ActionPerformed
 
@@ -291,7 +253,7 @@ public class TaxOffice extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Please Enter a vialid Tax Rate!", "Warning", 1);
                 } else {
                     Category category = new Category(id, categoryName, Integer.valueOf(taxRate));
-                    Category.insertCategory(category);
+                    Category.updateCategory(category);
                     populateJtable();     
                 }
             }
@@ -342,7 +304,6 @@ public class TaxOffice extends javax.swing.JFrame {
     private javax.swing.JPanel editPane;
     private javax.swing.JButton jButton_CLEAR_;
     private javax.swing.JButton jButton_DELETE_;
-    private javax.swing.JButton jButton_INSERT_;
     private javax.swing.JButton jButton_UPDATE_;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

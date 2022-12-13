@@ -23,7 +23,7 @@ import model.Product;
  *
  * @author 1BestCsharp
  */
-public class Edit_Product_Form extends javax.swing.JFrame {
+public class EditProductForm extends javax.swing.JFrame {
 
     /**
      * Creates new form EDIT_PRODUCT_FORM
@@ -35,11 +35,22 @@ public class Edit_Product_Form extends javax.swing.JFrame {
     // get the id of the product to edit from the manage product form
     public Integer productId;
     
-    public Edit_Product_Form() {
+    public EditProductForm() {
         initComponents();
         
         // populate the combobox with key and value
         BindCombo();
+//        jComboBox1.setEditable(false);
+//        jComboBox1.setEnabled(false);
+//        jTextField_Name.setEditable(false);
+//        jTextField_Name.setEnabled(false);
+//        jTextField_Quantity.setEditable(false);
+//        jTextField_Quantity.setEnabled(false);
+//        jTextField_Price.setEditable(false);
+//        jTextField_Price.setEnabled(false);
+
+        jButton_BROWSE_PIC.setBorderPainted( false );
+        jButton_BROWSE_PIC.setFocusPainted( false );
     }
 
     /**
@@ -53,7 +64,6 @@ public class Edit_Product_Form extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField_Description = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jTextField_Price = new javax.swing.JTextField();
@@ -67,6 +77,7 @@ public class Edit_Product_Form extends javax.swing.JFrame {
         jButton_EDIT_PRODUCT = new javax.swing.JButton();
         jButton_CANCEL = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        comboQA = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,9 +85,7 @@ public class Edit_Product_Form extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("QA:");
-
-        jTextField_Description.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("QA Result:");
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
@@ -120,7 +129,7 @@ public class Edit_Product_Form extends javax.swing.JFrame {
         jButton_EDIT_PRODUCT.setBackground(new java.awt.Color(65, 131, 215));
         jButton_EDIT_PRODUCT.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton_EDIT_PRODUCT.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_EDIT_PRODUCT.setText("Edit");
+        jButton_EDIT_PRODUCT.setText("Update");
         jButton_EDIT_PRODUCT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_EDIT_PRODUCTActionPerformed(evt);
@@ -141,6 +150,8 @@ public class Edit_Product_Form extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Picture:");
 
+        comboQA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "quality_approved", "quality_reject", "pending" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -151,7 +162,8 @@ public class Edit_Product_Form extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField_Description, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(comboQA, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -178,7 +190,7 @@ public class Edit_Product_Form extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jButton_BROWSE_PIC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
                                 .addComponent(jLabel_Picture, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,7 +199,7 @@ public class Edit_Product_Form extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jComboBox1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextField_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -199,11 +211,11 @@ public class Edit_Product_Form extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jTextField_Price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField_Description, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                    .addComponent(comboQA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel_Picture, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
@@ -262,10 +274,13 @@ public class Edit_Product_Form extends javax.swing.JFrame {
         Category category = new Category();
 
         HashMap<String, Integer> map = category.populateCombo();
-
+        
+        
         String name = jTextField_Name.getText();
+        
         String price;
-        String description = jTextField_Description.getText();
+        String selectQA = comboQA.getSelectedItem().toString();
+        String description = selectQA;
         Integer quantity;
         Integer catId;
 
@@ -290,7 +305,7 @@ public class Edit_Product_Form extends javax.swing.JFrame {
                 
             }
             catch (IOException ex) {
-                Logger.getLogger(Edit_Product_Form.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(EditProductForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{ // not updating the image to
              if(verifFields())
@@ -361,14 +376,26 @@ public class Edit_Product_Form extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Edit_Product_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditProductForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Edit_Product_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditProductForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Edit_Product_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditProductForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Edit_Product_Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditProductForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -377,12 +404,13 @@ public class Edit_Product_Form extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Edit_Product_Form().setVisible(true);
+                new EditProductForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboQA;
     private javax.swing.JButton jButton_BROWSE_PIC;
     private javax.swing.JButton jButton_CANCEL;
     private javax.swing.JButton jButton_EDIT_PRODUCT;
@@ -395,7 +423,6 @@ public class Edit_Product_Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     public javax.swing.JLabel jLabel_Picture;
     private javax.swing.JPanel jPanel1;
-    public javax.swing.JTextField jTextField_Description;
     public javax.swing.JTextField jTextField_Name;
     public javax.swing.JTextField jTextField_Price;
     public javax.swing.JTextField jTextField_Quantity;

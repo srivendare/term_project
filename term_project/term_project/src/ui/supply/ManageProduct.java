@@ -247,7 +247,7 @@ public class ManageProduct extends javax.swing.JFrame {
         try{
 
             // open the edit product form and display data into the fields
-            Edit_Product_Form editProductForm = new Edit_Product_Form();
+            EditProductForm editProductForm = new EditProductForm();
 
             Integer rowIndex = jTable_Products.getSelectedRow();
 
@@ -255,7 +255,7 @@ public class ManageProduct extends javax.swing.JFrame {
             editProductForm.jTextField_Name.setText(jTable_Products.getValueAt(rowIndex, 1).toString());
             editProductForm.jTextField_Price.setText(jTable_Products.getValueAt(rowIndex, 2).toString());
             editProductForm.jTextField_Quantity.setText(jTable_Products.getValueAt(rowIndex, 3).toString());
-            editProductForm.jTextField_Description.setText(jTable_Products.getValueAt(rowIndex, 5).toString());
+            //editProductForm.jTextField_Description.setText(jTable_Products.getValueAt(rowIndex, 5).toString());
 
             editProductForm.jComboBox1.setSelectedItem(jTable_Products.getValueAt(rowIndex, 6));
 

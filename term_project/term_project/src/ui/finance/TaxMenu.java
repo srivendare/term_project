@@ -7,7 +7,6 @@ package ui.finance;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import ui.Login_Form;
-import ui.supply.MANAGE_PRODUCTS_FORM;
 import ui.sysadmin.ManageUser;
 
 public class TaxMenu extends javax.swing.JFrame {
