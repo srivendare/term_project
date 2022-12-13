@@ -4,12 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/ruishang/Desktop/coffee/term_project/term_project/term_project/src/ui/sysadmin/SysMenu.java</file>
-            <file>file:/Users/ruishang/Desktop/coffee/term_project/term_project/term_project/src/ui/finance/FinanMenu.java</file>
-            <file>file:/Users/ruishang/Desktop/coffee/term_project/term_project/term_project/src/ui/analyse/AnaMenu.java</file>
-            <file>file:/Users/ruishang/Desktop/coffee/term_project/term_project/term_project/src/ui/analyse/StrategyMenu.java</file>
-            <file>file:/Users/ruishang/Desktop/coffee/term_project/term_project/term_project/src/ui/finance/TaxMenu.java</file>
-            <file>file:/Users/ruishang/Desktop/coffee/term_project/term_project/term_project/src/ui/analyse/AnalyseMenu.java</file>
-            <file>file:/Users/ruishang/Desktop/coffee/term_project/term_project/term_project/src/ui/finance/FinanceMenu.java</file>
+            <file>file:/Users/ruishang/Desktop/coffee/term_project/term_project/term_project/src/ui/source/EditSpPane.java</file>
+            <file>file:/Users/ruishang/Desktop/coffee/term_project/term_project/term_project/src/ui/sysadmin/ManageUser.java</file>
         </group>
     </open-files>
 </project-private>
