@@ -3,6 +3,7 @@ package ui.sysadmin;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -19,6 +20,8 @@ public class ManageUser extends javax.swing.JFrame {
         initComponents();
         
         populateJtable();
+        jTextField_ID.setEditable(false);
+        jTextField_ID.setEnabled(false);
         
         jTable_USERS.setShowGrid(true);
         
@@ -426,6 +429,8 @@ public class ManageUser extends javax.swing.JFrame {
 
         if(verifFields())
         {
+            Pattern patternTel = Pattern.compile("[0-9]{6}");
+            
             String uname = jTextField_USERNAME.getText();
             String pass = jTextField_PASSWORD.getText();
             String fname = jTextField_FULLNAME.getText();
@@ -434,10 +439,22 @@ public class ManageUser extends javax.swing.JFrame {
             String enterprise = comboEntr.getSelectedItem().toString();
             String organization = comboOrg.getSelectedItem().toString(); //txtOrg.getText();
             String role = comboRole.getSelectedItem().toString();// txtRole.getText();
-
-            Users user = new Users(null,uname,pass,null,fname,tel,email,enterprise,organization,role);
-            Users.insertUser(user);
-            populateJtable();
+            
+            
+            if (!patternTel.matcher(tel).matches()){
+                JOptionPane.showMessageDialog(null, "Please Enter a vialid Tele Number!", "Warning", 1);
+            } else if (!email.contains("@")||email.length()<7){
+                JOptionPane.showMessageDialog(null, "Please Enter a vialid Email!", "Warning", 1);
+            } else if (uname.length()<4 ){
+                JOptionPane.showMessageDialog(null, "Username should be longer than 4 digis!", "Warning", 1);
+            }  else if (pass.length()<6){
+                JOptionPane.showMessageDialog(null, "Password should be longer than 6 digis!", "Warning", 1);
+            } else {
+                Users user = new Users(null,uname,pass,null,fname,tel,email,enterprise,organization,role);
+                Users.insertUser(user);
+                populateJtable();     
+            }
+            
         }
         
     }//GEN-LAST:event_jButton_INSERT_ActionPerformed
