@@ -4,6 +4,7 @@
  */
 package model;
 
+import controller.DB_INFO;
 import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author qiaotong
  */
-public class Pay {
+public class Pay extends Order {
     Connection connection;
 
     private Integer id;
@@ -192,8 +193,8 @@ public class Pay {
     
 
     public void generatePayRecord(){
-        SourceOrder order = new SourceOrder();
-        ArrayList<SourceOrder> orderList = order.ordersList();
+        Order order = new Order();
+        ArrayList<Order> orderList = order.ordersList();
         
         ArrayList<Pay> payList = payList();
         

@@ -1,5 +1,6 @@
 package model;
 
+import controller.DB_INFO;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -12,7 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
-public class SourceOrder {
+public class Order {
     
     Connection connection = DB_INFO.getConnection();
     
@@ -21,15 +22,15 @@ public class SourceOrder {
     private Date orderDate;
     private Integer customerId;
     
-    public SourceOrder(){}
+    public Order(){}
     
-    public SourceOrder(Integer ID, Date ORDER_DATE)
+    public Order(Integer ID, Date ORDER_DATE)
     {
         this.id = ID;
         this.orderDate = ORDER_DATE;
     }
     
-    public SourceOrder(Integer ID, Date ORDER_DATE, Integer CUSTOMER_ID)
+    public Order(Integer ID, Date ORDER_DATE, Integer CUSTOMER_ID)
     {
         this.id = ID;
         this.orderDate = ORDER_DATE;
@@ -62,9 +63,9 @@ public class SourceOrder {
     
     
     // get the orders list
-    public ArrayList<SourceOrder> ordersList(){
+    public ArrayList<Order> ordersList(){
         
-        ArrayList<SourceOrder> order_list = new ArrayList<>();
+        ArrayList<Order> order_list = new ArrayList<>();
         ResultSet rs;
         PreparedStatement ps;
 
@@ -74,10 +75,10 @@ public class SourceOrder {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
            
-            SourceOrder ord;
+            Order ord;
             // Integer ID, String NAME, Integer CATEGORY_ID, String PRICE, byte[] PICTURE, Integer QUANTITY, String DESCRIPTION
             while(rs.next()){
-                ord = new SourceOrder(rs.getInt("id"),
+                ord = new Order(rs.getInt("id"),
                                     rs.getDate("order_date"),
                                     rs.getInt("customer_id")
                                  );
@@ -86,7 +87,7 @@ public class SourceOrder {
             }
         
         } catch (SQLException ex) {
-            Logger.getLogger(SourceOrder.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
         }
         return order_list;
         
@@ -115,7 +116,7 @@ public class SourceOrder {
             
             
         } catch (SQLException ex) {
-            Logger.getLogger(SourceOrder.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return ordersCount;
@@ -143,7 +144,7 @@ public class SourceOrder {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(SourceOrder.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -171,7 +172,7 @@ public class SourceOrder {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(SourceOrder.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -200,7 +201,7 @@ public class SourceOrder {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(SourceOrder.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return lastOrderDate;
@@ -225,7 +226,7 @@ public class SourceOrder {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(SourceOrder.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return maxOrderId;
@@ -257,7 +258,7 @@ public class SourceOrder {
                 }
             
         } catch (SQLException ex) {
-            Logger.getLogger(SourceOrder.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
      
@@ -294,7 +295,7 @@ public class SourceOrder {
                 }
             
         } catch (SQLException ex) {
-            Logger.getLogger(SourceOrder.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
      

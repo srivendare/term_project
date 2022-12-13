@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import model.Category;
-import model.TableModel;
+import controller.TableModel;
 import model.Product;
 
 /**

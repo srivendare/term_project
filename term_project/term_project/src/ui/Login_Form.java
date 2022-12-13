@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import model.DB_INFO;
+import controller.DB_INFO;
 import ui.analyse.AnalyseMenu;
 import ui.analyse.StrategyMenu;
 import ui.finance.TaxMenu;

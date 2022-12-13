@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Category;
-import model.Imagefunc;
+import controller.Imagefunc;
 import model.Product;
 
 /*

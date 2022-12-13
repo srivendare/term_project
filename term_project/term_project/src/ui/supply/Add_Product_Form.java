@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import model.Category;
-import model.Imagefunc;
+import controller.Imagefunc;
 import model.Product;
 
 /*

@@ -24,8 +24,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-import model.DB_INFO;
-import model.SourceOrder;
+import controller.DB_INFO;
+import model.Order;
 
 /**
  *
@@ -53,8 +53,8 @@ public class EditOrders extends javax.swing.JPanel {
     
     public void populateOrderJtable(){
         
-        SourceOrder ord = new SourceOrder();
-        ArrayList<SourceOrder> OrderList = ord.ordersList();
+        Order ord = new Order();
+        ArrayList<Order> OrderList = ord.ordersList();
         
         String[] colNames = {"Id","Date","Customer"};
         Object[][] rows = new Object[OrderList.size()][3];
@@ -351,7 +351,7 @@ public class EditOrders extends javax.swing.JPanel {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(SourceOrder.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
          
         }
         

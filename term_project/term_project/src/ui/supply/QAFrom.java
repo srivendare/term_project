@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.JTableHeader;
-import model.TableModel;
+import controller.TableModel;
 import model.Product;
 
 

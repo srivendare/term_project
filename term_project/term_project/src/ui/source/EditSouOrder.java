@@ -16,9 +16,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Category;
 import model.Pay;
-import model.TableModel;
+import controller.TableModel;
 import model.Product;
-import model.SourceOrder;
+import model.Order;
 import model.Warehouse;
 
 /**
@@ -37,7 +37,7 @@ public class EditSouOrder extends javax.swing.JPanel {
         
         jComboBox_CATEGORIES_ActionPerformed(null);
         
-        SourceOrder ord = new SourceOrder();
+        Order ord = new Order();
         
         jTextField_CUSTOMER_ID.setEnabled(false);
         jTextField_ORDER_ID.setEnabled(false);
@@ -464,7 +464,7 @@ public class EditSouOrder extends javax.swing.JPanel {
             
 
             // insert the order
-            SourceOrder.insertOrder(orderId, orderDate, Integer.valueOf(jTextField_CUSTOMER_ID.getText()));
+            Order.insertOrder(orderId, orderDate, Integer.valueOf(jTextField_CUSTOMER_ID.getText()));
 
             // get the product data
             for(int i = 0; i < jTable_PRODUCTS_IN_ORDER_.getRowCount(); i++)
@@ -483,10 +483,10 @@ public class EditSouOrder extends javax.swing.JPanel {
                 Pay.insertPay(pay);
 
                 // insert the order details
-                SourceOrder.insertOrderDetails(productId, orderId, qty, price, total);
+                Order.insertOrderDetails(productId, orderId, qty, price, total);
 
                 // display the new order id in textfield
-                SourceOrder ord = new SourceOrder();
+                Order ord = new Order();
                 jTextField_ORDER_ID.setText(String.valueOf(ord.getMaxOrderId() + 1));
             }
 

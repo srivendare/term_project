@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Warehouse;
-import model.SourceOrder;
+import model.Order;
 
 /**
  *
@@ -337,7 +337,7 @@ public class EditSpPane extends javax.swing.JPanel {
             jTextField_TEL.setText(jTable_CUSTOMERS_.getValueAt(rowIndex, 3).toString());
             jTextField_EMAIL.setText(jTable_CUSTOMERS_.getValueAt(rowIndex, 4).toString());
 
-//            SourceOrder order = new SourceOrder();
+//            Order order = new Order();
 //            jLabel_ORDERS_COUNT.setText(order.getCustomerOrdersCount(Integer.valueOf(jTable_CUSTOMERS_.getValueAt(rowIndex, 0).toString())));
 //            jLabel_TOTAL_AMOUNT.setText(order.getCustomerOrdersTotalAmount(Integer.valueOf(jTable_CUSTOMERS_.getValueAt(rowIndex, 0).toString())));
 //            jLabel_LAST_ORDER_DATE.setText(order.getCustomerLastOrderDate(Integer.valueOf(jTable_CUSTOMERS_.getValueAt(rowIndex, 0).toString())));
