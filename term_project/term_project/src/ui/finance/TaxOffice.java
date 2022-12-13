@@ -3,6 +3,7 @@ package ui.finance;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -166,31 +167,32 @@ public class TaxOffice extends javax.swing.JFrame {
         editPaneLayout.setHorizontalGroup(
             editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPaneLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
                 .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField_CATEGORY)
-                    .addComponent(jTextField_ID)
-                    .addComponent(jTextField_TAXRATE, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(editPaneLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextField_CATEGORY)
+                            .addComponent(jTextField_ID)
+                            .addComponent(jTextField_TAXRATE, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(editPaneLayout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton_CLEAR_, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                            .addComponent(jButton_INSERT_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPaneLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton_INSERT_, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jButton_UPDATE_, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(44, 44, 44)
                 .addComponent(jButton_DELETE_, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
-            .addGroup(editPaneLayout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(jButton_CLEAR_, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(108, 108, 108))
         );
         editPaneLayout.setVerticalGroup(
             editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,10 +204,7 @@ public class TaxOffice extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton_DELETE_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_UPDATE_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_INSERT_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton_CLEAR_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton_UPDATE_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(editPaneLayout.createSequentialGroup()
                         .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -217,8 +216,12 @@ public class TaxOffice extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(editPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField_TAXRATE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                            .addComponent(jTextField_TAXRATE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton_CLEAR_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton_INSERT_, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -249,13 +252,20 @@ public class TaxOffice extends javax.swing.JFrame {
     private void jButton_INSERT_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_INSERT_ActionPerformed
 
         if(verifFields())
-        {
+        {   
+            Pattern patternTax = Pattern.compile("[0-9]{1,2}");
             String categoryName = jTextField_CATEGORY.getText();
             String taxRate = jTextField_TAXRATE.getText();
 
-            Category category = new Category(null,categoryName,Integer.valueOf(taxRate));
-            Category.insertCategory(category);
-            populateJtable();
+            
+            if (!patternTax.matcher(taxRate.toString()).matches()){
+                
+                JOptionPane.showMessageDialog(null, "Please Enter a vialid Tax Rate!", "Warning", 1);
+            } else {
+                Category category = new Category(null,categoryName,Integer.valueOf(taxRate));
+                Category.insertCategory(category);
+                populateJtable();     
+            }
         }
         
     }//GEN-LAST:event_jButton_INSERT_ActionPerformed
@@ -270,14 +280,20 @@ public class TaxOffice extends javax.swing.JFrame {
                 Integer id = Integer.valueOf(jTextField_ID.getText());
                 String categoryName = jTextField_CATEGORY.getText();
                 String taxRate = jTextField_TAXRATE.getText();
-      
+                Pattern patternTax = Pattern.compile("[0-9]{1,2}");
                 
 
-                Category category = new Category(id, categoryName, Integer.valueOf(taxRate));
+               
                 // username`, `password`, `user_type`, `fullname`, `tel`, `email
    
-                Category.updateCategory(category);
-                populateJtable();
+                if (!patternTax.matcher(taxRate.toString()).matches()){
+
+                    JOptionPane.showMessageDialog(null, "Please Enter a vialid Tax Rate!", "Warning", 1);
+                } else {
+                    Category category = new Category(id, categoryName, Integer.valueOf(taxRate));
+                    Category.insertCategory(category);
+                    populateJtable();     
+                }
             }
             
         }

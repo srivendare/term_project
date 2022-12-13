@@ -2,7 +2,7 @@ package ui;
 
 import ui.finance.FinanceMenu;
 import ui.sysadmin.SysMenu;
-import ui.supply.SupMenu;
+import ui.supply.orgpanel.SupMenu;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
@@ -23,8 +23,8 @@ import ui.finance.TaxMenu;
 import ui.source.orgpenal.CateMenu;
 import ui.source.orgpenal.PurMenu;
 import ui.source.orgpenal.SouMenu;
-import ui.supply.SupQAMenu;
-import ui.supply.SupSpMenu;
+import ui.supply.orgpanel.SupQAMenu;
+import ui.supply.orgpanel.SupSpMenu;
 
 
 

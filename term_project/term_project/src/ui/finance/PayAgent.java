@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -425,33 +426,50 @@ public class PayAgent extends javax.swing.JFrame {
             String tax = jTextField_TAX.getText();
             String totalPrice = jTextField_TOTALPRICE.getText();
             String verificationCode = jTextField_VERIFICATIONCODE.getText();
+            String card = jTextField_CARDNUMBER.getText();
             String ownerName = txtOWNERNAME.getText();
             String address = txtADDRESS.getText();
             String remark = txtREMARK.getText();
             
-            List<Pay> filter = payList.stream().filter(a -> id == a.getId()).collect(Collectors.toList());
-            Pay updatePay = filter.get(0);
-            if(updatePay.getStatus() == 1){
-                JOptionPane.showMessageDialog(null, "The order has been paid!", "Paid Order", 1);
+            
+            
+            Pattern patternCode = Pattern.compile("[0-9]{3}");
+            Pattern patternCard = Pattern.compile("[0-9]{7}");
+            
+             if (!patternCard.matcher(card.toString()).matches()){
+                 JOptionPane.showMessageDialog(null, "Please Enter a vialid Card Number!", "Warning", 1);
+             }else if (!patternCode.matcher(verificationCode.toString()).matches()){
+                 JOptionPane.showMessageDialog(null, "Please Enter a vialid Code!", "Warning", 1);
+             } 
+             else {
+                List<Pay> filter = payList.stream().filter(a -> id == a.getId()).collect(Collectors.toList());
+                Pay updatePay = filter.get(0);
+                if(updatePay.getStatus() == 1){
+                    JOptionPane.showMessageDialog(null, "The order has been paid!", "Paid Order", 1);
+                    clear();
+                    return;
+                }
+
+                updatePay.setStatus(1);
+                updatePay.setOriginalPrice(originalPrice);
+                updatePay.setTax(tax);
+                updatePay.setTotalPrice(totalPrice);
+                updatePay.setVerificationCode(verificationCode);
+                updatePay.setOwnerName(ownerName);
+                updatePay.setAddress(address);
+                updatePay.setRemark(remark);
+
+                Pay.updatePay(updatePay);
+                populateJtable();
+
+                JOptionPane.showMessageDialog(null, "Successful payment!", "Successful Payment", 1);
+
                 clear();
-                return;
-            }
+            };
             
-            updatePay.setStatus(1);
-            updatePay.setOriginalPrice(originalPrice);
-            updatePay.setTax(tax);
-            updatePay.setTotalPrice(totalPrice);
-            updatePay.setVerificationCode(verificationCode);
-            updatePay.setOwnerName(ownerName);
-            updatePay.setAddress(address);
-            updatePay.setRemark(remark);
             
-            Pay.updatePay(updatePay);
-            populateJtable();
             
-            JOptionPane.showMessageDialog(null, "Successful payment!", "Successful Payment", 1);
-            
-            clear();
+           
             
         }else{
             JOptionPane.showMessageDialog(null, "Please check if there is any missing information or if a payment record is selected", "Missing Information", 1);

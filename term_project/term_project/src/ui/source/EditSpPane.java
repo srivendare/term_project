@@ -5,6 +5,7 @@
 package ui.source;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Warehouse;
@@ -281,15 +282,25 @@ public class EditSpPane extends javax.swing.JPanel {
     private void jButton_INSERT_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_INSERT_ActionPerformed
 
         if(verifFields())
-        {
+        {   
+            
+            Pattern patternTel = Pattern.compile("[0-9]{6}");
+            
             String fname = jTextField_FNAME.getText();
             String lname = jTextField_LNAME.getText();
             String tel = jTextField_TEL.getText();
             String email = jTextField_EMAIL.getText();
-
-            Warehouse customer = new Warehouse(null, fname, lname, tel, email);
-            Warehouse.insertCustomer(customer);
-            populateJtable();
+            
+            if (!patternTel.matcher(tel).matches()){
+                JOptionPane.showMessageDialog(null, "Please Enter a vialid Tele Number!", "Warning", 1);
+            } else if (!email.contains("@")||email.length()<7){
+                JOptionPane.showMessageDialog(null, "Please Enter a vialid Email!", "Warning", 1);
+            } else {
+                Warehouse customer = new Warehouse(null, fname, lname, tel, email);
+                Warehouse.insertCustomer(customer);
+                populateJtable();
+            };
+            
         }
     }//GEN-LAST:event_jButton_INSERT_ActionPerformed
 

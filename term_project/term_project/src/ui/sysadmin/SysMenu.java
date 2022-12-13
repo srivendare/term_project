@@ -7,7 +7,7 @@ package ui.sysadmin;
 import ui.Login_Form;
 import ui.analyse.AnaMenu;
 import ui.finance.FinanMenu;
-import ui.supply.SupMenu;
+import ui.supply.orgpanel.SupMenu;
 
 /**
  *

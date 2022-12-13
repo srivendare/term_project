@@ -145,7 +145,7 @@ public class Pay extends Order {
             ps.setInt(11, pay.getId());
 
             if(ps.executeUpdate() != 0){
-                JOptionPane.showMessageDialog(null, "pay Updated");
+                //JOptionPane.showMessageDialog(null, "pay Updated");
 
                 }
                 else{
