@@ -4,6 +4,8 @@
  */
 package ui.source;
 
+import java.sql.Connection;
+import controller.DB_INFO;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.text.SimpleDateFormat;
@@ -17,6 +19,11 @@ import javax.swing.table.DefaultTableModel;
 import model.Category;
 import model.Pay;
 import controller.TableModel;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Product;
 import model.Order;
 import model.Warehouse;
@@ -461,8 +468,29 @@ public class EditSouOrder extends javax.swing.JPanel {
                 qty = Integer.valueOf(jTable_PRODUCTS_IN_ORDER_.getValueAt(i, 3).toString());
                 total = jTable_PRODUCTS_IN_ORDER_.getValueAt(i, 4).toString();
                 
+                // get tax rate
                 
-                Double totax = Double.valueOf(jTable_PRODUCTS_IN_ORDER_.getValueAt(i, 4).toString()) * 1.12;
+//                Connection con = DB_INFO.getConnection();
+//                
+//                String tax_ratio = null;
+//                ResultSet rs;
+//                PreparedStatement ps;
+//                
+//                try {
+//                    ps = con.prepareStatement("SELECT category.tax_rate \n" +
+//                            "FROM product \n" +
+//                            "LEFT JOIN category ON product.category_id = category.id\n" +
+//                            "WHERE product.id = ?");
+//                    ps.setString(1, productId.toString());
+//                    rs = ps.executeQuery();
+//                    while(rs.next()){
+//                       tax_ratio = rs.getString("category.tax_rate");
+//                    }
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(EditSouOrder.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+                
+                Double totax = Double.valueOf(jTable_PRODUCTS_IN_ORDER_.getValueAt(i, 4).toString()) *1.12; //(1+ Double.valueOf(tax_ratio)/100)
                 taxTotal = totax.toString();
                 
                 // insert payment 
@@ -498,6 +526,7 @@ public class EditSouOrder extends javax.swing.JPanel {
             DefaultTableModel model = (DefaultTableModel)jTable_PRODUCTS_IN_ORDER_.getModel();
             model.removeRow(selectedRowIndex);
             getTotal();
+            
         }catch(Exception ex)
         {
             JOptionPane.showMessageDialog(null, "Select A Product From The Order Table", "No Product Selected", 1);

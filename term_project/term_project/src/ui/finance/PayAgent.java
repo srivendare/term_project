@@ -34,7 +34,7 @@ public class PayAgent extends javax.swing.JFrame {
         
         JTableHeader th = jTable_Pay.getTableHeader();
 
-        th.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        th.setFont(new Font("Tahoma", Font.PLAIN, 14));
     }
     
     public JPanel getPayPanel() {

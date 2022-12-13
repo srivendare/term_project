@@ -295,7 +295,7 @@ public class ViewOrders extends javax.swing.JPanel {
                 txtPrice.setForeground(Color.DARK_GRAY);
                 txtQuan.setText(String.valueOf("Quantity: " +rs.getString("quantity")));
                 txtQuan.setForeground(Color.DARK_GRAY);
-                txtTotal.setText(String.valueOf("Total" +rs.getString("total")));
+                txtTotal.setText(String.valueOf("Total: " +rs.getString("total")));
                 txtTotal.setForeground(Color.DARK_GRAY);
                 
                 Blob blob = (Blob) rs.getBlob("pic");

@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import model.Category;
+import model.Pay;
 
 
 public class TaxOffice extends javax.swing.JFrame {
@@ -254,6 +255,9 @@ public class TaxOffice extends javax.swing.JFrame {
                 } else {
                     Category category = new Category(id, categoryName, Integer.valueOf(taxRate));
                     Category.updateCategory(category);
+                    
+                    
+                    // insert payment 
                     populateJtable();     
                 }
             }

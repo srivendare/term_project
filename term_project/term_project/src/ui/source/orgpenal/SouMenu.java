@@ -11,6 +11,7 @@ import ui.source.EditCate;
 import ui.source.EditOrders;
 import ui.source.EditSouOrder;
 import ui.source.EditSpPane;
+import ui.source.ViewOrders;
 import ui.sysadmin.ManageUser;
 
 public class SouMenu extends javax.swing.JFrame {
@@ -125,6 +126,11 @@ public class SouMenu extends javax.swing.JFrame {
         btnEditOrder1.setText("View Order");
         btnEditOrder1.setBorderPainted(false);
         btnEditOrder1.setContentAreaFilled(false);
+        btnEditOrder1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditOrder1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 153, 153));
@@ -249,6 +255,12 @@ public class SouMenu extends javax.swing.JFrame {
         new Login_Form().setVisible(true);
         
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnEditOrder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditOrder1ActionPerformed
+        // TODO add your handling code here:
+        ViewOrders viewOrd = new ViewOrders();
+        splitPane.setRightComponent(viewOrd);
+    }//GEN-LAST:event_btnEditOrder1ActionPerformed
 
     /**
      * @param args the command line arguments
