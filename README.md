@@ -6,7 +6,7 @@
 
 
 
-**Background:**  Supply Chain is very important for any companies. A proper inventory plan can instead allow them to develop an adaptable system that contributes to the overall value of the business long term. But It is challenging that make all departments work together and keep information identical.
+**Background:**  Supply Chain is very important for any companies. An adaptable system that allows proper inventory plan can  contribute to the overall value of the business long term. But It is challenging that make all departments work together and keep information identical.
 
 
 
