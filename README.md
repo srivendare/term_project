@@ -10,7 +10,7 @@
 
 
 
-**Objective:**  This project aims to build a supply chain inventory management platform, which keeps supply & demand information passing among different departments. It also allows data visualisation to align information with High Management level.
+**Objective:**  This project aims to build a supply chain inventory management platform, which keeps supply & demand information passing among through different departments. It also allows data visualisation to align information with High Management level.
 
 
 
