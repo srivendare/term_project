@@ -30,7 +30,7 @@ There are 4 operational enterprises (Supply, Sourcing, Finance, and Data) + a Sy
 
 
 
-**Database Used:** MySQL c
+**Database Used:** MySQL 
 
 
 
