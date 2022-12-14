@@ -42,8 +42,6 @@ Detials in the presentation slides [Link][https://docs.google.com/presentation/d
 
 ### UML Class Diagram
 
-Class Diagram
-
 ![image](./diagrams/classes.jpeg)
 
 
