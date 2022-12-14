@@ -48,5 +48,5 @@ Class Diagram
 
 
 
-![image](./diagrams/seq.jpeg)
+![image](./diagrams/seq.png)
 
