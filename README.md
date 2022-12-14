@@ -4,13 +4,17 @@
 
 ### Problem Solved：
 
-The project aims to build an supply chain inventory management platform, which keeps supply & demand information identical among different departments.
+
+
+**Background:**  Supply Chain is very important for any companies. A proper inventory plan can instead allow them to develop an adaptable system that contributes to the overall value of the business long term. But It is challenging that make all departments work together and keep information identical.
+
+
+
+**Objective:**  This project aims to build a supply chain inventory management platform, which keeps supply & demand information passing among different departments. It also allows data visualisation to align information with High Management level.
 
 
 
 ### Project Scale：
-
-
 
 There are 4 operational enterprises (Supply, Sourcing, Finance, and Data) + a System enterprise which includs Admin
 
