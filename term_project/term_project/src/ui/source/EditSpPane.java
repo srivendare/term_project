@@ -308,16 +308,25 @@ public class EditSpPane extends javax.swing.JPanel {
 
         try{
             if(verifFields())
-            {
+            {   
+                Pattern patternTel = Pattern.compile("[0-9]{6}");
+                
                 String fname = jTextField_FNAME.getText();
                 String lname = jTextField_LNAME.getText();
                 String tel = jTextField_TEL.getText();
                 String email = jTextField_EMAIL.getText();
                 Integer id = Integer.valueOf(jTextField_ID.getText());
-
-                Warehouse customer = new Warehouse(id, fname, lname, tel, email);
-                Warehouse.updateCustomer(customer);
-                populateJtable();
+                
+                if (!patternTel.matcher(tel).matches()){
+                JOptionPane.showMessageDialog(null, "Please Enter a vialid Tele Number!", "Warning", 1);
+                } else if (!email.contains("@")||email.length()<7){
+                    JOptionPane.showMessageDialog(null, "Please Enter a vialid Email!", "Warning", 1);
+                } else {
+                    Warehouse customer = new Warehouse(id, fname, lname, tel, email);
+                    Warehouse.updateCustomer(customer);
+                    populateJtable();
+                };
+                
             }
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Select an Row Before Editing", "No Data Selected", 1);

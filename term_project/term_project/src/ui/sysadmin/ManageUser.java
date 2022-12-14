@@ -35,7 +35,7 @@ public class ManageUser extends javax.swing.JFrame {
     }
     
     public JPanel getEditPane() {
-        return editPane;
+        return this.editPane;
     }
 
     

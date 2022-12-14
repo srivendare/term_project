@@ -225,7 +225,7 @@ public class SysMenu extends javax.swing.JFrame {
     private void btnFin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFin1ActionPerformed
         // TODO add your handling code here:
         FinanMenu adminFi = new FinanMenu();
-        splitPane.setRightComponent(adminFi);
+        splitPane.setRightComponent(adminFi.getSplitPane());
     }//GEN-LAST:event_btnFin1ActionPerformed
 
     /**
@@ -256,19 +256,7 @@ public class SysMenu extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
